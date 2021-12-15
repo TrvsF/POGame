@@ -22,7 +22,8 @@ private:
 	SDL_Renderer *renderer;
 
 	void handleEvents();
-	void handleKeyboard(SDL_Keycode key);
+	void handleKeyboardDown(SDL_Keycode key);
+	void handleKeyboardUp(SDL_Keycode key);
 	void update();
 	void render();
 	void clean();

@@ -1,4 +1,4 @@
-#include "SDL.h"
+#include "common.h"
 #include "game.h"
 
 game *gameInstance = nullptr;
@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
 		"POGame",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		1024,
-		786,
+		800,
+		600,
 		false
 	);
 

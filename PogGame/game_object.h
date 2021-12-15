@@ -11,14 +11,23 @@ public:
 
 	void update();
 	void render();
+	void handleTurning();
+	void handleMovement();
 
-	int xPos;
-	int yPos;
+	int movementVect[4];
 
 private:
+	void moveToPoint();
+
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
 	SDL_Renderer* localRenderer;
+
+	float xPos;
+	float yPos;
+
+	float angle;
+	float moveVelocity;
 
 };
 

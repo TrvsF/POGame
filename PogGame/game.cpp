@@ -55,31 +55,57 @@ void game::handleEvents()
 				break;
 
 			case SDL_KEYDOWN:
-				handleKeyboard(event.key.keysym.sym);
+				handleKeyboardDown(event.key.keysym.sym);
+				break;
+
+			case SDL_KEYUP:
+				handleKeyboardUp(event.key.keysym.sym);
 				break;
 		}
 	}
 	
 }
 
-void game::handleKeyboard(SDL_Keycode key)
+void game::handleKeyboardDown(SDL_Keycode key)
 {
 	switch (key)
 	{
 		case SDLK_w:
-			player->yPos -= 2;
+			player->movementVect[0] = 1;
 			break;
 
 		case SDLK_s:
-			player->yPos += 2;
+			player->movementVect[1] = 1;
 			break;
 
 		case SDLK_a:
-			player->xPos -= 2;
+			player->movementVect[2] = 1;
 			break;
 
 		case SDLK_d:
-			player->xPos += 2;
+			player->movementVect[3] = 1;
+			break;
+	}
+}
+
+void game::handleKeyboardUp(SDL_Keycode key)
+{
+	switch (key)
+	{
+		case SDLK_w:
+			player->movementVect[0] = 0;
+			break;
+
+		case SDLK_s:
+			player->movementVect[1] = 0;
+			break;
+
+		case SDLK_a:
+			player->movementVect[2] = 0;
+			break;
+
+		case SDLK_d:
+			player->movementVect[3] = 0;
 			break;
 	}
 }
