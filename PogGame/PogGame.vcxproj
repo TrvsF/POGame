@@ -125,14 +125,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp" />
-    <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="player_object.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="texture_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="game_object.h" />
+    <ClInclude Include="player_object.h" />
     <ClInclude Include="texture_manager.h" />
   </ItemGroup>
   <ItemGroup>

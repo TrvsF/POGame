@@ -1,8 +1,8 @@
 #include "game.h"
 #include "texture_manager.h"
-#include "game_object.h"
+#include "player_object.h"
 
-game_object* player;
+player_object* player;
 
 game::game()
 {}
@@ -39,7 +39,7 @@ void game::init(const char* title, int xPos, int yPos, int width, int hieght, bo
 
 	isRunning = true;
 
-	player = new game_object("./character.png", renderer, 20, 20);
+	player = new player_object("./character.png", renderer, 20, 20);
 
 }
 
