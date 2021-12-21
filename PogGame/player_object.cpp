@@ -33,16 +33,12 @@ player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, i
 
 player_object::~player_object()
 {
+
 }
 
 void player_object::update()
 {
 	printf("angle : %f, moveVel : %f, coords : %f,%f\n", angle, moveVelocity, xPos, yPos);
-
-	destRect.h = srcRect.h;
-	destRect.w = srcRect.w;
-	destRect.x = xPos;
-	destRect.y = yPos;
 
 	handleMovement();
 	handleTurning();
@@ -53,8 +49,17 @@ void player_object::update()
 
 void player_object::render()
 {
-	// drawCircle(localRenderer, (int) xPos, (int) yPos, 5);
-	SDL_RenderCopy(localRenderer, objTexture, &srcRect, &destRect);
+	SDL_Rect dstRect;
+
+	dstRect.x = xPos;
+	dstRect.y = yPos;
+	SDL_QueryTexture(objTexture, NULL, NULL, &dstRect.w, &dstRect.h);
+	dstRect.x -= (dstRect.w / 2);
+	dstRect.y -= (dstRect.h / 2);
+
+	double textureAngle = (angle + M_PI/2) * 180 / M_PI;
+
+	SDL_RenderCopyEx(localRenderer, objTexture, NULL, &dstRect, textureAngle, NULL, SDL_FLIP_NONE);
 }
 
 void player_object::handleTurning()
@@ -62,13 +67,13 @@ void player_object::handleTurning()
 	// if moving forward key is down 
 	if (movementVect[2] == 1)
 	{
-		angle += 0.0001;
+		angle -= 0.003;
 	}
 
 	// if moving backward key is down
 	if (movementVect[3] == 1)
 	{
-		angle -= 0.0001;
+		angle += 0.003;
 	}
 }
 
