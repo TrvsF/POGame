@@ -1,8 +1,5 @@
 #include "game_engine.h"
 
-timer* m_timer;
-graphics* m_graphics;
-
 game_engine::game_engine()
 {}
 

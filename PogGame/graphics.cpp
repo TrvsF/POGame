@@ -1,5 +1,7 @@
 #include "graphics.h"
 
+texture* m_texture;
+
 graphics::graphics()
 {
 }
@@ -57,6 +59,8 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	}
 	printf("done!\n");
 
+	m_texture = new texture("./character.png", m_renderer);
+
 	return true;
 }
 
@@ -64,6 +68,8 @@ void graphics::render()
 {
 	// clear the backbuffer
 	SDL_RenderClear(m_renderer);
+
+	m_texture->render();
 
 	// preset the renderer
 	SDL_RenderPresent(m_renderer);

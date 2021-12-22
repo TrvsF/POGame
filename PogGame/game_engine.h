@@ -4,6 +4,7 @@
 #include "timer.h"
 #include "game_entity.h"
 #include "graphics.h"
+#include "texture.h"
 
 class game_engine {
 	
@@ -22,6 +23,9 @@ class game_engine {
 		const int FRAME_RATE = 144;
 
 		SDL_Event m_events;
+
+		timer* m_timer;
+		graphics* m_graphics;
 
 		bool m_isRunning;
 
