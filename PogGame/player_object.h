@@ -17,17 +17,21 @@ class player_object
 		int movementVect[4];
 
 	private:
+		const float MAX_VEL = 0.03f;
+		const float MOVEMENT_MOMENTUM = 0.00003f;
+		const float TURNING_MOMENTUM = 0.00055f;
+
 		void moveToPoint();
 
-		SDL_Texture* objTexture;
-		SDL_Rect srcRect, destRect;
-		SDL_Renderer* localRenderer;
+		SDL_Texture* m_playerTexture;
+		SDL_Rect m_srcRect, m_destRect;
+		SDL_Renderer* m_renderer;
 
-		float xPos;
-		float yPos;
+		float m_posX;
+		float m_posY;
 
-		float angle;
-		float moveVelocity;
+		float m_angle;
+		float m_velocity;
 
 };
 

@@ -3,16 +3,16 @@
 
 player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, int x, int y)
 {
-	localRenderer = renderer;
-	objTexture = texture_manager::loadTexture(texturesheet, localRenderer);
+	m_renderer = renderer;
+	m_playerTexture = texture_manager::loadTexture(texturesheet, m_renderer);
 
-	srcRect.h = 32;
-	srcRect.w = 32;
-	srcRect.x = 0;
-	srcRect.y = 0;
+	m_srcRect.h = 32;
+	m_srcRect.w = 32;
+	m_srcRect.x = 0;
+	m_srcRect.y = 0;
 
-	xPos = 400;
-	yPos = 300;
+	m_posX = 400;
+	m_posY = 300;
 
 	/*
 		0 = forward
@@ -27,8 +27,8 @@ player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, i
 	movementVect[2] = 0;
 	movementVect[3] = 0;
 
-	angle = 0;
-	moveVelocity = 0;
+	m_angle = 0;
+	m_velocity = 0;
 }
 
 player_object::~player_object()
@@ -38,7 +38,7 @@ player_object::~player_object()
 
 void player_object::update()
 {
-	printf("angle : %f, moveVel : %f, coords : %f,%f\n", angle, moveVelocity, xPos, yPos);
+	printf("angle : %f, moveVel : %f, coords : %f,%f\n", m_angle, m_velocity, m_posX, m_posY);
 
 	handleMovement();
 	handleTurning();
@@ -49,17 +49,15 @@ void player_object::update()
 
 void player_object::render()
 {
-	SDL_Rect dstRect;
+	m_destRect.x = m_posX;
+	m_destRect.y = m_posY;
+	SDL_QueryTexture(m_playerTexture, NULL, NULL, &m_destRect.w, &m_destRect.h);
+	m_destRect.x -= (m_destRect.w / 2);
+	m_destRect.y -= (m_destRect.h / 2);
 
-	dstRect.x = xPos;
-	dstRect.y = yPos;
-	SDL_QueryTexture(objTexture, NULL, NULL, &dstRect.w, &dstRect.h);
-	dstRect.x -= (dstRect.w / 2);
-	dstRect.y -= (dstRect.h / 2);
+	double textureAngle = (m_angle + M_PI/2) * 180 / M_PI;
 
-	double textureAngle = (angle + M_PI/2) * 180 / M_PI;
-
-	SDL_RenderCopyEx(localRenderer, objTexture, NULL, &dstRect, textureAngle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(m_renderer, m_playerTexture, NULL, &m_destRect, textureAngle, NULL, SDL_FLIP_NONE);
 }
 
 void player_object::handleTurning()
@@ -67,13 +65,13 @@ void player_object::handleTurning()
 	// if moving forward key is down 
 	if (movementVect[2] == 1)
 	{
-		angle -= 0.003;
+		m_angle -= TURNING_MOMENTUM;
 	}
 
 	// if moving backward key is down
 	if (movementVect[3] == 1)
 	{
-		angle += 0.003;
+		m_angle += TURNING_MOMENTUM;
 	}
 }
 
@@ -82,43 +80,43 @@ void player_object::handleMovement()
 	// if moving forward key is down 
 	if (movementVect[0] == 1)
 	{
-		if (moveVelocity >= 0.5)
+		if (m_velocity >= MAX_VEL)
 		{
-			moveVelocity = 0.5;
+			m_velocity = MAX_VEL;
 		}
 		else
 		{
-			moveVelocity += 0.0005;
+			m_velocity += MOVEMENT_MOMENTUM;
 		}
 	}
 
 	// if moving backward key is down
 	if (movementVect[1] == 1)
 	{
-		if (moveVelocity <= -0.5)
+		if (m_velocity <= -MAX_VEL)
 		{
-			moveVelocity = -0.5;
+			m_velocity = -MAX_VEL;
 		}
 		else
 		{
-			moveVelocity -= 0.0005;
+			m_velocity -= MOVEMENT_MOMENTUM;
 		}
 	}
 
-	// if neither
+	// if no movement keys are pressed
 	if (movementVect[0] == 0 && movementVect[1] == 0)
 	{
-		moveVelocity = 0;
+		m_velocity = 0;
 	}
 }
 
 void player_object::moveToPoint()
 {
-	float x = std::cosf(angle);
-	float y = std::sinf(angle);
+	float x = std::cosf(m_angle);
+	float y = std::sinf(m_angle);
 
 	float distance = std::sqrtf(x*x + y*y);
 
-	xPos += moveVelocity * x;
-	yPos += moveVelocity * y;
+	m_posX += m_velocity * x;
+	m_posY += m_velocity * y;
 }

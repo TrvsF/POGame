@@ -1,8 +1,10 @@
 #include "game.h"
 #include "texture_manager.h"
 #include "player_object.h"
+#include "timer.h"
 
-player_object* player;
+player_object* m_player;
+timer* m_timer;
 
 game::game()
 {}
@@ -13,14 +15,14 @@ game::~game()
 void game::init(const char* title, int xPos, int yPos, int width, int hieght, bool fullscreen)
 {
 	int windowFlags = 0;
-	isRunning = false;
+	m_isRunning = false;
 
 	if (fullscreen)
 	{
 		windowFlags = SDL_WINDOW_FULLSCREEN_DESKTOP;
 	}
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("couldn't initialize SDL: %s\n", SDL_GetError());
 		exit(1);
@@ -37,9 +39,12 @@ void game::init(const char* title, int xPos, int yPos, int width, int hieght, bo
 		exit(1);
 	}
 
-	isRunning = true;
+	m_isRunning = true;
 
-	player = new player_object("./character.png", renderer, 20, 20);
+	// init player
+	m_player = new player_object("./character.png", renderer, 20, 20);
+	// init timer
+	m_timer = new timer();
 
 }
 
@@ -51,7 +56,7 @@ void game::handleEvents()
 		switch (event.type) 
 		{
 			case SDL_QUIT:
-				isRunning = false;
+				m_isRunning = false;
 				break;
 
 			case SDL_KEYDOWN:
@@ -71,19 +76,19 @@ void game::handleKeyboardDown(SDL_Keycode key)
 	switch (key)
 	{
 		case SDLK_w:
-			player->movementVect[0] = 1;
+			m_player->movementVect[0] = 1;
 			break;
 
 		case SDLK_s:
-			player->movementVect[1] = 1;
+			m_player->movementVect[1] = 1;
 			break;
 
 		case SDLK_a:
-			player->movementVect[2] = 1;
+			m_player->movementVect[2] = 1;
 			break;
 
 		case SDLK_d:
-			player->movementVect[3] = 1;
+			m_player->movementVect[3] = 1;
 			break;
 	}
 }
@@ -93,33 +98,33 @@ void game::handleKeyboardUp(SDL_Keycode key)
 	switch (key)
 	{
 		case SDLK_w:
-			player->movementVect[0] = 0;
+			m_player->movementVect[0] = 0;
 			break;
 
 		case SDLK_s:
-			player->movementVect[1] = 0;
+			m_player->movementVect[1] = 0;
 			break;
 
 		case SDLK_a:
-			player->movementVect[2] = 0;
+			m_player->movementVect[2] = 0;
 			break;
 
 		case SDLK_d:
-			player->movementVect[3] = 0;
+			m_player->movementVect[3] = 0;
 			break;
 	}
 }
 
-void game::update()
+void game::updateObjects()
 {
-	player->update();
+	m_player->update();
 }
 
 void game::render()
 {
 	SDL_RenderClear(renderer);
 
-	player->render();
+	m_player->render();
 
 	SDL_RenderPresent(renderer);
 }
@@ -137,8 +142,16 @@ void game::clean()
 void game::tick()
 {
 	handleEvents();
-	update();
-	render();
+	updateObjects();
+	m_timer->update();
+	
+	if (m_timer->deltaTime() >= 1.0f / FRAME_RATE)
+	{
+		render();
+		m_timer->reset();
+	}
+
+	
 }
 
 void game::stop()

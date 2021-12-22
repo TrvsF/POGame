@@ -1,4 +1,3 @@
-#include "SDL.h"
 #include "common.h"
 #include "SDL_image.h"
 #pragma once
@@ -14,17 +13,18 @@ class game {
 		void tick();
 		void stop();
 
-		bool running() { return isRunning; }
+		bool running() { return m_isRunning; }
 
 	private:
-		bool isRunning;
+		const int FRAME_RATE = 144;
+		bool m_isRunning;
 		SDL_Window *window;
 		SDL_Renderer *renderer;
 
 		void handleEvents();
 		void handleKeyboardDown(SDL_Keycode key);
 		void handleKeyboardUp(SDL_Keycode key);
-		void update();
+		void updateObjects();
 		void render();
 		void clean();
 
