@@ -1,27 +1,21 @@
-#include "game.h"
+#include "game_engine.h"
 #include <iostream>
 
-game *gameInstance = nullptr;
+game_engine *gameInstance = nullptr;
 
 int main(int argc, char *argv[])
 {
 	printf("init...\n");
 
-	gameInstance = new game();
+	gameInstance = new game_engine();
 
-	gameInstance->init(
-		"POGame",
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		800,
-		600,
-		false
-	);
-
-	while (gameInstance->running())
+	if (!gameInstance->init())
 	{
-		gameInstance->tick();
+		std::cin.get();
+		return 1;
 	}
+
+	gameInstance->run();
 
 	gameInstance->stop();
 

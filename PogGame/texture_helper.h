@@ -1,7 +1,8 @@
 #pragma once
 #include "SDL_image.h"
+#include <iostream>
 
-class texture_manager
+class texture_helper
 {
 
 	public:

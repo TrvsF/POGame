@@ -3,7 +3,7 @@
 player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, int x, int y)
 {
 	m_renderer = renderer;
-	m_playerTexture = texture_manager::loadTexture(texturesheet, m_renderer);
+	m_playerTexture = texture_helper::loadTexture(texturesheet, m_renderer);
 
 	m_srcRect.h = 32;
 	m_srcRect.w = 32;

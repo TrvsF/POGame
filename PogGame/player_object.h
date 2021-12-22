@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "texture_manager.h"
+#include "texture_helper.h"
 
 class player_object
 {
