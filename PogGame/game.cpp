@@ -1,10 +1,10 @@
 #include "game.h"
-#include "texture_manager.h"
-#include "player_object.h"
-#include "timer.h"
 
 player_object* m_player;
 timer* m_timer;
+
+game_entity* m_parent;
+game_entity* m_child;
 
 game::game()
 {}
@@ -28,12 +28,12 @@ void game::init(const char* title, int xPos, int yPos, int width, int hieght, bo
 		exit(1);
 	}
 
-	window = SDL_CreateWindow(title, xPos, yPos, width, hieght, windowFlags);
+	m_window = SDL_CreateWindow(title, xPos, yPos, width, hieght, windowFlags);
 
-	renderer = SDL_CreateRenderer(window, -1, 0);
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
+	SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
 
-	if (!window || !renderer)
+	if (!m_window || !m_renderer)
 	{
 		printf("something went wrong\n");
 		exit(1);
@@ -42,9 +42,14 @@ void game::init(const char* title, int xPos, int yPos, int width, int hieght, bo
 	m_isRunning = true;
 
 	// init player
-	m_player = new player_object("./character.png", renderer, 20, 20);
+	m_player = new player_object("./character.png", m_renderer, 20, 20);
 	// init timer
 	m_timer = new timer();
+
+	m_parent = new game_entity(100, 400);
+	m_child = new game_entity(100, 500);
+
+	m_child->parent(m_parent);
 
 }
 
@@ -76,19 +81,19 @@ void game::handleKeyboardDown(SDL_Keycode key)
 	switch (key)
 	{
 		case SDLK_w:
-			m_player->movementVect[0] = 1;
+			m_player->movementVector[0] = 1;
 			break;
 
 		case SDLK_s:
-			m_player->movementVect[1] = 1;
+			m_player->movementVector[1] = 1;
 			break;
 
 		case SDLK_a:
-			m_player->movementVect[2] = 1;
+			m_player->movementVector[2] = 1;
 			break;
 
 		case SDLK_d:
-			m_player->movementVect[3] = 1;
+			m_player->movementVector[3] = 1;
 			break;
 	}
 }
@@ -98,19 +103,19 @@ void game::handleKeyboardUp(SDL_Keycode key)
 	switch (key)
 	{
 		case SDLK_w:
-			m_player->movementVect[0] = 0;
+			m_player->movementVector[0] = 0;
 			break;
 
 		case SDLK_s:
-			m_player->movementVect[1] = 0;
+			m_player->movementVector[1] = 0;
 			break;
 
 		case SDLK_a:
-			m_player->movementVect[2] = 0;
+			m_player->movementVector[2] = 0;
 			break;
 
 		case SDLK_d:
-			m_player->movementVect[3] = 0;
+			m_player->movementVector[3] = 0;
 			break;
 	}
 }
@@ -122,17 +127,17 @@ void game::updateObjects()
 
 void game::render()
 {
-	SDL_RenderClear(renderer);
+	SDL_RenderClear(m_renderer);
 
 	m_player->render();
 
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(m_renderer);
 }
 
 void game::clean()
 {
-	SDL_DestroyWindow(window);
-	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(m_window);
+	SDL_DestroyRenderer(m_renderer);
 	SDL_Quit();
 	printf("game cleaned\n");
 }
@@ -150,8 +155,6 @@ void game::tick()
 		render();
 		m_timer->reset();
 	}
-
-	
 }
 
 void game::stop()

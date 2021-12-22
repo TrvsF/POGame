@@ -1,7 +1,5 @@
 #pragma once
-
-#include "common.h"
-#include "game.h"
+#include "SDL_image.h"
 
 class texture_manager
 {

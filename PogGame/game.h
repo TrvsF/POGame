@@ -1,6 +1,8 @@
-#include "common.h"
-#include "SDL_image.h"
 #pragma once
+#include "texture_manager.h"
+#include "player_object.h"
+#include "timer.h"
+#include "game_entity.h"
 
 class game {
 	
@@ -17,9 +19,11 @@ class game {
 
 	private:
 		const int FRAME_RATE = 144;
+
 		bool m_isRunning;
-		SDL_Window *window;
-		SDL_Renderer *renderer;
+
+		SDL_Window *m_window;
+		SDL_Renderer *m_renderer;
 
 		void handleEvents();
 		void handleKeyboardDown(SDL_Keycode key);

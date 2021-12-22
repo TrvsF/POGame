@@ -1,6 +1,6 @@
-#include "common.h"
-#include "game.h"
 #pragma once
+#include <iostream>
+#include "texture_manager.h"
 
 class player_object
 {
@@ -14,7 +14,7 @@ class player_object
 		void handleTurning();
 		void handleMovement();
 
-		int movementVect[4];
+		int movementVector[4];
 
 	private:
 		const float MAX_VEL = 0.03f;

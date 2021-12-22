@@ -1,9 +1,8 @@
-#include "common.h"
 #pragma once
+#include <SDL.h>
 
 class timer
 {
-
 	public:
 		timer();
 		~timer();
@@ -17,11 +16,10 @@ class timer
 
 		void update();
 
-private:
-	int m_startTicks;
-	int m_elapsedTicks;
+	private:
+		int m_startTicks;
+		int m_elapsedTicks;
 
-	float m_deltaTime;
-	float m_timeScale;
-
+		float m_deltaTime;
+		float m_timeScale;
 };

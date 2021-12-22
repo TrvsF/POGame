@@ -1,5 +1,4 @@
 #include "player_object.h"
-#include "texture_manager.h"
 
 player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, int x, int y)
 {
@@ -22,10 +21,10 @@ player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, i
 
 		DONT DO THIS AS A FOR LOOP IT BREAKS EVERYTHING!!!
 	*/
-	movementVect[0] = 0;
-	movementVect[1] = 0;
-	movementVect[2] = 0;
-	movementVect[3] = 0;
+	movementVector[0] = 0;
+	movementVector[1] = 0;
+	movementVector[2] = 0;
+	movementVector[3] = 0;
 
 	m_angle = 0;
 	m_velocity = 0;
@@ -55,7 +54,7 @@ void player_object::render()
 	m_destRect.x -= (m_destRect.w / 2);
 	m_destRect.y -= (m_destRect.h / 2);
 
-	double textureAngle = (m_angle + M_PI/2) * 180 / M_PI;
+	double textureAngle = (m_angle + M_PI / 2.0f) * 180.0f / M_PI;
 
 	SDL_RenderCopyEx(m_renderer, m_playerTexture, NULL, &m_destRect, textureAngle, NULL, SDL_FLIP_NONE);
 }
@@ -63,13 +62,13 @@ void player_object::render()
 void player_object::handleTurning()
 {
 	// if moving forward key is down 
-	if (movementVect[2] == 1)
+	if (movementVector[2] == 1)
 	{
 		m_angle -= TURNING_MOMENTUM;
 	}
 
 	// if moving backward key is down
-	if (movementVect[3] == 1)
+	if (movementVector[3] == 1)
 	{
 		m_angle += TURNING_MOMENTUM;
 	}
@@ -78,7 +77,7 @@ void player_object::handleTurning()
 void player_object::handleMovement()
 {
 	// if moving forward key is down 
-	if (movementVect[0] == 1)
+	if (movementVector[0] == 1)
 	{
 		if (m_velocity >= MAX_VEL)
 		{
@@ -91,7 +90,7 @@ void player_object::handleMovement()
 	}
 
 	// if moving backward key is down
-	if (movementVect[1] == 1)
+	if (movementVector[1] == 1)
 	{
 		if (m_velocity <= -MAX_VEL)
 		{
@@ -104,7 +103,7 @@ void player_object::handleMovement()
 	}
 
 	// if no movement keys are pressed
-	if (movementVect[0] == 0 && movementVect[1] == 0)
+	if (movementVector[0] == 0 && movementVector[1] == 0)
 	{
 		m_velocity = 0;
 	}

@@ -1,5 +1,5 @@
-#include "common.h"
 #include "game.h"
+#include <iostream>
 
 game *gameInstance = nullptr;
 
