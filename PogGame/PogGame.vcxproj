@@ -131,7 +131,6 @@
     <ClCompile Include="inputs.cpp" />
     <ClCompile Include="levels.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="player_object.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture_helper.cpp" />

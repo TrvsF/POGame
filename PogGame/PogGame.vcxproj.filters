@@ -42,9 +42,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player_object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="texture_helper.cpp">
       <Filter>Source Files\helpers</Filter>
     </ClCompile>
