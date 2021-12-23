@@ -1,5 +1,4 @@
 #include "game_entity.h"
-#include <iostream>
 
 game_entity::game_entity(Vector2 vector)
 {

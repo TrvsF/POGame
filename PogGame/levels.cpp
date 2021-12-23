@@ -27,7 +27,19 @@ void levels::update()
 {
 	if (m_inputs->keyDown(SDL_SCANCODE_W))
 	{
-		m_playerChar->translate(Vector2(5, 5));
+		m_playerChar->translate(-VEC2_UP);
+	}
+	if (m_inputs->keyDown(SDL_SCANCODE_S))
+	{
+		m_playerChar->translate(VEC2_UP);
+	}
+	if (m_inputs->keyDown(SDL_SCANCODE_D))
+	{
+		m_playerChar->translate(VEC2_RIGHT);
+	}
+	if (m_inputs->keyDown(SDL_SCANCODE_A))
+	{
+		m_playerChar->translate(-VEC2_RIGHT);
 	}
 }
 
