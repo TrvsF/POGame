@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\entities">
-      <UniqueIdentifier>{585181a2-f2e8-4c87-a15f-567cf5a89aa9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\entities">
-      <UniqueIdentifier>{a13eeb21-e5cf-4120-b547-27016ae9261f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\helpers">
       <UniqueIdentifier>{a4a83c1f-4a96-4a62-a554-d2fa61ff57d5}</UniqueIdentifier>
     </Filter>
@@ -31,6 +25,18 @@
     <Filter Include="Header Files\managers">
       <UniqueIdentifier>{75a776c3-feda-444a-affa-f9149253bf91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\entity">
+      <UniqueIdentifier>{585181a2-f2e8-4c87-a15f-567cf5a89aa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entity\entities">
+      <UniqueIdentifier>{db60c183-9a94-4229-b7fc-9e4f37fc0488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entity">
+      <UniqueIdentifier>{0d4e28f4-9b1e-4c07-a81b-1a9185fb1e43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entity\entities">
+      <UniqueIdentifier>{a13eeb21-e5cf-4120-b547-27016ae9261f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,20 +45,14 @@
     <ClCompile Include="player_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game_entity.cpp">
-      <Filter>Source Files\entities</Filter>
-    </ClCompile>
     <ClCompile Include="texture_helper.cpp">
       <Filter>Source Files\helpers</Filter>
     </ClCompile>
     <ClCompile Include="game_engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source Files\entities</Filter>
-    </ClCompile>
     <ClCompile Include="player.cpp">
-      <Filter>Source Files\entities</Filter>
+      <Filter>Source Files\entity\entities</Filter>
     </ClCompile>
     <ClCompile Include="graphics.cpp">
       <Filter>Source Files\managers</Filter>
@@ -66,13 +66,22 @@
     <ClCompile Include="inputs.cpp">
       <Filter>Source Files\managers</Filter>
     </ClCompile>
+    <ClCompile Include="game_entity.cpp">
+      <Filter>Source Files\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files\entity</Filter>
+    </ClCompile>
+    <ClCompile Include="levels.cpp">
+      <Filter>Source Files\managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="player_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="game_entity.h">
-      <Filter>Header Files\entities</Filter>
+      <Filter>Header Files\entity</Filter>
     </ClInclude>
     <ClInclude Include="texture_helper.h">
       <Filter>Header Files\helpers</Filter>
@@ -84,10 +93,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="texture.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>Header Files\entities</Filter>
+      <Filter>Header Files\entity</Filter>
     </ClInclude>
     <ClInclude Include="graphics.h">
       <Filter>Header Files\managers</Filter>
@@ -99,6 +105,12 @@
       <Filter>Header Files\managers</Filter>
     </ClInclude>
     <ClInclude Include="assets.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files\entity\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="levels.h">
       <Filter>Header Files\managers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -129,6 +129,7 @@
     <ClCompile Include="game_entity.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputs.cpp" />
+    <ClCompile Include="levels.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="player_object.cpp" />
     <ClCompile Include="main.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="game_entity.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="inputs.h" />
+    <ClInclude Include="levels.h" />
     <ClInclude Include="math_helper.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="player_object.h" />

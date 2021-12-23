@@ -1,8 +1,6 @@
 #include "game_engine.h"
 #include "player.h"
 
-player* player_char;
-
 game_engine::game_engine()
 {}
 
@@ -12,6 +10,7 @@ game_engine::~game_engine()
 	m_graphics = NULL;
 	m_timer = NULL;
 	m_inputs = NULL;
+	m_levels = NULL;
 }
 
 bool game_engine::init()
@@ -41,14 +40,17 @@ bool game_engine::init()
 	m_inputs = inputs::INSTANCE();
 	printf("done!\n");
 
-	player_char = new player();
+	// init level manager
+	printf("loading level manager...");
+	m_levels = levels::INSTANCE();
+	printf("done!\n");
 
 	return true;
 }
 
 void game_engine::stop()
 {
-	m_graphics->clear();
+	m_graphics->clean();
 }
 
 void game_engine::run()
@@ -81,10 +83,6 @@ void game_engine::run()
 void game_engine::earlyUpdate()
 {
 	m_inputs->update();
-	if (m_inputs->keyDown(SDL_SCANCODE_W))
-	{
-		player_char->translate(VEC2_RIGHT);
-	}
 }
 
 void game_engine::update()
@@ -99,5 +97,9 @@ void game_engine::lateUpdate()
 
 void game_engine::render()
 {
+	m_graphics->clearBuffer();
+
+	m_levels->render();
+
 	m_graphics->render();
 }

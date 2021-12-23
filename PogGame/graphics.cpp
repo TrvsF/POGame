@@ -75,17 +75,21 @@ SDL_Renderer* graphics::renderer()
 	return m_renderer;
 }
 
-void graphics::render()
+void graphics::clearBuffer()
 {
 	// clear the backbuffer
 	SDL_RenderClear(m_renderer);
+}
 
+void graphics::render()
+{
 	// preset the renderer
 	SDL_RenderPresent(m_renderer);
 }
 
-void graphics::clear()
+void graphics::clean()
 {
+	// clean the window and quit
 	SDL_DestroyWindow(m_window);
 	SDL_DestroyRenderer(m_renderer);
 	SDL_Quit();

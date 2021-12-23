@@ -7,6 +7,7 @@
 #include "texture.h"
 #include "assets.h"
 #include "inputs.h"
+#include "levels.h"
 
 class game_engine {
 	
@@ -30,6 +31,7 @@ class game_engine {
 		graphics* m_graphics;
 		assets* m_assets;
 		inputs* m_inputs;
+		levels* m_levels;
 
 		bool m_isRunning;
 

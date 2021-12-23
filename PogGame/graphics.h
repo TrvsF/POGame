@@ -16,8 +16,9 @@ class graphics
 		bool init(const char* title, int xPos, int yPos, int width, int hieght, bool fullscreen);
 		SDL_Renderer* renderer();
 
+		void clearBuffer();
 		void render();
-		void clear();
+		void clean();
 
 	private:
 		SDL_Window* m_window;
