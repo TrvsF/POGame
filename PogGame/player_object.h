@@ -6,7 +6,7 @@ class player_object
 {
 
 	public:
-		player_object(const char* texturesheet, SDL_Renderer* renderer, int x, int y);
+		player_object(const char* texturesheet, int x, int y);
 		~player_object();
 
 		void update();

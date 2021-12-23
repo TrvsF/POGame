@@ -1,5 +1,15 @@
 #include "timer.h"
 
+timer* timer::s_instance = NULL;
+
+timer* timer::INSTANCE()
+{
+	if (s_instance == NULL)
+		s_instance = new timer();
+
+	return s_instance;
+}
+
 timer::timer()
 {
 	reset();

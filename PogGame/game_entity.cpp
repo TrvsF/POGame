@@ -1,9 +1,9 @@
 #include "game_entity.h"
 
-game_entity::game_entity(float x, float y)
+game_entity::game_entity(Vector2 vector)
 {
-	m_pos.x = x;
-	m_pos.y = y;
+	m_pos.x = vector.x;
+	m_pos.y = vector.y;
 
 	m_rotation = 0.0f;
 
@@ -86,5 +86,5 @@ void game_entity::update()
 
 void game_entity::render()
 {
-
+	
 }

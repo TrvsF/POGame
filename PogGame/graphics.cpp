@@ -1,6 +1,16 @@
 #include "graphics.h"
+#include "player.h"
 
-texture* m_texture;
+graphics* graphics::s_instance = NULL;
+player* player_char;
+
+graphics* graphics::INSTANCE()
+{
+	if (s_instance == NULL)
+		s_instance = new graphics();
+
+	return s_instance;
+}
 
 graphics::graphics()
 {
@@ -59,9 +69,14 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	}
 	printf("done!\n");
 
-	m_texture = new texture("./character.png", m_renderer);
+	player_char = new player();
 
 	return true;
+}
+
+SDL_Renderer* graphics::renderer()
+{
+	return m_renderer;
 }
 
 void graphics::render()
@@ -69,7 +84,7 @@ void graphics::render()
 	// clear the backbuffer
 	SDL_RenderClear(m_renderer);
 
-	m_texture->render();
+	player_char->render();
 
 	// preset the renderer
 	SDL_RenderPresent(m_renderer);

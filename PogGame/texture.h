@@ -1,13 +1,12 @@
 #pragma once
 #include "game_entity.h"
-#include "graphics.h"
+#include "asset_manager.h"
 
 class texture
 {
 	protected:
-		SDL_Texture* m_texture;
-
 		SDL_Renderer* m_renderer;
+		SDL_Texture* m_texture;
 
 		int m_width;
 		int m_height;
@@ -15,7 +14,7 @@ class texture
 		SDL_Rect m_renderRect;
 
 	public:
-		texture(const char* path, SDL_Renderer* renderer);
+		texture(std::string path);
 		~texture();
 
 		virtual void render();

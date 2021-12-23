@@ -1,9 +1,8 @@
 #include "player_object.h"
 
-player_object::player_object(const char* texturesheet, SDL_Renderer* renderer, int x, int y)
+player_object::player_object(const char* texturesheet, int x, int y)
 {
-	m_renderer = renderer;
-	m_playerTexture = texture_helper::loadTexture(texturesheet, m_renderer);
+	m_playerTexture = texture_helper::loadTexture(texturesheet);
 
 	m_srcRect.h = 32;
 	m_srcRect.w = 32;

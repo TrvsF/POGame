@@ -4,14 +4,18 @@ game_engine::game_engine()
 {}
 
 game_engine::~game_engine()
-{}
+{
+	m_assetManager = NULL;
+	m_graphics = NULL;
+	m_timer = NULL;
+}
 
 bool game_engine::init()
 {
 	m_isRunning = false;
 
 	printf("starting graphics...\n");
-	m_graphics = new graphics();
+	m_graphics = graphics::INSTANCE();
 	if (m_graphics->init("POGame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false))
 	{
 		printf("graphics started!\n");
@@ -19,7 +23,9 @@ bool game_engine::init()
 	}
 
 	// init timer
-	m_timer = new timer();
+	m_timer = timer::INSTANCE();
+	// init asset manager
+	m_assetManager = asset_manager::INSTANCE();
 
 	return true;
 }

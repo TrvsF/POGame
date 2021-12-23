@@ -26,6 +26,7 @@ class game_engine {
 
 		timer* m_timer;
 		graphics* m_graphics;
+		asset_manager* m_assetManager;
 
 		bool m_isRunning;
 
