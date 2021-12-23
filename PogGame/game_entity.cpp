@@ -67,6 +67,16 @@ bool game_entity::active()
 	return m_active;
 }
 
+void game_entity::playerControlled(bool isPlayer)
+{
+	m_player = isPlayer;
+}
+
+bool game_entity::playerControlled()
+{
+	return m_player;
+}
+
 void game_entity::parent(game_entity* parent)
 {
 	m_pos = pos(world) - parent->pos(world);
@@ -77,6 +87,11 @@ void game_entity::parent(game_entity* parent)
 game_entity* game_entity::parent()
 {
 	return m_parent;
+}
+
+void game_entity::translate(Vector2 vec)
+{
+	m_pos += vec;
 }
 
 void game_entity::update()

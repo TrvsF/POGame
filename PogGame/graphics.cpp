@@ -1,8 +1,6 @@
 #include "graphics.h"
-#include "player.h"
 
 graphics* graphics::s_instance = NULL;
-player* player_char;
 
 graphics* graphics::INSTANCE()
 {
@@ -69,8 +67,6 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	}
 	printf("done!\n");
 
-	player_char = new player();
-
 	return true;
 }
 
@@ -83,8 +79,6 @@ void graphics::render()
 {
 	// clear the backbuffer
 	SDL_RenderClear(m_renderer);
-
-	player_char->render();
 
 	// preset the renderer
 	SDL_RenderPresent(m_renderer);

@@ -5,6 +5,8 @@
 #include "game_entity.h"
 #include "graphics.h"
 #include "texture.h"
+#include "assets.h"
+#include "inputs.h"
 
 class game_engine {
 	
@@ -26,7 +28,8 @@ class game_engine {
 
 		timer* m_timer;
 		graphics* m_graphics;
-		asset_manager* m_assetManager;
+		assets* m_assets;
+		inputs* m_inputs;
 
 		bool m_isRunning;
 

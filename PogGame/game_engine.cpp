@@ -1,13 +1,17 @@
 #include "game_engine.h"
+#include "player.h"
+
+player* player_char;
 
 game_engine::game_engine()
 {}
 
 game_engine::~game_engine()
 {
-	m_assetManager = NULL;
+	m_assets = NULL;
 	m_graphics = NULL;
 	m_timer = NULL;
+	m_inputs = NULL;
 }
 
 bool game_engine::init()
@@ -23,9 +27,21 @@ bool game_engine::init()
 	}
 
 	// init timer
+	printf("loading timer...");
 	m_timer = timer::INSTANCE();
+	printf("done!\n");
+
 	// init asset manager
-	m_assetManager = asset_manager::INSTANCE();
+	printf("loading asset manager...");
+	m_assets = assets::INSTANCE();
+	printf("done!\n");
+
+	// init asset manager
+	printf("loading input manager...");
+	m_inputs = inputs::INSTANCE();
+	printf("done!\n");
+
+	player_char = new player();
 
 	return true;
 }
@@ -64,14 +80,21 @@ void game_engine::run()
 
 void game_engine::earlyUpdate()
 {
+	m_inputs->update();
+	if (m_inputs->keyDown(SDL_SCANCODE_W))
+	{
+		player_char->translate(VEC2_RIGHT);
+	}
 }
 
 void game_engine::update()
 {
+	// entity updates
 }
 
 void game_engine::lateUpdate()
 {
+	m_timer->reset();
 }
 
 void game_engine::render()

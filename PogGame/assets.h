@@ -2,19 +2,19 @@
 #include "graphics.h"
 #include <map>
 
-class asset_manager
+class assets
 {
 
 	private:
-		static asset_manager* s_instance;
+		static assets* s_instance;
 		
 		std::map<std::string, SDL_Texture*> m_textures;
 
 	public:
-		static asset_manager* INSTANCE();
+		static assets* INSTANCE();
 
-		asset_manager();
-		~asset_manager();
+		assets();
+		~assets();
 
 		SDL_Texture* getTexture(const char* path);
 

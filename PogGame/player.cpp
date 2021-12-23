@@ -2,6 +2,7 @@
 
 player::player()
 {
+	playerControlled(true);
 	m_texture = new texture("./character.png");
 }
 

@@ -124,10 +124,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="asset_manager.cpp" />
+    <ClCompile Include="assets.cpp" />
     <ClCompile Include="game_engine.cpp" />
     <ClCompile Include="game_entity.cpp" />
     <ClCompile Include="graphics.cpp" />
+    <ClCompile Include="inputs.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="player_object.cpp" />
     <ClCompile Include="main.cpp" />
@@ -136,10 +137,11 @@
     <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="asset_manager.h" />
+    <ClInclude Include="assets.h" />
     <ClInclude Include="game_engine.h" />
     <ClInclude Include="game_entity.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="inputs.h" />
     <ClInclude Include="math_helper.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="player_object.h" />

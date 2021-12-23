@@ -1,20 +1,20 @@
-#include "asset_manager.h"
+#include "assets.h"
 
-asset_manager* asset_manager::s_instance = NULL;
+assets* assets::s_instance = NULL;
 
-asset_manager* asset_manager::INSTANCE()
+assets* assets::INSTANCE()
 {
 	if (s_instance == NULL)
-		s_instance = new asset_manager();
+		s_instance = new assets();
 
 	return s_instance;
 }
 
-asset_manager::asset_manager()
+assets::assets()
 {
 }
 
-asset_manager::~asset_manager()
+assets::~assets()
 {
 	for (auto texture : m_textures)
 	{
@@ -26,7 +26,7 @@ asset_manager::~asset_manager()
 	m_textures.clear();
 }
 
-SDL_Texture* asset_manager::getTexture(const char* path)
+SDL_Texture* assets::getTexture(const char* path)
 {
 	// if texture is not loaded
 	if (m_textures[path] == nullptr)

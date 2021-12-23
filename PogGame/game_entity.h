@@ -1,4 +1,3 @@
-
 #pragma once
 #include "math_helper.h"
 
@@ -22,8 +21,13 @@ class game_entity
 		void active(bool active);
 		bool active();
 
+		void playerControlled(bool isPlayer);
+		bool playerControlled();
+
 		void parent(game_entity* parent);
 		game_entity* parent();
+
+		void translate(Vector2 vec);
 
 		virtual void update();
 		virtual void render();
@@ -32,6 +36,7 @@ class game_entity
 		Vector2 m_pos;
 		float m_rotation;
 
+		bool m_player;
 		bool m_active;
 		game_entity* m_parent;
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "game_entity.h"
-#include "asset_manager.h"
+#include "assets.h"
 
 class texture
 {
