@@ -25,6 +25,10 @@ levels::~levels()
 
 void levels::update()
 {
+	if (m_inputs->keyDown(SDL_SCANCODE_W))
+	{
+		m_playerChar->translate(Vector2(5, 5));
+	}
 }
 
 void levels::render()

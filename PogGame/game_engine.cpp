@@ -87,7 +87,7 @@ void game_engine::earlyUpdate()
 
 void game_engine::update()
 {
-	// entity updates
+	m_levels->update();
 }
 
 void game_engine::lateUpdate()

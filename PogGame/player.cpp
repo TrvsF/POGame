@@ -8,9 +8,10 @@ player::player()
 
 void player::update()
 {
+
 }
 
 void player::render()
 {
-	m_texture->render();
+	m_texture->render(pos(world));
 }

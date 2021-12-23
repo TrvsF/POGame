@@ -17,6 +17,6 @@ class texture
 		texture(std::string path);
 		~texture();
 
-		virtual void render();
+		virtual void render(Vector2 pos);
 	
 };
