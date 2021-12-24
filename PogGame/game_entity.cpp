@@ -1,5 +1,4 @@
 #include "game_entity.h"
-#include <iostream>
 
 game_entity::game_entity(Vector2 vector)
 {
@@ -79,8 +78,6 @@ Vector2 game_entity::movementVec()
 	int x = cosf(m_rotation);
 	int y = sinf(m_rotation);
 	m_movement = Vector2(x, y) * m_velocity;
-
-	printf("%f %f %f\n", m_movement.x, m_movement.y, m_velocity);
 
 	return m_movement;
 }

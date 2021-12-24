@@ -27,8 +27,8 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 		windowFlags = SDL_WINDOW_FULLSCREEN_DESKTOP;
 	}
 
+	// start sdl
 	printf("loading SDL...");
-	// INIT SDL VIDEO AND AUDIO LIBARIES
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
 		printf("couldn't initialise SDL: %s\n", SDL_GetError());
@@ -36,8 +36,8 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	}
 	printf("done!\n");
 
+	// init sdl window
 	printf("init window...");
-	// INIT SDL WINDOW
 	m_window = SDL_CreateWindow(title, xPos, yPos, width, hieght, windowFlags);
 	if (m_window == NULL)
 	{
@@ -46,8 +46,8 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	}
 	printf("done!\n");
 
+	// init sdl renderer
 	printf("init renderer...");
-	// INIT SDL RENDERER
 	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
 	if (m_renderer == NULL)
 	{
@@ -57,8 +57,8 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
 	printf("done!\n");
 
+	// init sdl image libary
 	printf("starting image libary...");
-	// INIT SDL IMAGE LIB
 	int flags = IMG_INIT_PNG;
 	if (!(IMG_Init(flags) & flags)) {
 
