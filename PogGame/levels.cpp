@@ -27,10 +27,12 @@ void levels::update()
 {
 	if (m_inputs->keyDown(SDL_SCANCODE_W))
 	{
+		m_playerChar->moving();
 		m_playerChar->moveForward();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_S))
 	{
+		m_playerChar->moving();
 		m_playerChar->moveBackward();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_D))

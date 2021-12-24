@@ -68,20 +68,6 @@ bool game_entity::active()
 	return m_active;
 }
 
-void game_entity::movementVec(Vector2 movementVec)
-{
-	m_movement = movementVec;
-}
-
-Vector2 game_entity::movementVec()
-{
-	int x = cosf(m_rotation);
-	int y = sinf(m_rotation);
-	m_movement = Vector2(x, y) * m_velocity;
-
-	return m_movement;
-}
-
 void game_entity::velocity(float vel)
 {
 	m_velocity = vel;

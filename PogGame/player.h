@@ -12,6 +12,9 @@ class player : public game_entity
 {
 private:
 	texture* m_texture;
+	bool m_moving;
+
+	float calcVelocity();
 
 public:
 	player(Vector2 pos);
@@ -20,6 +23,8 @@ public:
 	void turnLeft();
 	void moveForward();
 	void moveBackward();
+
+	void moving();
 
 	void update();
 	void render();

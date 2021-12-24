@@ -26,9 +26,6 @@ class game_entity
 		void active(bool active);
 		bool active();
 
-		void movementVec(Vector2 movementVec);
-		Vector2 movementVec();
-
 		void velocity(float vel);
 		float velocity();
 
@@ -45,7 +42,6 @@ class game_entity
 
 	private:
 		Vector2 m_pos;
-		Vector2 m_movement;
 
 		float m_rotation;
 		float m_velocity;
