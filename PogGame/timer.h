@@ -1,6 +1,11 @@
 #pragma once
 #include <SDL.h>
+/*----------
+	timer class
+	handles when entities should be updated & rendered
 
+	a. travis 22nd dec
+----------*/
 class timer
 {
 	private:

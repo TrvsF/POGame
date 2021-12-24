@@ -1,6 +1,11 @@
 #pragma once
 #include "math_helper.h"
+/*----------
+	game entity class
+	main class that all game objects inherit from
 
+	a. travis 22nd dec
+----------*/
 class game_entity
 {
 	public:

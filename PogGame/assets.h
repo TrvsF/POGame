@@ -1,7 +1,14 @@
 #pragma once
 #include "graphics.h"
+#include "texture_helper.h"
 #include <map>
+/*----------
+	asset manager class
+	handles all game assets
+	such as easy and safe texture loading
 
+	a. travis 23rd dec
+----------*/
 class assets
 {
 

@@ -4,6 +4,7 @@
 game_engine::game_engine()
 {}
 
+// unload all managers
 game_engine::~game_engine()
 {
 	m_assets = NULL;
@@ -13,10 +14,12 @@ game_engine::~game_engine()
 	m_levels = NULL;
 }
 
+// init game engine and all managers
 bool game_engine::init()
 {
 	m_isRunning = false;
 
+	// init graphics
 	printf("starting graphics\n:------:\n");
 	m_graphics = graphics::INSTANCE();
 	if (m_graphics->init("POGame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false))
@@ -48,15 +51,18 @@ bool game_engine::init()
 	return true;
 }
 
+// stop the game and close down
 void game_engine::stop()
 {
 	m_graphics->clean();
 }
 
+// main game loop
 void game_engine::run()
 {
 	while (m_isRunning) {
 
+		// tick timer
 		m_timer->update();
 
 		while (SDL_PollEvent(&m_events) != 0) {
@@ -80,21 +86,25 @@ void game_engine::run()
 	}
 }
 
+// update all inputs
 void game_engine::earlyUpdate()
 {
 	m_inputs->update();
 }
 
+// update game entities
 void game_engine::update()
 {
 	m_levels->update();
 }
 
+// reset the timer ready for next frame
 void game_engine::lateUpdate()
 {
 	m_timer->reset();
 }
 
+// render the new frame
 void game_engine::render()
 {
 	m_graphics->clearBuffer();

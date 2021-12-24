@@ -2,7 +2,12 @@
 #include <SDL.h>
 #include "player.h"
 #include "inputs.h"
+/*----------
+	level manager class
+	handles level loading and all game entities on given levels
 
+	a. travis ~24th dec
+----------*/
 class levels
 {
 private:

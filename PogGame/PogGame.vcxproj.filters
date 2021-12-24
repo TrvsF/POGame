@@ -74,9 +74,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="player_object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game_entity.h">
       <Filter>Header Files\entity</Filter>
     </ClInclude>

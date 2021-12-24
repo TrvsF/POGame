@@ -1,6 +1,5 @@
 #pragma once
 #include "texture_helper.h"
-#include "player_object.h"
 #include "timer.h"
 #include "game_entity.h"
 #include "graphics.h"
@@ -8,7 +7,12 @@
 #include "assets.h"
 #include "inputs.h"
 #include "levels.h"
+/*----------
+	game engine class
+	handles managers and ensures the game is running correctly
 
+	a. travis 15th dec
+----------*/
 class game_engine {
 	
 	public:

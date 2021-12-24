@@ -1,6 +1,11 @@
 #pragma once
 #include <SDL.h>
+/*----------
+	input manager class
+	handles player inputs
 
+	a. travis 23rd dec
+----------*/
 class inputs
 {
 private:

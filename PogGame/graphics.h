@@ -3,8 +3,12 @@
 #include <SDL_image.h>
 #include <iostream>
 #include "texture.h"
-#include "player_object.h"
+/*----------
+	graphic engine class
+	handles all drawing to screen methods
 
+	a. travis 22nd dec
+----------*/
 class graphics
 {
 	public:

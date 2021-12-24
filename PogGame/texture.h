@@ -1,7 +1,12 @@
 #pragma once
 #include "game_entity.h"
 #include "assets.h"
+/*----------
+	texture class
+	object given to all drawable game entities so the may be drawn on screen
 
+	a. travis 22nd dec
+----------*/
 class texture
 {
 	protected:
