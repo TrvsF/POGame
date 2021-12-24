@@ -14,7 +14,7 @@ levels::levels()
 {
 	m_currentLevel = menu;
 
-	m_playerChar = new player();
+	m_playerChar = new player(Vector2(400, 300));
 
 	m_inputs = inputs::INSTANCE();
 }
@@ -27,20 +27,21 @@ void levels::update()
 {
 	if (m_inputs->keyDown(SDL_SCANCODE_W))
 	{
-		m_playerChar->translate(-VEC2_UP);
+		m_playerChar->moveForward();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_S))
 	{
-		m_playerChar->translate(VEC2_UP);
+		m_playerChar->moveBackward();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_D))
 	{
-		m_playerChar->translate(VEC2_RIGHT);
+		m_playerChar->turnRight();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_A))
 	{
-		m_playerChar->translate(-VEC2_RIGHT);
+		m_playerChar->turnLeft();
 	}
+	m_playerChar->update();
 }
 
 void levels::render()

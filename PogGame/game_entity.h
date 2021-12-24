@@ -21,6 +21,12 @@ class game_entity
 		void active(bool active);
 		bool active();
 
+		void movementVec(Vector2 movementVec);
+		Vector2 movementVec();
+
+		void velocity(float vel);
+		float velocity();
+
 		void playerControlled(bool isPlayer);
 		bool playerControlled();
 
@@ -34,10 +40,14 @@ class game_entity
 
 	private:
 		Vector2 m_pos;
+		Vector2 m_movement;
+
 		float m_rotation;
+		float m_velocity;
 
 		bool m_player;
 		bool m_active;
+
 		game_entity* m_parent;
 
 };

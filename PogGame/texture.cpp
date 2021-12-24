@@ -17,7 +17,7 @@ texture::~texture()
 	m_texture = NULL;
 }
 
-void texture::render(Vector2 pos)
+void texture::render(Vector2 pos, float rotation)
 {
 	//Centers the texture on the texture's world position so that its position is not the top left corner
 	m_renderRect.x = (int)(pos.x - m_width);
@@ -27,5 +27,5 @@ void texture::render(Vector2 pos)
 	m_renderRect.w = (int)(m_width);
 	m_renderRect.h = (int)(m_height);
 
-	SDL_RenderCopy(m_renderer, m_texture, NULL, &m_renderRect);
+	SDL_RenderCopyEx(m_renderer, m_texture, NULL, &m_renderRect, rotation, NULL, SDL_FLIP_NONE);
 }

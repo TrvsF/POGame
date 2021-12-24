@@ -17,11 +17,11 @@ bool game_engine::init()
 {
 	m_isRunning = false;
 
-	printf("starting graphics...\n");
+	printf("starting graphics\n:------:\n");
 	m_graphics = graphics::INSTANCE();
 	if (m_graphics->init("POGame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false))
 	{
-		printf("graphics started!\n");
+		printf(":------:\ngraphics started!\n");
 		m_isRunning = true;
 	}
 

@@ -1,4 +1,5 @@
 #include "game_entity.h"
+#include <iostream>
 
 game_entity::game_entity(Vector2 vector)
 {
@@ -6,6 +7,7 @@ game_entity::game_entity(Vector2 vector)
 	m_pos.y = vector.y;
 
 	m_rotation = 0.0f;
+	m_velocity = 0.0f;
 
 	m_active = true;
 
@@ -65,6 +67,32 @@ void game_entity::active(bool active)
 bool game_entity::active()
 {
 	return m_active;
+}
+
+void game_entity::movementVec(Vector2 movementVec)
+{
+	m_movement = movementVec;
+}
+
+Vector2 game_entity::movementVec()
+{
+	int x = cosf(m_rotation);
+	int y = sinf(m_rotation);
+	m_movement = Vector2(x, y) * m_velocity;
+
+	printf("%f %f %f\n", m_movement.x, m_movement.y, m_velocity);
+
+	return m_movement;
+}
+
+void game_entity::velocity(float vel)
+{
+	m_velocity = vel;
+}
+
+float game_entity::velocity()
+{
+	return m_velocity;
 }
 
 void game_entity::playerControlled(bool isPlayer)

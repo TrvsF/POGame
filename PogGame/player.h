@@ -8,7 +8,12 @@ private:
 	texture* m_texture;
 
 public:
-	player();
+	player(Vector2 pos);
+
+	void turnRight();
+	void turnLeft();
+	void moveForward();
+	void moveBackward();
 
 	void update();
 	void render();

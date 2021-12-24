@@ -5,7 +5,7 @@ game_engine *gameInstance = nullptr;
 
 int main(int argc, char *argv[])
 {
-	printf("init...\n");
+	printf("STARTING POGame\n\n\n");
 
 	gameInstance = new game_engine();
 
