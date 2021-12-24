@@ -13,6 +13,7 @@ class texture_helper
 
 	public:
 		static SDL_Texture* loadTexture(std::string path);
+		static SDL_Surface* loadSurface(std::string path);
 
 };
 

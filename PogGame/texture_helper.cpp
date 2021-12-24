@@ -17,3 +17,8 @@ SDL_Texture* texture_helper::loadTexture(std::string path)
 
 	return texture;
 }
+
+SDL_Surface * texture_helper::loadSurface(std::string path)
+{
+	return IMG_Load(path.c_str());
+}
