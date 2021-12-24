@@ -12,8 +12,6 @@ player::player(Vector2 position)
 float player::calcVelocity()
 {
 	float velMag = abs(velocity());
-	printf("%f\n", velMag);
-
 	// if vel is close to 0 set to 0
 	if (velMag < 0.05f)
 	{
@@ -29,7 +27,6 @@ float player::calcVelocity()
 	{
 		velocity(velocity() + 0.05f);
 	}
-
 	return velocity();
 }
 
