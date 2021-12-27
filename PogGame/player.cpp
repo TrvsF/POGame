@@ -6,6 +6,7 @@ player::player(Vector2 position)
 	playerControlled(true);
 	m_texture = new texture("./character.png");
 	m_tickVelocity = 0;
+	m_canBoost = false;
 }
 
 // calculate new player velocity given some ammount to add
@@ -14,6 +15,11 @@ float player::calcVelocity()
 	// get what the velocity would be
 	float vel = velocity() + m_tickVelocity;
 	float velMag = abs(vel);
+	// if is going too fast even for boost clamp vel
+	if (velMag > MAX_VEL_BOOST)
+	{
+		return vel > 0 ? MAX_VEL_BOOST : -MAX_VEL_BOOST;
+	}
 	// if no velocity is being added then either remain at rest
 	// or start to slow the character down
 	if (m_tickVelocity == 0)
@@ -37,11 +43,13 @@ float player::calcVelocity()
 
 void player::turnRight()
 {
+	m_canBoost = true;
 	rotation(rotation(world) + 3.5f);
 }
 
 void player::turnLeft()
 {
+	m_canBoost = true;
 	rotation(rotation(world) - 3.5f);
 }
 
@@ -59,7 +67,8 @@ void player::moveBackward()
 
 void player::boost()
 {
-	velocity( velocity() * 2.05f );
+	if (m_canBoost)
+		velocity( velocity() * 2.05f );
 }
 
 void player::update()
@@ -67,9 +76,11 @@ void player::update()
 	// calculate new velocity and create a movement vector based on value
 	velocity(calcVelocity());
 	Vector2 movement = Vector2(0, velocity());
-	// translate game object and reset this tick's velocity change
+	// translate game object
 	translate(RotateVector(movement, rotation(world)));
 	printf("vel : %f\n", velocity());
+	// reset tick vel and if can boost ready for next tick
+	m_canBoost = false;
 	m_tickVelocity = 0;
 }
 
