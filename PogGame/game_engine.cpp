@@ -60,12 +60,13 @@ void game_engine::stop()
 // main game loop
 void game_engine::run()
 {
-	while (m_isRunning) {
-
+	while (m_isRunning)
+	{
 		// tick timer
 		m_timer->update();
 
-		while (SDL_PollEvent(&m_events) != 0) {
+		while (SDL_PollEvent(&m_events) != 0) 
+		{
 			switch (m_events.type)
 			{
 				case SDL_QUIT:
@@ -73,7 +74,6 @@ void game_engine::run()
 					break;
 			}
 		}
-
 		// 144 times a second refresh the renderer
 		if (m_timer->deltaTime() >= 1.0f / FRAME_RATE)
 		{
@@ -109,8 +109,6 @@ void game_engine::lateUpdate()
 void game_engine::render()
 {
 	m_graphics->clearBuffer();
-
 	m_levels->render();
-
 	m_graphics->render();
 }

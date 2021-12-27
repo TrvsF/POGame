@@ -27,6 +27,8 @@ class player : public game_entity
 		int m_boostIndex;
 
 		void playerInput();
+		void checkBoostCooldown();
+
 		float calcVelocity();
 
 	public:

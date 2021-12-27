@@ -40,6 +40,19 @@ void player::playerInput()
 	}
 }
 
+void player::checkBoostCooldown()
+{
+	if (!m_canBoost)
+	{
+		m_boostCooldownCount++;
+		if (m_boostCooldownCount > BOOST_COOLDOWN)
+		{
+			m_canBoost = true;
+			m_boostCooldownCount = 0;
+		}
+	}
+}
+
 // calculate new player velocity given some ammount to add
 float player::calcVelocity()
 {
@@ -113,16 +126,8 @@ void player::update()
 	// check the player's input
 	playerInput();
 
-	// if boost is on cooldown check if cooldown is over
-	if (!m_canBoost)
-	{
-		m_boostCooldownCount++;
-		if (m_boostCooldownCount > BOOST_COOLDOWN)
-		{
-			m_canBoost = true;
-			m_boostCooldownCount = 0;
-		}
-	}
+	// check if cooldown is over
+	checkBoostCooldown();
 
 	// calculate new velocity and create a movement vector based on value
 	velocity(calcVelocity());
@@ -132,7 +137,7 @@ void player::update()
 	translate(RotateVector(movement, rotation(world)));
 	printf("vel : %f | boost : %d\n", velocity(), m_canBoost);
 
-	// reset tick vel and if can boost ready for next tick
+	// reset tick based vars
 	m_boostIndex = 0;
 	m_tickVelocity = 0;
 	m_hasBoosted = false;

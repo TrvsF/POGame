@@ -4,7 +4,7 @@ inputs* inputs::s_instance = NULL;
 
 inputs::inputs()
 {
-	m_keyboardStates = SDL_GetKeyboardState(&m_keyLength);
+	m_keyboardStates = SDL_GetKeyboardState(&m_keyLength); // epic pass by referance
 	m_prevKeyboardStates = new Uint8[m_keyLength];
 	copyToPrev();
 }
