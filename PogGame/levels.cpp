@@ -52,4 +52,8 @@ void levels::playerInput()
 	{
 		m_playerChar->turnLeft();
 	}
+	if (m_inputs->keyPressed(SDL_SCANCODE_SPACE))
+	{
+		m_playerChar->boost();
+	}
 }

@@ -101,6 +101,7 @@ void game_engine::update()
 // reset the timer ready for next frame
 void game_engine::lateUpdate()
 {
+	m_inputs->updatePrev();
 	m_timer->reset();
 }
 

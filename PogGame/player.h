@@ -25,6 +25,7 @@ public:
 	void turnLeft();
 	void moveForward();
 	void moveBackward();
+	void boost();
 
 	void update();
 	void render();

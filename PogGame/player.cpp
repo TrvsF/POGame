@@ -14,11 +14,6 @@ float player::calcVelocity()
 	// get what the velocity would be
 	float vel = velocity() + m_tickVelocity;
 	float velMag = abs(vel);
-	// if calculated velocity is over the max then return max veloicty (- or +)
-	if (velMag > MAX_VEL)
-	{
-		return vel > 0 ? MAX_VEL : -MAX_VEL;
-	}
 	// if no velocity is being added then either remain at rest
 	// or start to slow the character down
 	if (m_tickVelocity == 0)
@@ -30,6 +25,11 @@ float player::calcVelocity()
 		}
 		// else return the player's velocity but slowed down
 		return vel > 0 ? vel - 0.05f : vel + 0.05f;
+	}
+	// if calculated velocity is over the max then return max veloicty (- or +)
+	if (velMag > MAX_VEL)
+	{
+		return vel > 0 ? MAX_VEL : -MAX_VEL;
 	}
 	// else return the newly calculated velocity
 	return vel;
@@ -47,12 +47,19 @@ void player::turnLeft()
 
 void player::moveForward()
 {
-	m_tickVelocity -= 2;
+	if (velocity() >= -2)
+		m_tickVelocity -= 2;
 }
 
 void player::moveBackward()
 {
-	m_tickVelocity += 2;
+	if (velocity() <= 2)
+		m_tickVelocity += 2;
+}
+
+void player::boost()
+{
+	velocity( velocity() * 2.05f );
 }
 
 void player::update()
@@ -62,6 +69,7 @@ void player::update()
 	Vector2 movement = Vector2(0, velocity());
 	// translate game object and reset this tick's velocity change
 	translate(RotateVector(movement, rotation(world)));
+	printf("vel : %f\n", velocity());
 	m_tickVelocity = 0;
 }
 
