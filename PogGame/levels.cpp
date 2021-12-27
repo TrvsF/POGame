@@ -25,14 +25,23 @@ levels::~levels()
 
 void levels::update()
 {
+	playerInput();
+	m_playerChar->update();
+}
+
+void levels::render()
+{
+	m_playerChar->render();
+}
+
+void levels::playerInput()
+{
 	if (m_inputs->keyDown(SDL_SCANCODE_W))
 	{
-		m_playerChar->moving();
 		m_playerChar->moveForward();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_S))
 	{
-		m_playerChar->moving();
 		m_playerChar->moveBackward();
 	}
 	if (m_inputs->keyDown(SDL_SCANCODE_D))
@@ -43,10 +52,4 @@ void levels::update()
 	{
 		m_playerChar->turnLeft();
 	}
-	m_playerChar->update();
-}
-
-void levels::render()
-{
-	m_playerChar->render();
 }

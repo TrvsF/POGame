@@ -39,12 +39,12 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	// init sdl window
 	printf("init window...");
 	m_window = SDL_CreateWindow(title, xPos, yPos, width, hieght, windowFlags);
+	SDL_SetWindowIcon(m_window, texture_helper::loadSurface("epic_icon.png"));
 	if (m_window == NULL)
 	{
 		printf("couldn't initalise window %s\n", SDL_GetError());
 		return false;
 	}
-	SDL_SetWindowIcon(m_window, texture_helper::loadSurface("./epic_icon.png"));
 	printf("done!\n");
 
 	// init sdl renderer

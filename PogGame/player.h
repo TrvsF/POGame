@@ -11,8 +11,10 @@
 class player : public game_entity
 {
 private:
+	const float MAX_VEL = 2;
+
 	texture* m_texture;
-	bool m_moving;
+	float m_tickVelocity;
 
 	float calcVelocity();
 
@@ -23,8 +25,6 @@ public:
 	void turnLeft();
 	void moveForward();
 	void moveBackward();
-
-	void moving();
 
 	void update();
 	void render();
