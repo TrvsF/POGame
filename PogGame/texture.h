@@ -23,5 +23,4 @@ class texture
 		~texture();
 
 		virtual void render(Vector2 pos, float rotation);
-	
 };

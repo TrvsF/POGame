@@ -68,7 +68,7 @@ void player::moveBackward()
 void player::boost()
 {
 	if (m_canBoost)
-		velocity( velocity() * 2.05f );
+		velocity( velocity() * 2.005f );
 }
 
 void player::update()

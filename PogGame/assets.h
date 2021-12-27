@@ -11,7 +11,6 @@
 ----------*/
 class assets
 {
-
 	private:
 		static assets* s_instance;
 		
@@ -24,5 +23,4 @@ class assets
 		~assets();
 
 		SDL_Texture* getTexture(const char* path);
-
 };

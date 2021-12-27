@@ -10,25 +10,24 @@
 ----------*/
 class levels
 {
-private:
-	levels();
-	~levels();
+	private:
+		levels();
+		~levels();
 
-	enum LEVELS { menu, stage1 };
+		enum LEVELS { menu, stage1 };
 
-	static levels* s_instance;
+		static levels* s_instance;
 
-	LEVELS m_currentLevel;
+		LEVELS m_currentLevel;
 
-	player* m_playerChar;
-	inputs* m_inputs;
+		player* m_playerChar;
+		inputs* m_inputs;
 
-	void playerInput();
+		void playerInput();
 
-public:
-	static levels* INSTANCE();
+	public:
+		static levels* INSTANCE();
 
-	void update();
-	void render();
-
+		void update();
+		void render();
 };

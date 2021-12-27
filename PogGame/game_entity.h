@@ -8,6 +8,17 @@
 ----------*/
 class game_entity
 {
+	private:
+		Vector2 m_pos;
+
+		float m_rotation;
+		float m_velocity;
+
+		bool m_player;
+		bool m_active;
+
+		game_entity* m_parent;
+
 	public:
 		enum SPACE {
 			local = 0,
@@ -39,16 +50,4 @@ class game_entity
 
 		virtual void update();
 		virtual void render();
-
-	private:
-		Vector2 m_pos;
-
-		float m_rotation;
-		float m_velocity;
-
-		bool m_player;
-		bool m_active;
-
-		game_entity* m_parent;
-
 };

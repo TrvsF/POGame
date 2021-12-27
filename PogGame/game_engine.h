@@ -13,19 +13,8 @@
 
 	a. travis 15th dec
 ----------*/
-class game_engine {
-	
-	public:
-		game_engine();
-		~game_engine();
-
-		bool init();
-
-		void stop();
-		void run();
-
-		bool running() { return m_isRunning; }
-
+class game_engine 
+{
 	private:
 		const int FRAME_RATE = 144;
 
@@ -44,4 +33,14 @@ class game_engine {
 		void lateUpdate();
 		void render();
 
+	public:
+		game_engine();
+		~game_engine();
+
+		bool init();
+
+		void stop();
+		void run();
+
+		bool running() { return m_isRunning; }
 };

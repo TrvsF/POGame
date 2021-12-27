@@ -11,6 +11,12 @@
 ----------*/
 class graphics
 {
+	private:
+		SDL_Window* m_window;
+		SDL_Renderer* m_renderer;
+
+		static graphics* s_instance;
+
 	public:
 		static graphics* INSTANCE();
 
@@ -23,11 +29,4 @@ class graphics
 		void clearBuffer();
 		void render();
 		void clean();
-
-	private:
-		SDL_Window* m_window;
-		SDL_Renderer* m_renderer;
-
-		static graphics* s_instance;
-
 };
