@@ -23,8 +23,6 @@ class levels
 		player* m_playerChar;
 		inputs* m_inputs;
 
-		void playerInput();
-
 	public:
 		static levels* INSTANCE();
 

@@ -4,9 +4,40 @@ player::player(Vector2 position)
 {
 	pos(position);
 	playerControlled(true);
+
+	m_inputs = inputs::INSTANCE();
 	m_texture = new texture("./character.png");
+
 	m_tickVelocity = 0;
+
 	m_boostIndex = 0;
+	m_canBoost = true;
+	m_hasBoosted = false;
+	m_boostCooldownCount = 0;
+}
+
+void player::playerInput()
+{
+	if (m_inputs->keyDown(SDL_SCANCODE_W))
+	{
+		moveForward();
+	}
+	if (m_inputs->keyDown(SDL_SCANCODE_S))
+	{
+		moveBackward();
+	}
+	if (m_inputs->keyDown(SDL_SCANCODE_D))
+	{
+		turnRight();
+	}
+	if (m_inputs->keyDown(SDL_SCANCODE_A))
+	{
+		turnLeft();
+	}
+	if (m_inputs->keyPressed(SDL_SCANCODE_SPACE))
+	{
+		boost();
+	}
 }
 
 // calculate new player velocity given some ammount to add
@@ -18,7 +49,7 @@ float player::calcVelocity()
 	// if is going too fast even for boost clamp vel
 	if (velMag > MAX_VEL_BOOST)
 	{
-		return vel > 0 ? MAX_VEL_BOOST : -MAX_VEL_BOOST;
+		vel = vel > 0 ? MAX_VEL_BOOST : -MAX_VEL_BOOST;
 	}
 	// if no velocity is being added then either remain at rest
 	// or start to slow the character down
@@ -33,7 +64,7 @@ float player::calcVelocity()
 		return vel > 0 ? vel - 0.05f : vel + 0.05f;
 	}
 	// if calculated velocity is over the max then return max veloicty (- or +)
-	if (velMag > MAX_VEL)
+	if (velMag > MAX_VEL && !m_hasBoosted)
 	{
 		return vel > 0 ? MAX_VEL : -MAX_VEL;
 	}
@@ -67,20 +98,44 @@ void player::moveBackward()
 
 void player::boost()
 {
-	velocity(velocity() * BOOST_MUL[m_boostIndex]);
+	if (m_canBoost)
+	{
+		velocity(velocity() * BOOST_MUL[m_boostIndex]);
+		m_hasBoosted = true;
+	}
+
+	if (m_inputs->keyDown(SDL_SCANCODE_W))
+		m_canBoost = false;
 }
 
 void player::update()
 {
+	// check the player's input
+	playerInput();
+
+	// if boost is on cooldown check if cooldown is over
+	if (!m_canBoost)
+	{
+		m_boostCooldownCount++;
+		if (m_boostCooldownCount > BOOST_COOLDOWN)
+		{
+			m_canBoost = true;
+			m_boostCooldownCount = 0;
+		}
+	}
+
 	// calculate new velocity and create a movement vector based on value
 	velocity(calcVelocity());
 	Vector2 movement = Vector2(0, velocity());
+
 	// translate game object
 	translate(RotateVector(movement, rotation(world)));
-	printf("vel : %f\n", velocity());
+	printf("vel : %f | boost : %d\n", velocity(), m_canBoost);
+
 	// reset tick vel and if can boost ready for next tick
 	m_boostIndex = 0;
 	m_tickVelocity = 0;
+	m_hasBoosted = false;
 }
 
 void player::render()
