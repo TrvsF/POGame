@@ -13,11 +13,11 @@ class player : public game_entity
 	private:	
 		const float MAX_VEL = 2.0f;
 		const float MAX_VEL_BOOST = 5.5f;
-		const float BOOST_MUL[5] = {2.1f, 2.05f, 1.9f, 1.8f};
+		const float BOOST_MUL[3] = {0.9f, 2.1f, 1.7f};
 
 		texture* m_texture;
 		float m_tickVelocity;
-		bool m_canBoost;
+		int m_boostIndex;
 
 		float calcVelocity();
 
