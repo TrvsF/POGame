@@ -14,6 +14,8 @@ timer::timer()
 {
 	reset();
 	m_timeScale = 1.0f;
+	m_elapsedTicks = 0;
+	m_deltaTime = 0.0f;
 }
 
 timer::~timer()
@@ -23,8 +25,6 @@ timer::~timer()
 void timer::reset()
 {
 	m_startTicks = SDL_GetTicks();
-	m_elapsedTicks = 0;
-	m_deltaTime = 0.0f;
 }
 
 float timer::deltaTime()

@@ -76,6 +76,43 @@ SDL_Renderer* graphics::renderer()
 	return m_renderer;
 }
 
+void graphics::drawCircle(int centreX, int centreY, int radius)
+{
+	const int diameter = (radius * 2);
+
+	int x = (radius - 1);
+	int y = 0;
+	int tx = 1;
+	int ty = 1;
+	int error = (tx - diameter);
+
+	while (x >= y)
+	{
+		SDL_RenderDrawPoint(m_renderer, centreX + x, centreY - y);
+		SDL_RenderDrawPoint(m_renderer, centreX + x, centreY + y);
+		SDL_RenderDrawPoint(m_renderer, centreX - x, centreY - y);
+		SDL_RenderDrawPoint(m_renderer, centreX - x, centreY + y);
+		SDL_RenderDrawPoint(m_renderer, centreX + y, centreY - x);
+		SDL_RenderDrawPoint(m_renderer, centreX + y, centreY + x);
+		SDL_RenderDrawPoint(m_renderer, centreX - y, centreY - x);
+		SDL_RenderDrawPoint(m_renderer, centreX - y, centreY + x);
+
+		if (error <= 0)
+		{
+			++y;
+			error += ty;
+			ty += 2;
+		}
+
+		if (error > 0)
+		{
+			--x;
+			tx += 2;
+			error += (tx - diameter);
+		}
+	}
+}
+
 void graphics::clearBuffer()
 {
 	// clear the backbuffer

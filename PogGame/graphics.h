@@ -26,6 +26,7 @@ class graphics
 		bool init(const char* title, int xPos, int yPos, int width, int hieght, bool fullscreen);
 		SDL_Renderer* renderer();
 
+		void drawCircle(int centreX, int centreY, int radius);
 		void clearBuffer();
 		void render();
 		void clean();

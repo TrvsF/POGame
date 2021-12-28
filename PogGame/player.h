@@ -14,11 +14,12 @@ class player : public game_entity
 	private:	
 		const int BOOST_COOLDOWN = 144; // 1 second from last boost until can do again
 		const float MAX_VEL = 2.0f;
-		const float MAX_VEL_BOOST = 5.5f;
+		const float MAX_VEL_BOOST = 6.5f;
 		const float BOOST_MUL[3] = {1.9f, 2.2f, 1.2f};
 
 		inputs* m_inputs;
 		texture* m_texture;
+
 		float m_tickVelocity;
 
 		bool m_hasBoosted;

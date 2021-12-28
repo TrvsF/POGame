@@ -89,6 +89,7 @@ void game_engine::run()
 // update all inputs
 void game_engine::earlyUpdate()
 {
+	m_timer->reset();
 	m_inputs->update();
 }
 
@@ -102,7 +103,6 @@ void game_engine::update()
 void game_engine::lateUpdate()
 {
 	m_inputs->updatePrev();
-	m_timer->reset();
 }
 
 // render the new frame
