@@ -152,13 +152,6 @@ void player::update()
 	// check if cooldown is over
 	checkBoostCooldown();
 
-	/*
-	// calculate new velocity and create a movement vector based on value
-	velocity(calcVelocity());
-	Vector2 movement = Vector2(0, velocity());
-	Vector2 finalMovement = RotateVector(movement, rotation(world));
-	*/
-
 	printf("vel : %f | pos %.1f, %.1f | boost : %d\n", velocity(), pos(world).x, pos(world).y, m_canBoost);
 }
 
