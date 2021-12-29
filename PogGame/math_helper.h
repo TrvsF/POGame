@@ -81,3 +81,50 @@ const Vector2 VEC2_ZERO = { 0.0f, 0.0f };
 const Vector2 VEC2_ONE = { 1.0f, 1.0f };
 const Vector2 VEC2_UP = { 0.0f, 1.0f };
 const Vector2 VEC2_RIGHT = { 1.0f, 0.0f };
+
+struct BoundingBox
+{
+	float left;
+	float top;
+	float bottom;
+	float right;
+
+	BoundingBox(float _left = 0, float _top = 0, float _bottom = 0, float _right = 0)
+		: left(_left), top(_top), bottom(_bottom), right(_right) {}
+
+	bool isOutOfBounds(int width, int height)
+	{
+		return left > width
+			|| right < 0
+			|| top > height
+			|| bottom < 0;
+	}
+
+	bool isColliding(BoundingBox bb)
+	{
+		return !(left > bb.right
+			|| right < bb.left
+			|| top > bb.bottom
+			|| bottom < bb.top);
+	}
+
+	BoundingBox& operator +=(const Vector2& vec)
+	{
+		left += vec.x;
+		top += vec.y;
+		bottom += vec.y;
+		right += vec.x;
+
+		return *this;
+	}
+};
+
+inline BoundingBox operator + (const BoundingBox& bb1, const BoundingBox& bb2)
+{
+	return BoundingBox(bb1.left + bb2.left, bb1.top + bb2.top, bb1.bottom + bb2.bottom, bb1.right + bb2.right);
+}
+
+inline BoundingBox operator + (const BoundingBox& bb1, const Vector2& vec)
+{
+	return BoundingBox(bb1.left + vec.x, bb1.top + vec.y, bb1.bottom + vec.y, bb1.right + vec.x);
+}

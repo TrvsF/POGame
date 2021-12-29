@@ -1,5 +1,4 @@
 #include "game_engine.h"
-#include "player.h"
 
 game_engine::game_engine()
 {}
@@ -12,6 +11,7 @@ game_engine::~game_engine()
 	m_timer = NULL;
 	m_inputs = NULL;
 	m_levels = NULL;
+	m_physics = NULL;
 }
 
 // init game engine and all managers
@@ -46,6 +46,11 @@ bool game_engine::init()
 	// init level manager
 	printf("loading level manager...");
 	m_levels = levels::INSTANCE();
+	printf("done!\n");
+
+	// init physics manager
+	printf("loading physics manager...");
+	m_physics = physics::INSTANCE();
 	printf("done!\n");
 
 	return true;

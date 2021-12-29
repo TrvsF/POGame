@@ -72,6 +72,9 @@
     <ClCompile Include="levels.cpp">
       <Filter>Source Files\managers</Filter>
     </ClCompile>
+    <ClCompile Include="physics.cpp">
+      <Filter>Source Files\managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_entity.h">
@@ -105,6 +108,9 @@
       <Filter>Header Files\entity\entities</Filter>
     </ClInclude>
     <ClInclude Include="levels.h">
+      <Filter>Header Files\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="physics.h">
       <Filter>Header Files\managers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,6 +17,7 @@ levels::levels()
 	m_playerChar = new player(Vector2(400, 300));
 
 	m_inputs = inputs::INSTANCE();
+	m_physics = physics::INSTANCE();
 }
 
 levels::~levels()
@@ -26,6 +27,20 @@ levels::~levels()
 void levels::update()
 {
 	m_playerChar->update();
+
+	Vector2 movementVec = m_playerChar->getMovement();
+	BoundingBox nextFrameBB = m_playerChar->bb(game_entity::world) + movementVec;
+
+	if (physics::INSTANCE()->isGoingToCollide(nextFrameBB))
+	{
+		m_playerChar->velocity(0);
+	}
+	else
+	{
+		m_playerChar->translate(movementVec);
+	}
+
+	m_playerChar->lateUpdate();
 }
 
 void levels::render()

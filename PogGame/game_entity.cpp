@@ -35,6 +35,28 @@ Vector2 game_entity::pos(SPACE space)
 	}
 }
 
+void game_entity::bb(float x, float y, int width, int height)
+{
+	m_bb = BoundingBox(x, y, x + width, y + height);
+}
+
+void game_entity::bb(BoundingBox bb)
+{
+	m_bb = bb;
+}
+
+BoundingBox game_entity::bb(SPACE space)
+{
+	if (space == local || m_parent == NULL)
+	{
+		return m_bb;
+	}
+	else
+	{
+		return m_parent->bb(world) + bb(world);
+	}
+}
+
 void game_entity::rotation(float r)
 {
 	m_rotation = r;
@@ -103,6 +125,7 @@ game_entity* game_entity::parent()
 void game_entity::translate(Vector2 vec)
 {
 	m_pos += vec;
+	m_bb += vec;
 }
 
 void game_entity::update()

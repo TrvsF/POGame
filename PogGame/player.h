@@ -2,6 +2,7 @@
 #include "game_entity.h"
 #include "texture.h"
 #include "inputs.h"
+#include <iostream>
 /*----------
 	player class
 	inherits from game entity
@@ -29,11 +30,7 @@ class player : public game_entity
 
 		void playerInput();
 		void checkBoostCooldown();
-
-		float calcVelocity();
-
-	public:
-		player(Vector2 pos);
+		void setBB();
 
 		void turnRight();
 		void turnLeft();
@@ -41,6 +38,14 @@ class player : public game_entity
 		void moveBackward();
 		void boost();
 
+		float calcVelocity();
+
+	public:
+		player(Vector2 pos);
+
+		Vector2 getMovement();
+
+		void lateUpdate();
 		void update();
 		void render();
 };

@@ -9,6 +9,7 @@
 class game_entity
 {
 	private:
+		BoundingBox m_bb;
 		Vector2 m_pos;
 
 		float m_rotation;
@@ -20,7 +21,8 @@ class game_entity
 		game_entity* m_parent;
 
 	public:
-		enum SPACE {
+		enum SPACE 
+		{
 			local = 0,
 			world = 1
 		};
@@ -30,6 +32,10 @@ class game_entity
 
 		void pos(Vector2 pos);
 		Vector2 pos(SPACE space);
+
+		void bb(float x, float y, int width, int height);
+		void bb(BoundingBox bb);
+		BoundingBox bb(SPACE space);
 
 		void rotation(float rotation);
 		float rotation(SPACE space);

@@ -9,7 +9,7 @@ SDL_Texture* texture_helper::loadTexture(std::string path)
 
 	if (tempSurface == NULL || texture == NULL)
 	{
-		printf("error initialising texture from path %s\n", path);
+		printf("error initialising texture from path %s\n", path.c_str());
 	}
 
 	// surface no longer needed

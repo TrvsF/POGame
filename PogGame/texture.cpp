@@ -16,6 +16,16 @@ texture::~texture()
 	m_texture = NULL;
 }
 
+int texture::width()
+{
+	return m_width;
+}
+
+int texture::height()
+{
+	return m_height;
+}
+
 void texture::render(Vector2 pos, float rotation)
 {
 	m_renderRect.x = (int)(pos.x - m_width);

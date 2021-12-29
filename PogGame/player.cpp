@@ -8,6 +8,9 @@ player::player(Vector2 position)
 	m_inputs = inputs::INSTANCE();
 	m_texture = new texture("./character.png");
 
+	// TODO : probably a better way to do this
+	setBB();
+
 	m_tickVelocity = 0;
 
 	m_boostIndex = 0;
@@ -51,6 +54,11 @@ void player::checkBoostCooldown()
 			m_boostCooldownCount = 0;
 		}
 	}
+}
+
+void player::setBB()
+{
+	bb(pos(world).x, pos(world).y, m_texture->width(), m_texture->height());
 }
 
 // calculate new player velocity given some ammount to add
@@ -121,6 +129,21 @@ void player::boost()
 		m_canBoost = false;
 }
 
+Vector2 player::getMovement()
+{
+	velocity(calcVelocity());
+	Vector2 movement = Vector2(0, calcVelocity());
+	return RotateVector(movement, rotation(world));
+}
+
+void player::lateUpdate()
+{
+	// reset tick based vars
+	m_boostIndex = 0;
+	m_tickVelocity = 0;
+	m_hasBoosted = false;
+}
+
 void player::update()
 {
 	// check the player's input
@@ -129,18 +152,14 @@ void player::update()
 	// check if cooldown is over
 	checkBoostCooldown();
 
+	/*
 	// calculate new velocity and create a movement vector based on value
 	velocity(calcVelocity());
 	Vector2 movement = Vector2(0, velocity());
+	Vector2 finalMovement = RotateVector(movement, rotation(world));
+	*/
 
-	// translate game object
-	translate(RotateVector(movement, rotation(world)));
-	printf("vel : %f | boost : %d\n", velocity(), m_canBoost);
-
-	// reset tick based vars
-	m_boostIndex = 0;
-	m_tickVelocity = 0;
-	m_hasBoosted = false;
+	printf("vel : %f | pos %.1f, %.1f | boost : %d\n", velocity(), pos(world).x, pos(world).y, m_canBoost);
 }
 
 void player::render()

@@ -7,6 +7,7 @@
 #include "assets.h"
 #include "inputs.h"
 #include "levels.h"
+#include "physics.h"
 /*----------
 	game engine class
 	handles managers and ensures the game is running correctly
@@ -25,6 +26,7 @@ class game_engine
 		assets* m_assets;
 		inputs* m_inputs;
 		levels* m_levels;
+		physics* m_physics;
 
 		bool m_isRunning;
 

@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "player.h"
 #include "inputs.h"
+#include "physics.h"
 /*----------
 	level manager class
 	handles level loading and all game entities on given levels
@@ -22,6 +23,7 @@ class levels
 
 		player* m_playerChar;
 		inputs* m_inputs;
+		physics* m_physics;
 
 	public:
 		static levels* INSTANCE();

@@ -130,6 +130,7 @@
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputs.cpp" />
     <ClCompile Include="levels.cpp" />
+    <ClCompile Include="physics.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="inputs.h" />
     <ClInclude Include="levels.h" />
     <ClInclude Include="math_helper.h" />
+    <ClInclude Include="physics.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture_helper.h" />

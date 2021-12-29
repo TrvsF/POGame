@@ -22,5 +22,9 @@ class texture
 		texture(std::string path);
 		~texture();
 
+		// probably not a good idea to use this for collison but atm i dont see anything wrong with it
+		int width();
+		int height();
+
 		virtual void render(Vector2 pos, float rotation);
 };
