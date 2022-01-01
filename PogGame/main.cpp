@@ -10,6 +10,13 @@ game_engine *gameInstance = nullptr;
 
 int main(int argc, char *argv[])
 {
+	/*
+		TODO :
+		TEXT RENDERER
+		WEAPON/SHOOTING MECHANICS
+		CAMERA TRACKING
+		MAKE UPDATES NOT FPS DEPENDENT
+	*/
 	printf("STARTING POGame\n\n\n");
 
 	// create instance of the game engine and init it

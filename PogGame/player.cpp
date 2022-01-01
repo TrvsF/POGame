@@ -6,7 +6,7 @@ player::player(Vector2 position)
 	playerControlled(true);
 
 	m_inputs = inputs::INSTANCE();
-	m_texture = new texture("./character.png");
+	m_texture = new texture("character.png");
 
 	// TODO : probably a better way to do this
 	setBB();
