@@ -71,7 +71,7 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	// init sdl font libary
 	if (TTF_Init() == -1) 
 	{
-		printf("couldn't initalise fonts %s\n", IMG_GetError());
+		printf("couldn't initalise fonts %s\n", TTF_GetError());
 		return false;
 	}
 

@@ -47,6 +47,6 @@ void levels::update()
 
 void levels::render()
 {
-	m_title->render(Vector2(400, 50), 0);
+	m_title->render(Vector2(420, 150), 0);
 	m_playerChar->render();
 }
