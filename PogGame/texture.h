@@ -20,6 +20,7 @@ class texture
 
 	public:
 		texture(std::string path);
+		texture(std::string path, std::string text, int size, SDL_Color colour);
 		~texture();
 
 		// probably not a good idea to use this for collison but atm i dont see anything wrong with it

@@ -18,6 +18,8 @@ levels::levels()
 
 	m_inputs = inputs::INSTANCE();
 	m_physics = physics::INSTANCE();
+
+	m_title = new texture("terminus.ttf", "POGame", 64, {255, 0, 0});
 }
 
 levels::~levels()
@@ -45,5 +47,6 @@ void levels::update()
 
 void levels::render()
 {
+	m_title->render(Vector2(400, 50), 0);
 	m_playerChar->render();
 }

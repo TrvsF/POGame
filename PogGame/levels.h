@@ -24,6 +24,7 @@ class levels
 		player* m_playerChar;
 		inputs* m_inputs;
 		physics* m_physics;
+		texture* m_title;
 
 	public:
 		static levels* INSTANCE();

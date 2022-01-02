@@ -68,6 +68,13 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 	}
 	printf("done!\n");
 
+	// init sdl font libary
+	if (TTF_Init() == -1) 
+	{
+		printf("couldn't initalise fonts %s\n", IMG_GetError());
+		return false;
+	}
+
 	return true;
 }
 
@@ -122,7 +129,7 @@ void graphics::clearBuffer()
 void graphics::render()
 {
 	// preset the renderer
-	drawCircle(400, 400, 50);
+	// drawCircle(400, 400, 50);
 	SDL_RenderPresent(m_renderer);
 }
 

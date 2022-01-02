@@ -15,6 +15,10 @@ class assets
 		static assets* s_instance;
 		
 		std::map<std::string, SDL_Texture*> m_textures;
+		std::map<std::string, SDL_Texture*> m_textStrings;
+		std::map<std::string, TTF_Font*> m_fonts;
+
+		TTF_Font* getFont(std::string path, int size);
 
 	public:
 		static assets* INSTANCE();
@@ -22,5 +26,6 @@ class assets
 		assets();
 		~assets();
 
-		SDL_Texture* getTexture(const char* path);
+		SDL_Texture* getTexture(std::string path);
+		SDL_Texture* getText(std::string text, std::string path, int size, SDL_Color colour);
 };

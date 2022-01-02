@@ -11,6 +11,17 @@ texture::texture(std::string path)
 	m_renderRect.h = m_height;
 }
 
+texture::texture(std::string path, std::string text, int size, SDL_Color colour)
+{
+	m_renderer = graphics::INSTANCE()->renderer();
+	m_texture = assets::INSTANCE()->getText(text, path, size, colour);
+
+	SDL_QueryTexture(m_texture, NULL, NULL, &m_width, &m_height);
+
+	m_renderRect.w = m_width;
+	m_renderRect.h = m_height;
+}
+
 texture::~texture()
 {
 	m_texture = NULL;
