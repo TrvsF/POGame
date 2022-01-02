@@ -122,6 +122,7 @@ void graphics::clearBuffer()
 void graphics::render()
 {
 	// preset the renderer
+	drawCircle(400, 400, 50);
 	SDL_RenderPresent(m_renderer);
 }
 

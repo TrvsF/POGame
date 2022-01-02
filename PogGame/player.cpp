@@ -125,7 +125,7 @@ void player::boost()
 		m_hasBoosted = true;
 	}
 
-	if (m_inputs->keyDown(SDL_SCANCODE_W))
+	if (m_inputs->keyDown(SDL_SCANCODE_W) || m_inputs->keyDown(SDL_SCANCODE_S))
 		m_canBoost = false;
 }
 

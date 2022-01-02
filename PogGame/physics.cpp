@@ -31,8 +31,10 @@ bool physics::isGoingToCollide(BoundingBox playerBB)
 	for (auto const& entity : m_gameEntities)
 	{
 		if (playerBB.isColliding(entity->bb(game_entity::world)))
+		{
 			printf("\ncollide\n");
 			return true;
+		}		
 	}
 
 	return false;
