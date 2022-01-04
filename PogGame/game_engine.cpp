@@ -53,7 +53,7 @@ bool game_engine::init()
 	m_physics = physics::INSTANCE();
 	printf("done!\n");
 
-	printf("SDL path : %s\n", SDL_GetBasePath());
+	printf("SDL naf : %s\n", SDL_GetBasePath());
 
 	return true;
 }
