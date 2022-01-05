@@ -149,5 +149,6 @@ void player::update()
 
 void player::render()
 {
+	drawDebugBB();
 	renderTexture();
 }

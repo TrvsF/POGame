@@ -57,6 +57,7 @@ class game_entity
 		void translate(Vector2 vec);
 
 		void setBB();
+		void drawDebugBB();
 
 		virtual void update();
 		virtual void render();

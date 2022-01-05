@@ -37,7 +37,7 @@ Vector2 game_entity::pos(SPACE space)
 
 void game_entity::bb(float x, float y, int width, int height)
 {
-	m_bb = BoundingBox(x, y, x + width, y + height);
+	m_bb = BoundingBox(x, y, y - height, x - width);
 }
 
 void game_entity::bb(BoundingBox bb)
@@ -132,6 +132,21 @@ void game_entity::translate(Vector2 vec)
 void game_entity::setBB()
 {
 	bb(pos(world).x, pos(world).y, m_texture->width(), m_texture->height());
+}
+
+void game_entity::drawDebugBB()
+{
+	SDL_Rect rect;
+	rect.x = m_bb.left;
+	rect.y = m_bb.top;
+	rect.w = m_bb.right - m_bb.left;
+	rect.h = m_bb.bottom - m_bb.top;
+
+	SDL_SetRenderDrawColor(graphics::INSTANCE()->renderer(), 255, 0, 0, 255);
+	SDL_RenderDrawRect(graphics::INSTANCE()->renderer(), &rect);
+
+	SDL_SetRenderDrawColor(graphics::INSTANCE()->renderer(), 255, 255, 255, 255);
+
 }
 
 void game_entity::update()
