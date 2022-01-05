@@ -20,17 +20,12 @@ levels::levels()
 
 	m_title = new texture("terminus.ttf", "POGame", 64, {255, 0, 0});
 
-	m_walls = 
-	{
-		new wall(Vector2(300, 200)),
-		new wall(Vector2(316, 200)),
-		new wall(Vector2(332, 200)),
-		new wall(Vector2(348, 200)),
-		new wall(Vector2(300, 100)),
-		new wall(Vector2(316, 100)),
-		new wall(Vector2(332, 100)),
-		new wall(Vector2(348, 100))
-	};
+	int val = 0;
+	for (int i = 0; i < 100; i++)
+	{	
+		m_walls.push_back(new wall(Vector2(val, 200)));
+		val += 16;
+	}
 }
 
 levels::~levels()
@@ -58,7 +53,7 @@ void levels::update()
 
 void levels::render()
 {
-	for (auto wall : m_walls)
+	for (const auto wall : m_walls)
 	{
 		if (wall == NULL)
 			continue;

@@ -22,7 +22,6 @@ class levels
 		LEVELS m_currentLevel;
 
 		std::list<wall*> m_walls;
-		std::list<wall*>::iterator m_wallsI;
 
 		player* m_playerChar;
 		physics* m_physics;

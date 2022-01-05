@@ -12,12 +12,12 @@ physics* physics::INSTANCE()
 
 void physics::addEntity(game_entity* entity)
 {
-	m_gameEntities.insert(m_gameEntitiesI, entity);
+	m_gameEntities.push_back(entity);
 }
 
 void physics::addPlayer(player* player)
 {
-	m_playerEntities.insert(m_playerEntitiesI, player);
+	m_playerEntities.push_back(player);
 }
 
 bool physics::isGoingToCollide(BoundingBox playerBB)
@@ -30,6 +30,11 @@ bool physics::isGoingToCollide(BoundingBox playerBB)
 		
 	for (auto const& entity : m_gameEntities)
 	{
+		if (entity == nullptr)
+			continue;
+
+		printf("%f %f\n", entity->bb(game_entity::world).top, entity->bb(game_entity::world).left);
+
 		if (playerBB.isColliding(entity->bb(game_entity::world)))
 		{
 			printf("\ncollide\n");

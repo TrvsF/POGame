@@ -1,6 +1,7 @@
 #pragma once
 #include "game_entity.h"
 #include "texture.h"
+#include "physics.h"
 
 class wall : public game_entity
 {
