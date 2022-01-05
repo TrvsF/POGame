@@ -20,12 +20,14 @@ levels::levels()
 
 	m_title = new texture("terminus.ttf", "POGame", 64, {255, 0, 0});
 
-	int val = 0;
-	for (int i = 0; i < 100; i++)
+	int val = 16;
+	for (int i = 0; i < 20; i++)
 	{	
 		m_walls.push_back(new wall(Vector2(val, 200)));
 		val += 16;
 	}
+
+	// m_walls.push_back(new wall(Vector2(200, 200)));
 }
 
 levels::~levels()

@@ -102,10 +102,10 @@ struct BoundingBox
 
 	bool isColliding(BoundingBox bb)
 	{
-		return !(left > bb.right
-			|| right < bb.left
-			|| top > bb.bottom
-			|| bottom < bb.top);
+		return (left > bb.right
+			&& right < bb.left
+			&& top > bb.bottom
+			&& bottom < bb.top);
 	}
 
 	BoundingBox& operator +=(const Vector2& vec)

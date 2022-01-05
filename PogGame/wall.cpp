@@ -20,5 +20,6 @@ void wall::update()
 
 void wall::render()
 {
+	drawDebugBB();
 	renderTexture();
 }
