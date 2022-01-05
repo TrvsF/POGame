@@ -150,6 +150,7 @@
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture_helper.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="wall.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="character.png" />

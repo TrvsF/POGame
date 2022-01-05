@@ -1,5 +1,6 @@
 #pragma once
 #include "math_helper.h"
+#include "texture.h"
 /*----------
 	game entity class
 	main class that all game objects inherit from
@@ -11,6 +12,8 @@ class game_entity
 	private:
 		BoundingBox m_bb;
 		Vector2 m_pos;
+
+		texture* m_texture;
 
 		float m_rotation;
 		float m_velocity;
@@ -52,7 +55,12 @@ class game_entity
 		void parent(game_entity* parent);
 		game_entity* parent();
 
+		void setTexture(std::string path);
+		void renderTexture();
+
 		void translate(Vector2 vec);
+
+		void setBB();
 
 		virtual void update();
 		virtual void render();

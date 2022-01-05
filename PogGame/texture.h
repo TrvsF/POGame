@@ -1,6 +1,6 @@
 #pragma once
-#include "game_entity.h"
 #include "assets.h"
+#include "math_helper.h"
 /*----------
 	texture class
 	object given to all drawable game entities so the may be drawn on screen

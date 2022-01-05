@@ -122,10 +122,26 @@ game_entity* game_entity::parent()
 	return m_parent;
 }
 
+void game_entity::setTexture(std::string path)
+{
+	m_texture = new texture(path);
+	setBB();
+}
+
+void game_entity::renderTexture()
+{
+	m_texture->render(m_pos, m_rotation);
+}
+
 void game_entity::translate(Vector2 vec)
 {
 	m_pos += vec;
 	m_bb += vec;
+}
+
+void game_entity::setBB()
+{
+	bb(pos(world).x, pos(world).y, m_texture->width(), m_texture->height());
 }
 
 void game_entity::update()

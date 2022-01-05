@@ -113,6 +113,9 @@
     <ClInclude Include="physics.h">
       <Filter>Header Files\managers</Filter>
     </ClInclude>
+    <ClInclude Include="wall.h">
+      <Filter>Header Files\entity\entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="character.png">

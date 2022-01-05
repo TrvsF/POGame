@@ -6,10 +6,8 @@ player::player(Vector2 position)
 	playerControlled(true);
 
 	m_inputs = inputs::INSTANCE();
-	m_texture = new texture("character.png");
 
-	// TODO : probably a better way to do this
-	setBB();
+	setTexture("character.png");
 
 	m_tickVelocity = 0;
 
@@ -54,11 +52,6 @@ void player::checkBoostCooldown()
 			m_boostCooldownCount = 0;
 		}
 	}
-}
-
-void player::setBB()
-{
-	bb(pos(world).x, pos(world).y, m_texture->width(), m_texture->height());
 }
 
 // calculate new player velocity given some ammount to add
@@ -157,5 +150,5 @@ void player::update()
 
 void player::render()
 {
-	m_texture->render(pos(world), rotation(world));
+	renderTexture();
 }

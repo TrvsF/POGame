@@ -1,6 +1,5 @@
 #pragma once
 #include "game_entity.h"
-#include "texture.h"
 #include "inputs.h"
 #include <iostream>
 /*----------
@@ -20,7 +19,6 @@ class player : public game_entity
 		// ^ lower values mean that you have to spam space more for it to work
 
 		inputs* m_inputs;
-		texture* m_texture;
 
 		float m_tickVelocity;
 
@@ -31,7 +29,6 @@ class player : public game_entity
 
 		void playerInput();
 		void checkBoostCooldown();
-		void setBB();
 
 		void turnRight();
 		void turnLeft();
