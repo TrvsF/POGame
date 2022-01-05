@@ -5,5 +5,11 @@
 class wall : public game_entity
 {
 	private:
-		texture* m_texture;
+
+	public:
+		wall(Vector2 position);
+		~wall();
+
+		void update();
+		void render();
 };

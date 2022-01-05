@@ -136,6 +136,7 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture_helper.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets.h" />

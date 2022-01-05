@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "player.h"
-#include "inputs.h"
+#include "wall.h"
 #include "physics.h"
 /*----------
 	level manager class
@@ -21,8 +21,10 @@ class levels
 
 		LEVELS m_currentLevel;
 
+		std::list<wall*> m_walls;
+		std::list<wall*>::iterator m_wallsI;
+
 		player* m_playerChar;
-		inputs* m_inputs;
 		physics* m_physics;
 		texture* m_title;
 

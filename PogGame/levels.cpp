@@ -16,10 +16,21 @@ levels::levels()
 
 	m_playerChar = new player(Vector2(400, 300));
 
-	m_inputs = inputs::INSTANCE();
 	m_physics = physics::INSTANCE();
 
 	m_title = new texture("terminus.ttf", "POGame", 64, {255, 0, 0});
+
+	m_walls = 
+	{
+		new wall(Vector2(300, 200)),
+		new wall(Vector2(316, 200)),
+		new wall(Vector2(332, 200)),
+		new wall(Vector2(348, 200)),
+		new wall(Vector2(300, 100)),
+		new wall(Vector2(316, 100)),
+		new wall(Vector2(332, 100)),
+		new wall(Vector2(348, 100))
+	};
 }
 
 levels::~levels()
@@ -47,6 +58,13 @@ void levels::update()
 
 void levels::render()
 {
+	for (auto wall : m_walls)
+	{
+		if (wall == NULL)
+			continue;
+
+		wall->render();
+	}
 	m_title->render(Vector2(420, 150), 0);
 	m_playerChar->render();
 }
