@@ -55,9 +55,6 @@ void levels::render()
 {
 	for (const auto wall : m_walls)
 	{
-		if (wall == NULL)
-			continue;
-
 		wall->render();
 	}
 	m_title->render(Vector2(420, 150), 0);

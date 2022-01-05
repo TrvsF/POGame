@@ -3,7 +3,6 @@
 player::player(Vector2 position)
 {
 	pos(position);
-	playerControlled(true);
 
 	m_inputs = inputs::INSTANCE();
 

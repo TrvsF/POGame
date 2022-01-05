@@ -18,7 +18,6 @@ class game_entity
 		float m_rotation;
 		float m_velocity;
 
-		bool m_player;
 		bool m_active;
 
 		game_entity* m_parent;
@@ -48,9 +47,6 @@ class game_entity
 
 		void velocity(float vel);
 		float velocity();
-
-		void playerControlled(bool isPlayer);
-		bool playerControlled();
 
 		void parent(game_entity* parent);
 		game_entity* parent();

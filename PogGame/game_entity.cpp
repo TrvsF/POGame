@@ -100,16 +100,6 @@ float game_entity::velocity()
 	return m_velocity;
 }
 
-void game_entity::playerControlled(bool isPlayer)
-{
-	m_player = isPlayer;
-}
-
-bool game_entity::playerControlled()
-{
-	return m_player;
-}
-
 void game_entity::parent(game_entity* parent)
 {
 	m_pos = pos(world) - parent->pos(world);

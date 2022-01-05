@@ -33,7 +33,7 @@ bool physics::isGoingToCollide(BoundingBox playerBB)
 		if (entity == nullptr)
 			continue;
 
-		printf("%f %f\n", entity->bb(game_entity::world).top, entity->bb(game_entity::world).left);
+		// printf("%f %f\n", entity->bb(game_entity::world).top, entity->bb(game_entity::world).left);
 
 		if (playerBB.isColliding(entity->bb(game_entity::world)))
 		{
