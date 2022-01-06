@@ -128,6 +128,12 @@ Vector2 player::getMovement()
 	return RotateVector(movement, rotation(world));
 }
 
+void player::cancelBoost()
+{
+	if (abs(velocity()) > 2)
+		m_canBoost = false;
+}
+
 void player::lateUpdate()
 {
 	// reset tick based vars

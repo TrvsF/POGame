@@ -128,3 +128,13 @@ inline BoundingBox operator + (const BoundingBox& bb1, const Vector2& vec)
 {
 	return BoundingBox(bb1.left + vec.x, bb1.top + vec.y, bb1.bottom + vec.y, bb1.right + vec.x);
 }
+
+inline BoundingBox operator - (const BoundingBox& bb1, const BoundingBox& bb2)
+{
+	return BoundingBox(bb1.left - bb2.left, bb1.top - bb2.top, bb1.bottom - bb2.bottom, bb1.right - bb2.right);
+}
+
+inline BoundingBox operator / (const BoundingBox& bb1, const BoundingBox& bb2)
+{
+	return BoundingBox(bb1.left / bb2.left, bb1.top / bb2.top, bb1.bottom / bb2.bottom, bb1.right / bb2.right);
+}

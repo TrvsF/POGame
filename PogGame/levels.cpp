@@ -2,6 +2,47 @@
 
 levels* levels::s_instance = NULL;
 
+void levels::handlePlayerChar()
+{
+	m_playerChar->update();
+
+	Vector2 movementVec = m_playerChar->getMovement();
+	BoundingBox nextFrameBB = m_playerChar->bb(game_entity::world) + movementVec;
+
+	// check if player is going to collide 
+	if (physics::INSTANCE()->isGoingToCollide(nextFrameBB))
+	{
+		// cancel the player's boost
+		m_playerChar->cancelBoost();
+
+		// try and move only 1 axis (for the sliding against the wall effect
+		Vector2 xVec = Vector2(movementVec.x, 0);
+		Vector2 yVec = Vector2(0, movementVec.y);
+
+		BoundingBox xbb = m_playerChar->bb(game_entity::world) + xVec;
+		BoundingBox ybb = m_playerChar->bb(game_entity::world) + yVec;
+
+		// can move x
+		if (!physics::INSTANCE()->isGoingToCollide(xbb))
+		{
+			m_playerChar->translate(xVec);
+		}
+		// can move y
+		if (!physics::INSTANCE()->isGoingToCollide(ybb))
+		{
+			m_playerChar->translate(yVec);
+		}
+	}
+	// player is good to move freely
+	else
+	{
+		m_playerChar->translate(movementVec);
+	}
+	
+	// reset the tick vars
+	m_playerChar->lateUpdate();
+}
+
 levels* levels::INSTANCE()
 {
 	if (s_instance == NULL)
@@ -36,36 +77,7 @@ levels::~levels()
 
 void levels::update()
 {
-	m_playerChar->update();
-
-	Vector2 movementVec = m_playerChar->getMovement();
-	BoundingBox nextFrameBB = m_playerChar->bb(game_entity::world) + movementVec;
-
-	// check if player is going to collide 
-	if (physics::INSTANCE()->isGoingToCollide(nextFrameBB))
-	{
-		// try and move only 1 axis (for the sliding against the wall effect
-		Vector2 xVec = Vector2(movementVec.x, 0);
-		Vector2 yVec = Vector2(0, movementVec.y);
-
-		BoundingBox xbb = m_playerChar->bb(game_entity::world) + xVec;
-		BoundingBox ybb = m_playerChar->bb(game_entity::world) + yVec;
-
-		if (!physics::INSTANCE()->isGoingToCollide(xbb))
-		{
-			m_playerChar->translate(xVec);
-		}
-		if (!physics::INSTANCE()->isGoingToCollide(ybb))
-		{
-			m_playerChar->translate(yVec);
-		}
-	}
-	else
-	{
-		m_playerChar->translate(movementVec);
-	}
-
-	m_playerChar->lateUpdate();
+	handlePlayerChar();
 }
 
 void levels::render()

@@ -43,6 +43,8 @@ class player : public game_entity
 
 		Vector2 getMovement();
 
+		void cancelBoost();
+
 		void lateUpdate();
 		void update();
 		void render();

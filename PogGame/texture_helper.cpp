@@ -19,12 +19,12 @@ SDL_Texture* texture_helper::loadTexture(std::string path)
 	return texture;
 }
 
-SDL_Surface * texture_helper::loadSurface(std::string path)
+SDL_Surface* texture_helper::loadSurface(std::string path)
 {
 	return IMG_Load(path.c_str());
 }
 
-SDL_Texture * texture_helper::loadText(TTF_Font* font, std::string text, SDL_Color colour)
+SDL_Texture* texture_helper::loadText(TTF_Font* font, std::string text, SDL_Color colour)
 {
 	SDL_Renderer* renderer = graphics::INSTANCE()->renderer();
 

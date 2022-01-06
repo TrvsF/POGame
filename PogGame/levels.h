@@ -27,6 +27,9 @@ class levels
 		physics* m_physics;
 		texture* m_title;
 
+		void handlePlayerChar();
+		void handleQuarterSteps();
+
 	public:
 		static levels* INSTANCE();
 
