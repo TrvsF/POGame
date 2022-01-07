@@ -16,13 +16,13 @@ void levels::handleQuarterSteps()
 {
 	Vector2 movementVec = m_playerChar->getMovement();
 
-	printf("movement vec: %f, %f\n", movementVec.x, movementVec.y);
+	// printf("movement vec: %f, %f\n", movementVec.x, movementVec.y);
 
 	movementVec = movementVec / 4.0f;
 
 	for (int i = 0; i < 4; i++)
 	{
-		printf("movement vec[%i]: %f, %f\n", i, movementVec.x, movementVec.y);
+		// printf("movement vec[%i]: %f, %f\n", i, movementVec.x, movementVec.y);
 		BoundingBox nextFrameBB = m_playerChar->bb(game_entity::world) + movementVec;
 
 		// check if player is going to collide 
