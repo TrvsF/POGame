@@ -13,8 +13,8 @@ class player : public game_entity
 {
 	private:	
 		const int BOOST_COOLDOWN = 210; // ammount of frames until can boost again
-		const float MAX_VEL = 2.0f; // max normal velocity without boost
-		const float MAX_VEL_BOOST = 6.5f; // max boosted velocity
+		const float MAX_VEL = 2.6f; // max normal velocity without boost
+		const float MAX_VEL_BOOST = 7.5f; // max boosted velocity
 		const float BOOST_MUL[3] = {1.7f, 2.2f, 1.2f}; // how fast you are boosted dependent of if you're turning
 		// ^ lower values mean that you have to spam space more for it to work
 

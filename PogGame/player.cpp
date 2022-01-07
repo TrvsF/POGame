@@ -99,14 +99,14 @@ void player::turnLeft()
 
 void player::moveForward()
 {
-	if (velocity() >= -2)
-		m_tickVelocity -= 2;
+	if (velocity() >= -MAX_VEL)
+		m_tickVelocity -= MAX_VEL;
 }
 
 void player::moveBackward()
 {
-	if (velocity() <= 2)
-		m_tickVelocity += 2;
+	if (velocity() <= MAX_VEL)
+		m_tickVelocity += MAX_VEL;
 }
 
 void player::boost()
@@ -130,7 +130,7 @@ Vector2 player::getMovement()
 
 void player::cancelBoost()
 {
-	if (abs(velocity()) > 2)
+	if (abs(velocity()) > MAX_VEL)
 		m_canBoost = false;
 }
 
@@ -155,6 +155,6 @@ void player::update()
 
 void player::render()
 {
-	drawDebugBB();
+	// drawDebugBB();
 	renderTexture();
 }
