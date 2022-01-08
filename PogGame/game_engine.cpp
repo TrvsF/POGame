@@ -89,11 +89,12 @@ void game_engine::run()
 			earlyUpdate();
 			update();
 			lateUpdate();
+			render();
 		}
 
 		if (m_fpsTimer->deltaTime() >= 1.0f / FRAME_RATE)
 		{
-			render();
+			
 		}
 	
 	}

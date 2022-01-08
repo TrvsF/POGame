@@ -78,6 +78,9 @@
     <ClCompile Include="wall.cpp">
       <Filter>Source Files\entity\entities</Filter>
     </ClCompile>
+    <ClCompile Include="projectile.cpp">
+      <Filter>Source Files\entity\entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_entity.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files\managers</Filter>
     </ClInclude>
     <ClInclude Include="wall.h">
+      <Filter>Header Files\entity\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile.h">
       <Filter>Header Files\entity\entities</Filter>
     </ClInclude>
   </ItemGroup>

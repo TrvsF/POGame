@@ -3,6 +3,7 @@
 #include "player.h"
 #include "wall.h"
 #include "physics.h"
+#include "projectile.h"
 /*----------
 	level manager class
 	handles level loading and all game entities on given levels

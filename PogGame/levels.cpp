@@ -73,7 +73,7 @@ levels::levels()
 {
 	m_currentLevel = menu;
 
-	m_playerChar = new player(Vector2(400, 300));
+	m_playerChar = new player( Vector2(400, 300) );
 
 	m_physics = physics::INSTANCE();
 

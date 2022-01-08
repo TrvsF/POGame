@@ -38,6 +38,10 @@ void player::playerInput()
 	{
 		boost();
 	}
+	if (m_inputs->keyPressed(SDL_SCANCODE_I))
+	{
+		projectiles[0] = new projectile(rotation(world), pos(world));
+	}
 }
 
 void player::checkBoostCooldown()
@@ -138,7 +142,7 @@ void player::lateUpdate()
 {
 	// reset tick based vars
 	m_boostIndex = 0;
-	m_tickVelocity = 0;
+	m_tickVelocity = 0; 
 	m_hasBoosted = false;
 }
 
@@ -151,10 +155,25 @@ void player::update()
 	checkBoostCooldown();
 
 	printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos(world).x, pos(world).y, rotation(world), m_canBoost);
+
+	for (int i = 0; i < 100; i++)
+	{
+		if (projectiles[i] == nullptr)
+			continue;
+
+		projectiles[i]->update();
+	}
 }
 
 void player::render()
 {
 	// drawDebugBB();
 	renderTexture();
+	for (int i = 0; i < 100; i++)
+	{
+		if (projectiles[i] == nullptr)
+			continue;
+
+		projectiles[i]->render();
+	}
 }
