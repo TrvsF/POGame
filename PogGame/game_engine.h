@@ -18,10 +18,13 @@ class game_engine
 {
 	private:
 		const int FRAME_RATE = 144;
+		const int PHYS_RATE = 300;
 
 		SDL_Event m_events;
 
 		timer* m_timer;
+		timer* m_fpsTimer;
+
 		graphics* m_graphics;
 		assets* m_assets;
 		inputs* m_inputs;

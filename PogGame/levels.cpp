@@ -41,12 +41,12 @@ void levels::handleQuarterSteps()
 			// can move x
 			if (!physics::INSTANCE()->isGoingToCollide(xbb))
 			{
-				m_playerChar->translate(xVec);
+				m_playerChar->translate(xVec * 2);
 			}
 			// can move y
 			if (!physics::INSTANCE()->isGoingToCollide(ybb))
 			{
-				m_playerChar->translate(yVec);
+				m_playerChar->translate(yVec * 2);
 			}
 
 			// only a little bit of slide

@@ -150,7 +150,7 @@ void player::update()
 	// check if cooldown is over
 	checkBoostCooldown();
 
-	printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), rotation(world), pos(world).x, pos(world).y, m_canBoost);
+	printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos(world).x, pos(world).y, rotation(world), m_canBoost);
 }
 
 void player::render()

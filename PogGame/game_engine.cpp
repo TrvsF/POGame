@@ -9,6 +9,7 @@ game_engine::~game_engine()
 	m_assets = NULL;
 	m_graphics = NULL;
 	m_timer = NULL;
+	m_fpsTimer = NULL;
 	m_inputs = NULL;
 	m_levels = NULL;
 	m_physics = NULL;
@@ -28,9 +29,10 @@ bool game_engine::init()
 		m_isRunning = true;
 	}
 
-	// init timer
-	printf("loading timer...");
+	// init timers
+	printf("loading timers...");
 	m_timer = timer::INSTANCE();
+	m_fpsTimer = timer::INSTANCE();
 	printf("done!\n");
 
 	// init asset manager
@@ -82,14 +84,18 @@ void game_engine::run()
 			}
 		}
 		// 144 times a second refresh the renderer
-		if (m_timer->deltaTime() >= 1.0f / FRAME_RATE)
+		if (m_timer->deltaTime() >= 1.0f / PHYS_RATE)
 		{
 			earlyUpdate();
 			update();
 			lateUpdate();
-			render();
 		}
 
+		if (m_fpsTimer->deltaTime() >= 1.0f / FRAME_RATE)
+		{
+			render();
+		}
+	
 	}
 }
 
@@ -115,6 +121,7 @@ void game_engine::lateUpdate()
 // render the new frame
 void game_engine::render()
 {
+	m_fpsTimer->reset();
 	m_graphics->clearBuffer();
 	m_levels->render();
 	m_graphics->render();
