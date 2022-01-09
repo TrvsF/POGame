@@ -10,6 +10,7 @@ player::player(Vector2 position)
 
 	m_tickVelocity = 0;
 
+	m_projCount = 0;
 	m_boostIndex = 0;
 	m_canBoost = true;
 	m_hasBoosted = false;
@@ -40,7 +41,8 @@ void player::playerInput()
 	}
 	if (m_inputs->keyPressed(SDL_SCANCODE_I))
 	{
-		projectiles[0] = new projectile(rotation(world), pos(world));
+		projectiles[m_projCount] = new projectile(rotation(world), pos(world));
+		m_projCount++;
 	}
 }
 

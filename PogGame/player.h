@@ -29,6 +29,7 @@ class player : public game_entity
 		bool m_canBoost;
 		int m_boostCooldownCount;
 		int m_boostIndex;
+		int m_projCount;
 
 		void playerInput();
 		void checkBoostCooldown();
