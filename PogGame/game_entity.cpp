@@ -23,16 +23,9 @@ void game_entity::pos(Vector2 pos)
 	m_pos = pos;
 }
 
-Vector2 game_entity::pos(SPACE space)
+Vector2 game_entity::pos()
 {
-	if (space == local || m_parent == NULL)
-	{
-		return m_pos;
-	}
-	else
-	{
-		return m_parent->pos(world) + RotateVector(m_pos, m_parent->rotation(local));
-	}
+	return m_pos;
 }
 
 void game_entity::bb(float x, float y, int width, int height)
@@ -45,16 +38,9 @@ void game_entity::bb(BoundingBox bb)
 	m_bb = bb;
 }
 
-BoundingBox game_entity::bb(SPACE space)
+BoundingBox game_entity::bb()
 {
-	if (space == local || m_parent == NULL)
-	{
-		return m_bb;
-	}
-	else
-	{
-		return m_parent->bb(world) + bb(world);
-	}
+	return m_bb;
 }
 
 void game_entity::rotation(float r)
@@ -68,16 +54,9 @@ void game_entity::rotation(float r)
 		m_rotation += 360.0f;
 }
 
-float game_entity::rotation(SPACE space)
+float game_entity::rotation()
 {
-	if (space == local || m_parent == NULL)
-	{
-		return m_rotation;
-	}
-	else
-	{
-		return m_parent->rotation(world) + m_rotation;
-	}
+	return m_rotation;
 }
 
 void game_entity::active(bool active)
@@ -102,7 +81,7 @@ float game_entity::velocity()
 
 void game_entity::parent(game_entity* parent)
 {
-	m_pos = pos(world) - parent->pos(world);
+	m_pos = pos() - parent->pos();
 
 	m_parent = parent;
 }
@@ -131,7 +110,7 @@ void game_entity::translate(Vector2 vec)
 
 void game_entity::setBB()
 {
-	bb(pos(world).x, pos(world).y, m_texture->width(), m_texture->height());
+	bb(pos().x, pos().y, m_texture->width(), m_texture->height());
 }
 
 void game_entity::drawDebugBB()

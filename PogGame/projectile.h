@@ -7,7 +7,7 @@ class projectile : public game_entity
 		Vector2 movementVec;
 
 	public:
-		projectile(float angle, Vector2 position);
+		projectile(float angle, float speed, Vector2 position);
 		~projectile();
 
 		void update();

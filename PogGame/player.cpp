@@ -41,7 +41,10 @@ void player::playerInput()
 	}
 	if (m_inputs->keyPressed(SDL_SCANCODE_I))
 	{
-		projectiles[m_projCount] = new projectile(rotation(world), pos(world));
+		if (m_projCount > 50)
+			m_projCount = 0;
+
+		projectiles[m_projCount] = new projectile(rotation(), 7.0f, pos());
 		m_projCount++;
 	}
 }
@@ -94,13 +97,13 @@ float player::calcVelocity()
 void player::turnRight()
 {
 	m_boostIndex++;
-	rotation(rotation(world) + 3.5f);
+	rotation(rotation() + 3.5f);
 }
 
 void player::turnLeft()
 {
 	m_boostIndex++;
-	rotation(rotation(world) - 3.5f);
+	rotation(rotation() - 3.5f);
 }
 
 void player::moveForward()
@@ -117,12 +120,15 @@ void player::moveBackward()
 
 void player::boost()
 {
+	// if can boost, booost
 	if (m_canBoost)
 	{
 		velocity(velocity() * BOOST_MUL[m_boostIndex]);
 		m_hasBoosted = true;
 	}
 
+	// if player is moving while boosting cancel the boost
+	// [mimick bhoping]
 	if (m_inputs->keyDown(SDL_SCANCODE_W) || m_inputs->keyDown(SDL_SCANCODE_S))
 		m_canBoost = false;
 }
@@ -131,7 +137,7 @@ Vector2 player::getMovement()
 {
 	velocity(calcVelocity());
 	Vector2 movement = Vector2(0, calcVelocity());
-	return RotateVector(movement, rotation(world));
+	return RotateVector(movement, rotation());
 }
 
 void player::cancelBoost()
@@ -140,12 +146,50 @@ void player::cancelBoost()
 		m_canBoost = false;
 }
 
-void player::lateUpdate()
+void player::handleQuarterSteps()
 {
-	// reset tick based vars
-	m_boostIndex = 0;
-	m_tickVelocity = 0; 
-	m_hasBoosted = false;
+	Vector2 movementVec = getMovement();
+
+	movementVec = movementVec / 4.0f;
+
+	for (int i = 0; i < 4; i++)
+	{
+		BoundingBox nextFrameBB = bb() + movementVec;
+
+		// check if player is going to collide 
+		if (physics::INSTANCE()->isGoingToCollide(nextFrameBB))
+		{
+			// cancel the player's boost
+			cancelBoost();
+
+			// try and move only 1 axis (for the sliding against the wall effect
+			Vector2 xVec = Vector2(movementVec.x, 0);
+			Vector2 yVec = Vector2(0, movementVec.y);
+
+			BoundingBox xbb = bb() + xVec;
+			BoundingBox ybb = bb() + yVec;
+
+			// can move x
+			if (!physics::INSTANCE()->isGoingToCollide(xbb))
+			{
+				translate(xVec * 2);
+			}
+			// can move y
+			if (!physics::INSTANCE()->isGoingToCollide(ybb))
+			{
+				translate(yVec * 2);
+			}
+
+			// only a little bit of slide
+			return;
+		}
+		// player is good to move freely
+		else
+		{
+			translate(movementVec);
+		}
+	}
+
 }
 
 void player::update()
@@ -156,22 +200,33 @@ void player::update()
 	// check if cooldown is over
 	checkBoostCooldown();
 
-	printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos(world).x, pos(world).y, rotation(world), m_canBoost);
+	// handle player movement
+	handleQuarterSteps();
 
-	for (int i = 0; i < 100; i++)
+	printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos().x, pos().y, rotation(), m_canBoost);
+
+	// handle projecitle updates
+	for (int i = 0; i < 50; i++)
 	{
 		if (projectiles[i] == nullptr)
 			continue;
 
 		projectiles[i]->update();
 	}
+
+	// reset tick based vars
+	m_boostIndex = 0;
+	m_tickVelocity = 0;
+	m_hasBoosted = false;
 }
 
 void player::render()
 {
 	// drawDebugBB();
 	renderTexture();
-	for (int i = 0; i < 100; i++)
+
+	// handles projectile rendering
+	for (int i = 0; i < 50; i++)
 	{
 		if (projectiles[i] == nullptr)
 			continue;

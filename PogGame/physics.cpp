@@ -15,11 +15,6 @@ void physics::addEntity(game_entity* entity)
 	m_gameEntities.push_back(entity);
 }
 
-void physics::addPlayer(player* player)
-{
-	m_playerEntities.push_back(player);
-}
-
 bool physics::isGoingToCollide(BoundingBox playerBB)
 {
 	if (playerBB.isOutOfBounds(1024, 768))
@@ -33,7 +28,7 @@ bool physics::isGoingToCollide(BoundingBox playerBB)
 		if (entity == nullptr)
 			continue;
 
-		if (playerBB.isColliding(entity->bb(game_entity::world)))
+		if (playerBB.isColliding(entity->bb()))
 		{
 			printf("collide\n");
 			return true;

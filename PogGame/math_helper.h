@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include <stdlib.h>
 /*----------
 	math helper struct
 	used for handling vectors and vector manipulation
@@ -8,6 +9,11 @@
 ----------*/
 #define PI 3.14159265
 #define DEG_TO_RAD PI / 180.0f
+
+static float randomFloat(float low, float high)
+{
+	return low + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (high - low)));
+}
 
 struct Vector2
 {

@@ -1,13 +1,13 @@
 #include "projectile.h"
 
-projectile::projectile(float angle, Vector2 position)
+projectile::projectile(float angle, float speed, Vector2 position)
 {
 	setTexture("proj.png");
 	pos(position);
-	rotation(angle);
+	rotation(angle + randomFloat(-5.0f, 5.0f));
 	
-	movementVec = Vector2(0, -1.0f);
-	movementVec = RotateVector(movementVec, rotation(world));
+	movementVec = Vector2(0, -speed);
+	movementVec = RotateVector(movementVec, rotation());
 }
 
 projectile::~projectile()

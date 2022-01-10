@@ -23,24 +23,18 @@ class game_entity
 		game_entity* m_parent;
 
 	public:
-		enum SPACE 
-		{
-			local = 0,
-			world = 1
-		};
-
 		game_entity(Vector2 pos = VEC2_ZERO);
 		~game_entity();
 
 		void pos(Vector2 pos);
-		Vector2 pos(SPACE space);
+		Vector2 pos();
 
 		void bb(float x, float y, int width, int height);
 		void bb(BoundingBox bb);
-		BoundingBox bb(SPACE space);
+		BoundingBox bb();
 
 		void rotation(float rotation);
-		float rotation(SPACE space);
+		float rotation();
 
 		void active(bool active);
 		bool active();

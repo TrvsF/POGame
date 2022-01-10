@@ -1,5 +1,4 @@
 #pragma once
-#include "player.h"
 #include "math_helper.h"
 #include "game_entity.h"
 #include <list>
@@ -17,9 +16,6 @@ class physics
 		std::list<game_entity*> m_gameEntities;
 		std::list<game_entity*>::iterator m_gameEntitiesI;
 
-		std::list<player*> m_playerEntities;
-		std::list<player*>::iterator m_playerEntitiesI;
-
 		physics();
 		~physics();
 
@@ -27,7 +23,6 @@ class physics
 		static physics* INSTANCE();
 
 		void addEntity(game_entity* entity);
-		void addPlayer(player* player);
 
 		bool isGoingToCollide(BoundingBox playerBB);
 };

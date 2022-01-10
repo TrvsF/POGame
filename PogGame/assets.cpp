@@ -35,7 +35,7 @@ assets::assets()
 
 assets::~assets()
 {
-	for (auto texture : m_textures)
+	for (const auto texture : m_textures)
 	{
 		if (texture.second != NULL)
 		{

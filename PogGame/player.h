@@ -2,6 +2,7 @@
 #include "game_entity.h"
 #include "inputs.h"
 #include "projectile.h"
+#include "physics.h"
 #include <iostream>
 /*----------
 	player class
@@ -25,31 +26,33 @@ class player : public game_entity
 
 		float m_tickVelocity;
 
-		bool m_hasBoosted;
-		bool m_canBoost;
 		int m_boostCooldownCount;
 		int m_boostIndex;
 		int m_projCount;
 
+		bool m_hasBoosted;
+		bool m_canBoost;
+
+		// player handling
 		void playerInput();
 		void checkBoostCooldown();
+		void handleQuarterSteps();
+		void cancelBoost();
 
+		// movement methods
 		void turnRight();
 		void turnLeft();
 		void moveForward();
 		void moveBackward();
 		void boost();
 
+		Vector2 getMovement();
+
 		float calcVelocity();
 
 	public:
 		player(Vector2 pos);
 
-		Vector2 getMovement();
-
-		void cancelBoost();
-
-		void lateUpdate();
 		void update();
 		void render();
 };
