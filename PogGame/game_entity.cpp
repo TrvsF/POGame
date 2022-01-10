@@ -116,10 +116,10 @@ void game_entity::setBB()
 void game_entity::drawDebugBB()
 {
 	SDL_Rect rect;
-	rect.x = m_bb.left;
-	rect.y = m_bb.top;
-	rect.w = m_bb.right - m_bb.left;
-	rect.h = m_bb.bottom - m_bb.top;
+	rect.x = (int)m_bb.left;
+	rect.y = (int)m_bb.top;
+	rect.w = (int)m_bb.right - (int)m_bb.left;
+	rect.h = (int)m_bb.bottom - (int)m_bb.top;
 
 	SDL_SetRenderDrawColor(graphics::INSTANCE()->renderer(), 255, 0, 0, 255);
 	SDL_RenderDrawRect(graphics::INSTANCE()->renderer(), &rect);

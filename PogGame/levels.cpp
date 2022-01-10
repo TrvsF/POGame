@@ -23,7 +23,7 @@ levels::levels()
 	int val = 16;
 	for (int i = 0; i < 20; i++)
 	{	
-		m_walls.push_back(new wall(Vector2(val, 200)));
+		m_walls.push_back(new wall(Vector2((float)val, 200)));
 		val += 16;
 	}
 

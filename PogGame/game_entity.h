@@ -1,12 +1,15 @@
-#pragma once
-#include "math_helper.h"
-#include "texture.h"
 /*----------
 	game entity class
 	main class that all game objects inherit from
 
 	a. travis 22nd dec
 ----------*/
+#ifndef _GAME_ENT_H
+#define _GAME_ENT_H
+
+#include "math_helper.h"
+#include "texture.h"
+
 class game_entity
 {
 	private:
@@ -56,3 +59,4 @@ class game_entity
 		virtual void update();
 		virtual void render();
 };
+#endif

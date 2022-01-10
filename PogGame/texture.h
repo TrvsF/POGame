@@ -1,12 +1,15 @@
-#pragma once
-#include "assets.h"
-#include "math_helper.h"
 /*----------
 	texture class
 	object given to all drawable game entities so the may be drawn on screen
 
 	a. travis 22nd dec
 ----------*/
+#ifndef _TEXTURE_H
+#define _TEXTURE_H
+
+#include "assets.h"
+#include "math_helper.h"
+
 class texture
 {
 	protected:
@@ -29,3 +32,4 @@ class texture
 
 		virtual void render(Vector2 pos, float rotation);
 };
+#endif

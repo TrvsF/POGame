@@ -1,6 +1,3 @@
-#pragma once
-#include "texture_helper.h"
-#include <map>
 /*----------
 	asset manager class
 	handles all game assets
@@ -8,6 +5,12 @@
 
 	a. travis 23rd dec
 ----------*/
+#ifndef _ASSETS_H
+#define _ASSETS_H
+
+#include "texture_helper.h"
+#include <map>
+
 class assets
 {
 	private:
@@ -28,3 +31,4 @@ class assets
 		SDL_Texture* getTexture(std::string path);
 		SDL_Texture* getText(std::string text, std::string path, int size, SDL_Color colour);
 };
+#endif

@@ -56,6 +56,7 @@ bool game_engine::init()
 	printf("done!\n");
 
 	printf("SDL naf : %s\n", SDL_GetBasePath());
+	
 
 	return true;
 }

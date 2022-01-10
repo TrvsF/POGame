@@ -1,11 +1,14 @@
-#pragma once
-#include <SDL.h>
 /*----------
 	timer class
 	handles when entities should be updated & rendered
 
 	a. travis 22nd dec
 ----------*/
+#ifndef _TIMER_H
+#define _TIMER_H
+
+#include <SDL.h>
+
 class timer
 {
 	private:
@@ -32,3 +35,4 @@ class timer
 
 		void update();
 };
+#endif

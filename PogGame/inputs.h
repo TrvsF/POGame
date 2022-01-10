@@ -1,11 +1,14 @@
-#pragma once
-#include <SDL.h>
 /*----------
 	input manager class
 	handles player inputs
 
 	a. travis 23rd dec
 ----------*/
+#ifndef _INPUTS_H
+#define _INPUTS_H
+
+#include <SDL.h>
+
 class inputs
 {
 	private:
@@ -30,3 +33,4 @@ class inputs
 		void update();
 		void updatePrev();
 };
+#endif

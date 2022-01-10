@@ -1,16 +1,18 @@
-#pragma once
-
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <iostream>
-#include "texture.h"
 /*----------
 	graphic engine class
 	handles all drawing to screen methods
 
 	a. travis 22nd dec
 ----------*/
+#ifndef _GRAPHICS_H
+#define _GRAPHICS_H
+
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <iostream>
+#include "texture.h"
+
 class graphics
 {
 	private:
@@ -33,3 +35,4 @@ class graphics
 		void render();
 		void clean();
 };
+#endif

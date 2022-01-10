@@ -1,15 +1,18 @@
-#pragma once
-#include <SDL.h>
-#include "player.h"
-#include "wall.h"
-#include "physics.h"
-#include "projectile.h"
 /*----------
 	level manager class
 	handles level loading and all game entities on given levels
 
 	a. travis ~24th dec
 ----------*/
+#ifndef _LEVELS_H
+#define _LEVELS_H
+
+#include <SDL.h>
+#include "player.h"
+#include "wall.h"
+#include "physics.h"
+#include "projectile.h"
+
 class levels
 {
 	private:
@@ -28,12 +31,10 @@ class levels
 		physics* m_physics;
 		texture* m_title;
 
-		void handlePlayerChar();
-		void handleQuarterSteps();
-
 	public:
 		static levels* INSTANCE();
 
 		void update();
 		void render();
 };
+#endif

@@ -1,9 +1,3 @@
-#pragma once
-#include "game_entity.h"
-#include "inputs.h"
-#include "projectile.h"
-#include "physics.h"
-#include <iostream>
 /*----------
 	player class
 	inherits from game entity
@@ -11,6 +5,15 @@
 
 	a. travis 23rd dec
 ----------*/
+#ifndef _PLAYER_H
+#define _PLAYER_H
+
+#include "game_entity.h"
+#include "inputs.h"
+#include "projectile.h"
+#include "physics.h"
+#include <iostream>
+
 class player : public game_entity
 {
 	private:	
@@ -56,3 +59,4 @@ class player : public game_entity
 		void update();
 		void render();
 };
+#endif

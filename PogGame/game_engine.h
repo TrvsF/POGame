@@ -1,4 +1,12 @@
-#pragma once
+/*----------
+	game engine class
+	handles managers and ensures the game is running correctly
+
+	a. travis 15th dec
+----------*/
+#ifndef _GAME_ENGINE_H
+#define _GAME_ENGINE_H
+
 #include "texture_helper.h"
 #include "timer.h"
 #include "game_entity.h"
@@ -8,12 +16,7 @@
 #include "inputs.h"
 #include "levels.h"
 #include "physics.h"
-/*----------
-	game engine class
-	handles managers and ensures the game is running correctly
 
-	a. travis 15th dec
-----------*/
 class game_engine 
 {
 	private:
@@ -49,3 +52,4 @@ class game_engine
 
 		bool running() { return m_isRunning; }
 };
+#endif

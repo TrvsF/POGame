@@ -1,13 +1,16 @@
-#pragma once
-#include <math.h>
-#include <stdlib.h>
 /*----------
 	math helper struct
 	used for handling vectors and vector manipulation
 
 	a. travis 23rd dec
 ----------*/
-#define PI 3.14159265
+#ifndef _MATH_HELPER_H
+#define _MATH_HELPER_H
+
+#include <math.h>
+#include <stdlib.h>
+
+#define PI 3.14159265f
 #define DEG_TO_RAD PI / 180.0f
 
 static float randomFloat(float low, float high)
@@ -154,3 +157,4 @@ inline BoundingBox operator / (const BoundingBox& bb1, const BoundingBox& bb2)
 {
 	return BoundingBox(bb1.left / bb2.left, bb1.top / bb2.top, bb1.bottom / bb2.bottom, bb1.right / bb2.right);
 }
+#endif

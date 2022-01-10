@@ -1,13 +1,16 @@
-#pragma once
-#include "math_helper.h"
-#include "game_entity.h"
-#include <list>
 /*----------
 	physics manager class
 	handles all physics between game objects
 
 	a. travis 29th dec
 ----------*/
+#ifndef _PHYSICS_H
+#define _PHYSICS_H
+
+#include "math_helper.h"
+#include "game_entity.h"
+#include <list>
+
 class physics
 {
 	private:
@@ -26,3 +29,4 @@ class physics
 
 		bool isGoingToCollide(BoundingBox playerBB);
 };
+#endif
