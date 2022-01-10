@@ -12,9 +12,10 @@ int main(int argc, char *argv[])
 {
 	/*
 		TODO :
-		WEAPON/SHOOTING MECHANICS
-		CAMERA TRACKING
-		MAKE UPDATES NOT FPS DEPENDENT
+		PROJ COLLISON
+		WEAPON/SHOOTING SYSTEM
+		CAMERA TRACKING [rect and update game objects]
+		MAKE UPDATES NOT FPS DEPENDENT <--- fix weird bugs [possbile sync issue?]
 		LEVEL SYSTEM
 		 - split map into 16x16 (or 32x32) chunks
 		 - have maps read and write to file in a 2d array type thingy so you can make & share maps
