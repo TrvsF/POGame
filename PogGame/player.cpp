@@ -112,6 +112,8 @@ void player::moveForward()
 		m_tickVelocity -= 0.2f;
 }
 
+void player::pickup
+
 void player::moveBackward()
 {
 	if (velocity() <= MAX_VEL)

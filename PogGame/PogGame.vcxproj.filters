@@ -81,6 +81,9 @@
     <ClCompile Include="projectile.cpp">
       <Filter>Source Files\entity\entities</Filter>
     </ClCompile>
+    <ClCompile Include="pickups.cpp">
+      <Filter>Source Files\entity\entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_entity.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files\entity\entities</Filter>
     </ClInclude>
     <ClInclude Include="projectile.h">
+      <Filter>Header Files\entity\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="pickups.h">
       <Filter>Header Files\entity\entities</Filter>
     </ClInclude>
   </ItemGroup>

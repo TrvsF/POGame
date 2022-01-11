@@ -11,6 +11,7 @@
 #include "player.h"
 #include "wall.h"
 #include "physics.h"
+#include "pickups.h"
 #include "projectile.h"
 
 class levels
@@ -30,7 +31,7 @@ class levels
 		player* m_playerChar;
 		physics* m_physics;
 		texture* m_title;
-
+		pickups* m_pickups;
 	public:
 		static levels* INSTANCE();
 
