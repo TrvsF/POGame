@@ -42,7 +42,6 @@ void levels::update()
 
 void levels::render()
 {
-	m_pickups->render();
 	for (const auto wall : m_walls)
 	{
 		wall->render();

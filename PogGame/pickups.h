@@ -3,16 +3,13 @@
 
 class pickups : public game_entity
 {
-private:
+	private:
 
 
-public :
-	pickups(int pos);
-	~pickups();
+	public:
+		pickups(Vector2 position);
+		~pickups();
 
-	void render();
-	void update();
-
-
-
+		void render();
+		void update();
 };
