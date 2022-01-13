@@ -22,6 +22,7 @@ levels::levels()
 	for (int i = 0; i < 20; i++)
 	{	
 		m_walls.push_back(new wall(Vector2((float)val, 200)));
+		m_walls.push_back(new wall(Vector2((float)val, 600)));
 		val += 16;
 	}
 }
@@ -42,6 +43,6 @@ void levels::render()
 	{
 		wall->render();
 	}
-	m_title->render(Vector2(420, 150), 0);
+	// m_title->render(Vector2(420, 150), 0);
 	m_playerChar->render();
 }

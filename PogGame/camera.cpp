@@ -40,13 +40,10 @@ void camera::translate(Vector2 pos)
 
 void camera::update()
 {
-	if (m_bb.isOutOfBounds(1024, 768))
-	{
-		
-	}
+
 }
 
 void camera::render()
 {
-	debugRenderBB();
+	// debugRenderBB();
 }
