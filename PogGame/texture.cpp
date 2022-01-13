@@ -4,7 +4,6 @@ texture::texture(std::string path)
 {
 	m_renderer = graphics::INSTANCE()->renderer();
 	m_texture = assets::INSTANCE()->getTexture(path.c_str());
-	m_camera = camera::INSTANCE();
 
 	SDL_QueryTexture(m_texture, NULL, NULL, &m_width, &m_height);
 
@@ -40,8 +39,8 @@ int texture::height()
 
 void texture::render(Vector2 pos, float rotation)
 {
-	m_renderRect.x = (int)(pos.x - m_width) + (int)m_camera->offset().x;
-	m_renderRect.y = (int)(pos.y - m_height) + (int)m_camera->offset().y;
+	m_renderRect.x = (int)(pos.x - m_width);
+	m_renderRect.y = (int)(pos.y - m_height);
 
 	m_renderRect.w = (int)(m_width);
 	m_renderRect.h = (int)(m_height);

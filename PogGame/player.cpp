@@ -5,9 +5,9 @@ player::player(Vector2 position)
 	pos(position);
 
 	m_inputs = inputs::INSTANCE();
-	m_camera = camera::INSTANCE();
+	m_camera = new camera();
 
-	m_camera->setBB((int)position.x, (int)position.y, 350, 350);
+	m_camera->bb((int)position.x, (int)position.y, 350, 350);
 
 	setTexture("character.png");
 
@@ -140,6 +140,29 @@ void player::boost()
 		m_canBoost = false;
 }
 
+bool player::shouldMoveObjects(Vector2 movementVec)
+{
+	BoundingBox checkBB = m_camera->bb() + movementVec;
+	if (checkBB.isOutOfBounds(1024, 786))
+	{
+		return true;
+	}
+	return false;
+}
+
+void player::movePlayer(Vector2 movementVec)
+{
+	if (shouldMoveObjects(movementVec))
+	{
+		physics::INSTANCE()->translateEntitiesNotPlayer(-movementVec);
+	}
+	else
+	{
+		translate(movementVec);
+		m_camera->translate(movementVec);
+	}
+}
+
 Vector2 player::getMovement()
 {
 	velocity(calcVelocity());
@@ -163,7 +186,7 @@ void player::handleQuarterSteps()
 	{
 		BoundingBox nextFrameBB = bb() + movementVec;
 
-		// check if player is going to collide 
+		// if player is going to collide with another object
 		if (physics::INSTANCE()->isGoingToCollide(nextFrameBB))
 		{
 			// cancel the player's boost
@@ -179,24 +202,21 @@ void player::handleQuarterSteps()
 			// can move x
 			if (!physics::INSTANCE()->isGoingToCollide(xbb))
 			{
-				translate(xVec * 2);
-				m_camera->translate(movementVec);
+				movePlayer(xVec * 2);
 			}
 			// can move y
 			if (!physics::INSTANCE()->isGoingToCollide(ybb))
 			{
-				translate(yVec * 2);
-				m_camera->translate(movementVec);
+				movePlayer(yVec * 2);
 			}
 
 			// only a little bit of slide
 			return;
 		}
-		// player is good to move freely
+		// if not
 		else
 		{
-			translate(movementVec);
-			m_camera->translate(movementVec);
+			movePlayer(movementVec);
 		}
 	}
 

@@ -54,6 +54,10 @@ class player : public game_entity
 		void moveBackward();
 		void boost();
 
+		// camera related methods
+		bool shouldMoveObjects(Vector2 movementVe);
+		void movePlayer(Vector2 movementVec);
+
 		Vector2 getMovement();
 
 		float calcVelocity();

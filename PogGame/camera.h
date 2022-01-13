@@ -13,10 +13,7 @@
 class camera
 {
 	private:
-		static camera* s_instance;
-
 		BoundingBox m_bb;
-		Vector2 m_offset;
 
 		void debugRenderBB();
 
@@ -26,10 +23,9 @@ class camera
 		camera();
 		~camera();
 
-		void offset(Vector2 o);
-		Vector2 offset();
+		void bb(int x, int y, int width, int height);
+		BoundingBox bb();
 
-		void setBB(int x, int y, int width, int height);
 		void translate(Vector2 pos);
 
 		void update();

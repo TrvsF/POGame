@@ -26,6 +26,7 @@ class physics
 		static physics* INSTANCE();
 
 		void addEntity(game_entity* entity);
+		void translateEntitiesNotPlayer(Vector2 vector);
 
 		bool isGoingToCollide(BoundingBox playerBB);
 };

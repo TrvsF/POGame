@@ -1,32 +1,11 @@
 #include "camera.h"
 
-camera* camera::s_instance = NULL;
-
-camera* camera::INSTANCE()
-{
-	if (s_instance == NULL)
-		s_instance = new camera();
-
-	return s_instance;
-}
-
 camera::camera()
 {
-	m_offset = Vector2(0, 0);
 }
 
 camera::~camera()
 {
-}
-
-void camera::offset(Vector2 o)
-{
-	m_offset = o;
-}
-
-Vector2 camera::offset()
-{
-	return 0;
 }
 
 void camera::debugRenderBB()
@@ -43,10 +22,15 @@ void camera::debugRenderBB()
 	SDL_SetRenderDrawColor(graphics::INSTANCE()->renderer(), 255, 255, 255, 255);
 }
 
-void camera::setBB(int x, int y, int width, int height)
+void camera::bb(int x, int y, int width, int height)
 {
 	m_bb = BoundingBox((float)x, (float)y, (float)y - height, (float)x - width);
 	m_bb += Vector2(width / 2.0f, height / 2.0f);
+}
+
+BoundingBox camera::bb()
+{
+	return m_bb;
 }
 
 void camera::translate(Vector2 pos)
