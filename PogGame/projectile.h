@@ -8,6 +8,7 @@
 #define _PROJ_H
 
 #include "game_entity.h"
+#include "physics.h"
 
 class projectile : public game_entity
 {
@@ -16,7 +17,7 @@ class projectile : public game_entity
 
 	public:
 		projectile(float angle, float speed, Vector2 position);
-		~projectile();
+		virtual ~projectile();
 
 		void update();
 		void render();

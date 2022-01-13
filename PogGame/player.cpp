@@ -5,6 +5,9 @@ player::player(Vector2 position)
 	pos(position);
 
 	m_inputs = inputs::INSTANCE();
+	m_camera = camera::INSTANCE();
+
+	m_camera->setBB((int)position.x, (int)position.y, 350, 350);
 
 	setTexture("character.png");
 
@@ -15,6 +18,10 @@ player::player(Vector2 position)
 	m_canBoost = true;
 	m_hasBoosted = false;
 	m_boostCooldownCount = 0;
+}
+
+player::~player()
+{
 }
 
 void player::playerInput()
@@ -173,11 +180,13 @@ void player::handleQuarterSteps()
 			if (!physics::INSTANCE()->isGoingToCollide(xbb))
 			{
 				translate(xVec * 2);
+				m_camera->translate(movementVec);
 			}
 			// can move y
 			if (!physics::INSTANCE()->isGoingToCollide(ybb))
 			{
 				translate(yVec * 2);
+				m_camera->translate(movementVec);
 			}
 
 			// only a little bit of slide
@@ -187,6 +196,7 @@ void player::handleQuarterSteps()
 		else
 		{
 			translate(movementVec);
+			m_camera->translate(movementVec);
 		}
 	}
 
@@ -223,6 +233,7 @@ void player::update()
 void player::render()
 {
 	// drawDebugBB();
+	m_camera->render();
 	renderTexture();
 
 	// handles projectile rendering

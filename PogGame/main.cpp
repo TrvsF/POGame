@@ -1,3 +1,4 @@
+#pragma warning(default:4265)
 #include "game_engine.h"
 #include <iostream>
 /*----------

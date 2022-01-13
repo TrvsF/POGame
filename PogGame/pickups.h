@@ -8,7 +8,7 @@ class pickups : public game_entity
 
 	public:
 		pickups(Vector2 position);
-		~pickups();
+		virtual ~pickups();
 
 		void render();
 		void update();

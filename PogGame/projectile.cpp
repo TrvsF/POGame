@@ -8,6 +8,8 @@ projectile::projectile(float angle, float speed, Vector2 position)
 	
 	movementVec = Vector2(0, -speed);
 	movementVec = RotateVector(movementVec, rotation());
+
+	physics::INSTANCE()->addEntity(this);
 }
 
 projectile::~projectile()

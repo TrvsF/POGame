@@ -10,7 +10,6 @@
 #include <SDL.h>
 #include "player.h"
 #include "wall.h"
-#include "physics.h"
 #include "pickups.h"
 #include "projectile.h"
 

@@ -13,6 +13,7 @@
 #include "projectile.h"
 #include "physics.h"
 #include "pickups.h"
+#include "camera.h"
 #include <iostream>
 
 class player : public game_entity
@@ -28,6 +29,8 @@ class player : public game_entity
 		pickups* pickups[20];
 
 		inputs* m_inputs;
+
+		camera* m_camera;
 
 		float m_tickVelocity;
 
@@ -57,6 +60,7 @@ class player : public game_entity
 
 	public:
 		player(Vector2 pos);
+		virtual ~player();
 
 		void update();
 		void render();

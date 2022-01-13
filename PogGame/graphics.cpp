@@ -12,15 +12,19 @@ graphics* graphics::INSTANCE()
 
 graphics::graphics()
 {
+	
 }
 
 graphics::~graphics()
 {
 }
 
-bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght, bool fullscreen)
+bool graphics::init(const char* title, int w, int h, bool fullscreen)
 {
 	int windowFlags = 0;
+
+	width(w);
+	height(h);
 
 	if (fullscreen)
 	{
@@ -38,7 +42,7 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 
 	// init sdl window
 	printf("init window...");
-	m_window = SDL_CreateWindow(title, xPos, yPos, width, hieght, windowFlags);
+	m_window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, windowFlags);
 	SDL_SetWindowIcon(m_window, texture_helper::loadSurface("epic_icon.png"));
 	if (m_window == NULL)
 	{
@@ -81,6 +85,26 @@ bool graphics::init(const char* title, int xPos, int yPos, int width, int hieght
 SDL_Renderer* graphics::renderer()
 {
 	return m_renderer;
+}
+
+void graphics::width(int w)
+{
+	m_width = w;
+}
+
+int graphics::width()
+{
+	return m_width;
+}
+
+void graphics::height(int h)
+{
+	m_height = h;
+}
+
+int graphics::height()
+{
+	return m_height;
 }
 
 void graphics::drawCircle(int centreX, int centreY, int radius)

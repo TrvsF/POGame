@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="assets.cpp" />
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="game_engine.cpp" />
     <ClCompile Include="game_entity.cpp" />
     <ClCompile Include="graphics.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets.h" />
+    <ClInclude Include="camera.h" />
     <ClInclude Include="game_engine.h" />
     <ClInclude Include="game_entity.h" />
     <ClInclude Include="graphics.h" />

@@ -16,8 +16,6 @@ levels::levels()
 
 	m_playerChar = new player( Vector2(400, 300) );
 
-	m_physics = physics::INSTANCE();
-
 	m_title = new texture("terminus.ttf", "POGame", 64, {255, 0, 0});
 
 	int val = 16;
@@ -26,8 +24,6 @@ levels::levels()
 		m_walls.push_back(new wall(Vector2((float)val, 200)));
 		val += 16;
 	}
-
-	// m_walls.push_back(new wall(Vector2(200, 200)));
 }
 
 levels::~levels()

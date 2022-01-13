@@ -11,7 +11,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <iostream>
-#include "texture.h"
+#include "texture_helper.h"
 
 class graphics
 {
@@ -21,14 +21,23 @@ class graphics
 
 		static graphics* s_instance;
 
+		int m_width;
+		int m_height;
+
 	public:
 		static graphics* INSTANCE();
 
 		graphics();
 		~graphics();
 
-		bool init(const char* title, int xPos, int yPos, int width, int hieght, bool fullscreen);
 		SDL_Renderer* renderer();
+
+		void width(int w);
+		int width();
+		void height(int h);
+		int height();
+
+		bool init(const char* title, int w, int h, bool fullscreen);
 
 		void drawCircle(int centreX, int centreY, int radius);
 		void clearBuffer();

@@ -9,7 +9,6 @@
 #define _WALL_H
 
 #include "game_entity.h"
-#include "texture.h"
 #include "physics.h"
 
 class wall : public game_entity
@@ -18,7 +17,7 @@ class wall : public game_entity
 
 	public:
 		wall(Vector2 position);
-		~wall();
+		virtual ~wall();
 
 		void update();
 		void render();

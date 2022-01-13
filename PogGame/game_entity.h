@@ -27,7 +27,7 @@ class game_entity
 
 	public:
 		game_entity(Vector2 pos = VEC2_ZERO);
-		~game_entity();
+		virtual ~game_entity();
 
 		void pos(Vector2 pos);
 		Vector2 pos();

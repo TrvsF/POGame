@@ -9,12 +9,14 @@
 
 #include "assets.h"
 #include "math_helper.h"
+#include "camera.h"
 
 class texture
 {
 	protected:
 		SDL_Renderer* m_renderer;
 		SDL_Texture* m_texture;
+		camera* m_camera;
 
 		int m_width;
 		int m_height;
@@ -24,7 +26,7 @@ class texture
 	public:
 		texture(std::string path);
 		texture(std::string path, std::string text, int size, SDL_Color colour);
-		~texture();
+		virtual ~texture();
 
 		// probably not a good idea to use this for collison but atm i dont see anything wrong with it
 		int width();

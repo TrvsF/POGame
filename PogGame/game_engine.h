@@ -11,7 +11,6 @@
 #include "timer.h"
 #include "game_entity.h"
 #include "graphics.h"
-#include "texture.h"
 #include "assets.h"
 #include "inputs.h"
 #include "levels.h"
