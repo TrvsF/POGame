@@ -10,21 +10,33 @@ levels* levels::INSTANCE()
 	return s_instance;
 }
 
-levels::levels()
+void levels::loadDefaultLevel()
 {
-	m_currentLevel = menu;
+	resetLevel();
 
-	m_playerChar = new player( Vector2(400, 300) );
+	m_currentLevelType = menu;
 
-	m_title = new texture("terminus.ttf", "POGame", 64, {255, 0, 0});
+	m_currentLevelTextures.push_back(new texture("terminus.ttf", "POGame", 64, { 255, 0, 0 }));
+
+	m_currentLevelObjects.push_back(new player(Vector2(400, 300)));
 
 	int val = 16;
 	for (int i = 0; i < 20; i++)
-	{	
-		m_walls.push_back(new wall(Vector2((float)val, 200)));
-		m_walls.push_back(new wall(Vector2((float)val, 600)));
+	{
+		m_currentLevelObjects.push_back(new wall(Vector2((float)val, 200)));
+		m_currentLevelObjects.push_back(new wall(Vector2((float)val, 600)));
 		val += 16;
 	}
+}
+
+bool levels::loadLevel(std::string name)
+{
+	return true;
+}
+
+levels::levels()
+{
+	loadDefaultLevel();
 }
 
 levels::~levels()
@@ -32,17 +44,30 @@ levels::~levels()
 	
 }
 
+void levels::resetLevel()
+{
+	m_currentLevelType = menu;
+
+	m_currentLevelObjects.clear();
+	m_currentLevelTextures.clear();
+}
+
 void levels::update()
 {
-	m_playerChar->update();
+	for (auto const& entity : m_currentLevelObjects)
+	{
+		entity->update();
+	}
 }
 
 void levels::render()
 {
-	for (const auto wall : m_walls)
+	for (auto const& entity : m_currentLevelObjects)
 	{
-		wall->render();
+		entity->render();
 	}
-	// m_title->render(Vector2(420, 150), 0);
-	m_playerChar->render();
+	for (auto const& texture : m_currentLevelTextures)
+	{
+		// TODO : make some sort of system to render in game textures that dont have a game object
+	}
 }

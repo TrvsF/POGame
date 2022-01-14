@@ -15,10 +15,9 @@ int main(int argc, char *argv[])
 		TODO :
 		PROJ COLLISON
 		WEAPON/SHOOTING SYSTEM
-		CAMERA TRACKING [rect and update game objects]
 		MAKE UPDATES NOT FPS DEPENDENT <--- fix weird bugs [possbile sync issue?]
 		LEVEL SYSTEM
-		 - split map into 16x16 (or 32x32) chunks
+		 - split map into 16x16 'chunks'
 		 - have maps read and write to file in a 2d array type thingy so you can make & share maps
 		 - items and such represented as chars
 	*/
