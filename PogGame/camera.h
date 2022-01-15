@@ -18,8 +18,6 @@ class camera
 		void debugRenderBB();
 
 	public:
-		static camera* INSTANCE();
-
 		camera();
 		~camera();
 

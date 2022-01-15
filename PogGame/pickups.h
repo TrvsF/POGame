@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _PICKUPS_H
+#define _PICKUPS_H
+
 #include "game_entity.h"
 
 class pickups : public game_entity
@@ -13,3 +15,4 @@ class pickups : public game_entity
 		void render();
 		void update();
 };
+#endif

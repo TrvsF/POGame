@@ -24,15 +24,7 @@ void physics::translateEntitiesNotPlayer(Vector2 vector)
 }
 
 bool physics::isGoingToCollide(BoundingBox playerBB)
-{
-	/*
-	if (playerBB.isOutOfBounds(1024, 768))
-	{
-		printf("out of bounds\n");
-		return true;
-	}
-	*/
-		
+{		
 	for (auto const& entity : m_gameEntities)
 	{
 		if (entity == nullptr)

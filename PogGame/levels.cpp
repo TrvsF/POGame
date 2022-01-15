@@ -27,6 +27,13 @@ void levels::loadDefaultLevel()
 		m_currentLevelObjects.push_back(new wall(Vector2((float)val, 600)));
 		val += 16;
 	}
+	val = 16;
+	for (int i = 0; i < 20; i++)
+	{
+		m_currentLevelObjects.push_back(new wall(Vector2(16, (float)val)));
+		m_currentLevelObjects.push_back(new wall(Vector2(416, (float)val)));
+		val += 16;
+	}
 }
 
 bool levels::loadLevel(std::string name)
