@@ -23,7 +23,7 @@ void physics::translateEntitiesNotPlayer(Vector2 vector)
 	}
 }
 
-bool physics::isGoingToCollide(BoundingBox playerBB)
+bool physics::isGoingToCollideWithBB(BoundingBox playerBB)
 {		
 	for (auto const& entity : m_gameEntities)
 	{

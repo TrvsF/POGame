@@ -20,6 +20,9 @@ void levels::loadDefaultLevel()
 
 	m_currentLevelObjects.push_back(new player(Vector2(400, 300)));
 
+	m_currentLevelObjects.push_back(new enemy(Vector2(700, 500)));
+	m_currentLevelObjects.push_back(new enemy(Vector2(1200, 500)));
+
 	int val = 16;
 	for (int i = 0; i < 20; i++)
 	{

@@ -187,7 +187,7 @@ void player::handleQuarterSteps()
 		BoundingBox nextFrameBB = bb() + movementVec;
 
 		// if player is going to collide with another object
-		if (physics::INSTANCE()->isGoingToCollide(nextFrameBB))
+		if (physics::INSTANCE()->isGoingToCollideWithBB(nextFrameBB))
 		{
 			// cancel the player's boost
 			cancelBoost();
@@ -200,12 +200,12 @@ void player::handleQuarterSteps()
 			BoundingBox ybb = bb() + yVec;
 
 			// can move x
-			if (!physics::INSTANCE()->isGoingToCollide(xbb))
+			if (!physics::INSTANCE()->isGoingToCollideWithBB(xbb))
 			{
 				movePlayer(xVec * 2);
 			}
 			// can move y
-			if (!physics::INSTANCE()->isGoingToCollide(ybb))
+			if (!physics::INSTANCE()->isGoingToCollideWithBB(ybb))
 			{
 				movePlayer(yVec * 2);
 			}

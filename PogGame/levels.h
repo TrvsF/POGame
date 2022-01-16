@@ -18,7 +18,7 @@
 #include "player.h"
 #include "wall.h"
 #include "pickups.h"
-#include "projectile.h"
+#include "enemy.h"
 
 class levels
 {

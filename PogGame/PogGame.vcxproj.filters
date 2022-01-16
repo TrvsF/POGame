@@ -87,6 +87,9 @@
     <ClCompile Include="camera.cpp">
       <Filter>Source Files\entity</Filter>
     </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_entity.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>Header Files\entity</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Header Files\entity\entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
