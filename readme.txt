@@ -1,6 +1,4 @@
 
-MADE BY TRAVIS
-
 :---------------------------------------------:
 
 EPIC PROJECT :SUNGLASSES:
