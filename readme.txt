@@ -1,5 +1,5 @@
 
-MADE BY TRAVIS AND KAI
+MADE BY TRAVIS
 
 :---------------------------------------------:
 
