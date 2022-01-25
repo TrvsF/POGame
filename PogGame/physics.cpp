@@ -32,7 +32,7 @@ bool physics::isGoingToCollideWithBB(BoundingBox playerBB)
 
 		if (playerBB.isColliding(entity->bb()))
 		{
-			printf("collide\n");
+			// printf("collide\n");
 			return true;
 		}		
 	}

@@ -233,7 +233,7 @@ void player::update()
 	// handle player movement
 	handleQuarterSteps();
 
-	printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos().x, pos().y, rotation(), m_canBoost);
+	// printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos().x, pos().y, rotation(), m_canBoost);
 
 	// handle projecitle updates
 	for (int i = 0; i < 50; i++)

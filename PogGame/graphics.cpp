@@ -32,42 +32,42 @@ bool graphics::init(const char* title, int w, int h, bool fullscreen)
 	}
 
 	// start sdl
-	printf("loading SDL...");
+	printf(" loading SDL...");
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
-		printf("couldn't initialise SDL: %s\n", SDL_GetError());
+		printf(" couldn't initialise SDL: %s\n", SDL_GetError());
 		return false;
 	}
 	printf("done!\n");
 
 	// init sdl window
-	printf("init window...");
+	printf(" init window...");
 	m_window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h, windowFlags);
 	SDL_SetWindowIcon(m_window, texture_helper::loadSurface("epic_icon.png"));
 	if (m_window == NULL)
 	{
-		printf("couldn't initalise window %s\n", SDL_GetError());
+		printf(" couldn't initalise window %s\n", SDL_GetError());
 		return false;
 	}
 	printf("done!\n");
 
 	// init sdl renderer
-	printf("init renderer...");
+	printf(" init renderer...");
 	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
 	if (m_renderer == NULL)
 	{
-		printf("couldn't initalise renderer %s\n", SDL_GetError());
+		printf(" couldn't initalise renderer %s\n", SDL_GetError());
 		return false;
 	}
 	SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
 	printf("done!\n");
 
 	// init sdl image libary
-	printf("starting image libary...");
+	printf(" starting image libary...");
 	int flags = IMG_INIT_PNG;
 	if (!(IMG_Init(flags) & flags)) {
 
-		printf("couldn't initalise images %s\n", IMG_GetError());
+		printf(" couldn't initalise images %s\n", IMG_GetError());
 		return false;
 	}
 	printf("done!\n");
@@ -75,7 +75,7 @@ bool graphics::init(const char* title, int w, int h, bool fullscreen)
 	// init sdl font libary
 	if (TTF_Init() == -1) 
 	{
-		printf("couldn't initalise fonts %s\n", TTF_GetError());
+		printf(" couldn't initalise fonts %s\n", TTF_GetError());
 		return false;
 	}
 
