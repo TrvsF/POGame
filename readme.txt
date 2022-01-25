@@ -1,8 +1,8 @@
 
 :---------------------------------------------:
 
-EPIC PROJECT :SUNGLASSES:
+          EPIC PROJECT :SUNGLASSES:
 
-MADE WITH : https://www.libsdl.org/
+      MADE WITH : https://www.libsdl.org/
 
 :---------------------------------------------:
