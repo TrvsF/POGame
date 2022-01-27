@@ -88,16 +88,12 @@ void game_engine::run()
 		// 144 times a second refresh the renderer
 		if (m_gtickTimer->deltaTime() >= 1.0f / PHYS_RATE)
 		{
-			printf("updating");
 			doUpdates();
-			printf("done (u)\n");
 		}
 
 		if (m_fpsTimer->deltaTime() >= 1.0f / FRAME_RATE)
 		{
-			printf("rendering");
 			render();
-			printf("done (r)\n");
 		}
 	
 	}
