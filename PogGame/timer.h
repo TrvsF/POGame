@@ -18,20 +18,14 @@ class timer
 		int m_elapsedTicks;
 
 		float m_deltaTime;
-		float m_timeScale;
 
 	public:
-		static timer* INSTANCE();
-
 		timer();
 		~timer();
 
 		void reset();
 
 		float deltaTime();
-
-		void timescale(float t);
-		float timescale();
 
 		void update();
 };

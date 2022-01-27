@@ -8,7 +8,7 @@ game_engine::~game_engine()
 {
 	m_assets = NULL;
 	m_graphics = NULL;
-	m_timer = NULL;
+	m_gtickTimer = NULL;
 	m_fpsTimer = NULL;
 	m_inputs = NULL;
 	m_levels = NULL;
@@ -31,8 +31,8 @@ bool game_engine::init()
 
 	// init timers
 	printf("loading timers...");
-	m_timer = timer::INSTANCE();
-	m_fpsTimer = timer::INSTANCE();
+	m_gtickTimer = new timer();
+	m_fpsTimer = new timer();
 	printf("done!\n");
 
 	// init asset manager
@@ -73,7 +73,8 @@ void game_engine::run()
 	while (m_isRunning)
 	{
 		// tick timer
-		m_timer->update();
+		m_gtickTimer->update();
+		m_fpsTimer->update();
 
 		while (SDL_PollEvent(&m_events) != 0) 
 		{
@@ -85,17 +86,18 @@ void game_engine::run()
 			}
 		}
 		// 144 times a second refresh the renderer
-		if (m_timer->deltaTime() >= 1.0f / PHYS_RATE)
+		if (m_gtickTimer->deltaTime() >= 1.0f / PHYS_RATE)
 		{
-			earlyUpdate();
-			update();
-			lateUpdate();
-			render();
+			printf("updating");
+			doUpdates();
+			printf("done (u)\n");
 		}
 
 		if (m_fpsTimer->deltaTime() >= 1.0f / FRAME_RATE)
 		{
-			
+			printf("rendering");
+			render();
+			printf("done (r)\n");
 		}
 	
 	}
@@ -104,7 +106,7 @@ void game_engine::run()
 // update all inputs
 void game_engine::earlyUpdate()
 {
-	m_timer->reset();
+	m_gtickTimer->reset();
 	m_inputs->update();
 }
 
@@ -118,6 +120,13 @@ void game_engine::update()
 void game_engine::lateUpdate()
 {
 	m_inputs->updatePrev();
+}
+
+void game_engine::doUpdates()
+{
+	earlyUpdate();
+	update();
+	lateUpdate();
 }
 
 // render the new frame

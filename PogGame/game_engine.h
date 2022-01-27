@@ -20,11 +20,11 @@ class game_engine
 {
 	private:
 		const int FRAME_RATE = 144;
-		const int PHYS_RATE = 144;
+		const int PHYS_RATE = 150;
 
 		SDL_Event m_events;
 
-		timer* m_timer;
+		timer* m_gtickTimer;
 		timer* m_fpsTimer;
 
 		graphics* m_graphics;
@@ -38,6 +38,7 @@ class game_engine
 		void earlyUpdate();
 		void update();
 		void lateUpdate();
+		void doUpdates();
 		void render();
 
 	public:

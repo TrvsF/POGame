@@ -13,7 +13,7 @@ levels* levels::INSTANCE()
 void levels::loadDefaultLevel()
 {
 	resetLevel();
-	loadLevel("./level.pog");
+	loadLevel("./level3.pog");
 
 	
 	/*
