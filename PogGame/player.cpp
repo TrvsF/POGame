@@ -172,11 +172,19 @@ void player::shoot()
 
 	float shootAngle = atan2(dY, dX);
 
-	projectiles[m_projCount] = new projectile(shootAngle * (180 / PI) + 90, 7.0f, pos());
+	projectiles[m_projCount] = new projectile(shootAngle * (180 / PI) + 90, 7.0f, centerPos());
 
 	m_projCount++;
 }
 
+/*
+	TODO :
+		- only shoot within cone where player is looking
+		- make xhair red when out of range of this cone
+		- different xhairs for different guns
+		- (maybe move to own class)
+		
+*/
 void player::renderXhair()
 {
 	m_xHairTex->render(Vector2(m_inputs->mousePos().x, m_inputs->mousePos().y), 0);

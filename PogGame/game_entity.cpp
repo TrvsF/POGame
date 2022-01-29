@@ -23,6 +23,13 @@ void game_entity::pos(Vector2 pos)
 	m_pos = pos;
 }
 
+Vector2 game_entity::centerPos()
+{
+	float x = m_texture->width() / 2.0f;
+	float y = m_texture->height() / 2.0f;
+	return Vector2(m_pos.x - x, m_pos.y - y);
+}
+
 Vector2 game_entity::pos()
 {
 	return m_pos;

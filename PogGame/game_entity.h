@@ -30,6 +30,7 @@ class game_entity
 		virtual ~game_entity();
 
 		void pos(Vector2 pos);
+		Vector2 centerPos();
 		Vector2 pos();
 
 		void bb(float x, float y, int width, int height);
