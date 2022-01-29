@@ -32,6 +32,8 @@ class player : public game_entity
 
 		camera* m_camera;
 
+		texture* m_xHairTex;
+
 		float m_tickVelocity;
 
 		int m_boostCooldownCount;
@@ -42,6 +44,9 @@ class player : public game_entity
 		bool m_canBoost;
 
 		// player handling
+		Vector2 getMovement();
+		float calcVelocity();
+
 		void playerInput();
 		void checkBoostCooldown();
 		void handleQuarterSteps();
@@ -56,11 +61,12 @@ class player : public game_entity
 
 		// camera related methods
 		bool shouldMoveObjects(Vector2 movementVe);
+
 		void movePlayer(Vector2 movementVec);
 
-		Vector2 getMovement();
-
-		float calcVelocity();
+		// mouse/shooting methods
+		void shoot();
+		void renderXhair();
 
 	public:
 		player(Vector2 pos);

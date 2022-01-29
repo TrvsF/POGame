@@ -10,6 +10,7 @@ player::player(Vector2 position)
 	m_camera->bb((int)position.x, (int)position.y, 120, 120);
 
 	setTexture("character.png");
+	m_xHairTex = new texture("xhair.png");
 
 	m_tickVelocity = 0;
 
@@ -46,13 +47,9 @@ void player::playerInput()
 	{
 		boost();
 	}
-	if (m_inputs->keyPressed(SDL_SCANCODE_I))
+	if (m_inputs->mouseButtonPressed(inputs::left))
 	{
-		if (m_projCount > 50)
-			m_projCount = 0;
-
-		projectiles[m_projCount] = new projectile(rotation(), 7.0f, pos());
-		m_projCount++;
+		shoot();
 	}
 }
 
@@ -163,6 +160,28 @@ void player::movePlayer(Vector2 movementVec)
 	}
 }
 
+void player::shoot()
+{
+	if (m_projCount > 50)
+		m_projCount = 0;
+
+	Vector2 mousePos = m_inputs->mousePos();
+
+	float dY = mousePos.y - pos().y;
+	float dX = mousePos.x - pos().x;
+
+	float shootAngle = atan2(dY, dX);
+
+	projectiles[m_projCount] = new projectile(shootAngle * (180 / PI) + 90, 7.0f, pos());
+
+	m_projCount++;
+}
+
+void player::renderXhair()
+{
+	m_xHairTex->render(Vector2(m_inputs->mousePos().x, m_inputs->mousePos().y), 0);
+}
+
 Vector2 player::getMovement()
 {
 	velocity(calcVelocity());
@@ -255,6 +274,7 @@ void player::render()
 	// drawDebugBB();
 	m_camera->render();
 	renderTexture();
+	renderXhair();
 
 	// handles projectile rendering
 	for (int i = 0; i < 50; i++)
