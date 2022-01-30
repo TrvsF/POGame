@@ -33,6 +33,7 @@ class player : public game_entity
 		camera* m_camera;
 
 		texture* m_xHairTex;
+		texture* m_xHairTexRed;
 
 		float m_tickVelocity;
 
@@ -67,6 +68,7 @@ class player : public game_entity
 		// mouse/shooting methods
 		void shoot();
 		void renderXhair();
+		bool canShoot();
 
 	public:
 		player(Vector2 pos);

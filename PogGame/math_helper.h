@@ -157,4 +157,22 @@ inline BoundingBox operator / (const BoundingBox& bb1, const BoundingBox& bb2)
 {
 	return BoundingBox(bb1.left / bb2.left, bb1.top / bb2.top, bb1.bottom / bb2.bottom, bb1.right / bb2.right);
 }
+
+static float getAngleFromVecs(Vector2 v1, Vector2 v2)
+{
+	float dY = v2.y - v1.y;
+	float dX = v2.x - v1.x;
+	return (float) atan2(dY, dX) * (180 / PI) + 90;
+}
+
+static float getAngleFromVecsNormal(Vector2 v1, Vector2 v2)
+{
+	float r = getAngleFromVecs(v1, v2);
+	if (r > 360.0f)
+		r -= 360.0f;
+
+	if (r < 0.0f)
+		r += 360.0f;
+	return r;
+}
 #endif

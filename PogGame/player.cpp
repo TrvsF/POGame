@@ -11,6 +11,7 @@ player::player(Vector2 position)
 
 	setTexture("character.png");
 	m_xHairTex = new texture("xhair.png");
+	m_xHairTexRed = new texture("xhair_red.png");
 
 	m_tickVelocity = 0;
 
@@ -162,32 +163,40 @@ void player::movePlayer(Vector2 movementVec)
 
 void player::shoot()
 {
+	if (!canShoot())
+		return;
+
 	if (m_projCount > 50)
 		m_projCount = 0;
 
-	Vector2 mousePos = m_inputs->mousePos();
+	float ang = getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
 
-	float dY = mousePos.y - pos().y;
-	float dX = mousePos.x - pos().x;
-
-	float shootAngle = atan2(dY, dX);
-
-	projectiles[m_projCount] = new projectile(shootAngle * (180 / PI) + 90, 7.0f, centerPos());
+	projectiles[m_projCount] = new projectile(ang, 7.0f, centerPos());
 
 	m_projCount++;
 }
 
-/*
-	TODO :
-		- only shoot within cone where player is looking
-		- make xhair red when out of range of this cone
-		- different xhairs for different guns
-		- (maybe move to own class)
-		
-*/
 void player::renderXhair()
 {
-	m_xHairTex->render(Vector2(m_inputs->mousePos().x, m_inputs->mousePos().y), 0);
+	if (canShoot())
+	{
+		m_xHairTex->render(Vector2(m_inputs->mousePos().x, m_inputs->mousePos().y), 0);
+	}
+	else
+	{
+		m_xHairTexRed->render(Vector2(m_inputs->mousePos().x, m_inputs->mousePos().y), 0);
+	}
+}
+
+bool player::canShoot()
+{
+	float angDiff = rotation() - getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
+	float magDiff = abs(angDiff);
+
+	if (magDiff < 70.0f || magDiff > 290.0f)
+		return true;
+
+	return false;
 }
 
 Vector2 player::getMovement()
@@ -260,7 +269,14 @@ void player::update()
 	// handle player movement
 	handleQuarterSteps();
 
-	// printf("vel : %f | pos %.1f, %.1f | rot %.1f | boost : %d\n", velocity(), pos().x, pos().y, rotation(), m_canBoost);
+	printf("vel : %f | pos %.1f, %.1f | rot %.1f | mouse rot %.1f | rotdiff %.1f | boost : %d\n",
+		velocity(),
+		pos().x,
+		pos().y,
+		rotation(),
+		getAngleFromVecsNormal(centerPos(), m_inputs->mousePos()),
+		abs(rotation() - getAngleFromVecsNormal(centerPos(), m_inputs->mousePos())),
+		m_canBoost);
 
 	// handle projecitle updates
 	for (int i = 0; i < 50; i++)
