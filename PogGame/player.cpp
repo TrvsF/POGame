@@ -7,7 +7,7 @@ player::player(Vector2 position)
 	m_inputs = inputs::INSTANCE();
 	m_camera = new camera();
 
-	m_camera->bb((int)position.x, (int)position.y, 120, 120);
+	m_camera->bb((int)position.x, (int)position.y, 200, 200);
 
 	setTexture("character.png");
 	m_xHairTex = new texture("xhair.png");
@@ -269,6 +269,7 @@ void player::update()
 	// handle player movement
 	handleQuarterSteps();
 
+	/*
 	printf("vel : %f | pos %.1f, %.1f | rot %.1f | mouse rot %.1f | rotdiff %.1f | boost : %d\n",
 		velocity(),
 		pos().x,
@@ -277,6 +278,7 @@ void player::update()
 		getAngleFromVecsNormal(centerPos(), m_inputs->mousePos()),
 		abs(rotation() - getAngleFromVecsNormal(centerPos(), m_inputs->mousePos())),
 		m_canBoost);
+	*/
 
 	// handle projecitle updates
 	for (int i = 0; i < 50; i++)

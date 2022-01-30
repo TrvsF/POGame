@@ -4,7 +4,7 @@ projectile::projectile(float angle, float speed, Vector2 position)
 {
 	setTexture("proj.png");
 	pos(position);
-	rotation(angle);
+	rotation(angle + randomFloat(-3.0f, 3.0f));
 	
 	movementVec = Vector2(0, -speed);
 	movementVec = RotateVector(movementVec, rotation());
