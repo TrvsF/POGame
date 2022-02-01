@@ -10,6 +10,7 @@
 
 #include "game_entity.h"
 #include "physics.h"
+#include <iostream>
 
 class enemy : public game_entity
 {
@@ -18,7 +19,9 @@ class enemy : public game_entity
 
 		e_aiStates currentState;
 
-		int velocity;
+		bool m_isAlive;
+
+		int m_velocity;
 
 		void calcVelocity();
 		void calcRotation();
@@ -26,6 +29,8 @@ class enemy : public game_entity
 	public:
 		enemy(Vector2 position);
 		virtual ~enemy();
+
+		void takeDamage(int hp);
 
 		void update();
 		void render();

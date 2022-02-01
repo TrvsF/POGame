@@ -25,8 +25,11 @@ class physics
 		static physics* INSTANCE();
 
 		void addEntity(game_entity* entity);
+		void removeEntity(game_entity* entity);
 		void translateEntitiesNotPlayer(Vector2 vector);
 
-		bool isGoingToCollideWithBB(BoundingBox playerBB);
+		bool isAnythingGoingToCollideWithBB(BoundingBox objectBB);
+		bool isAnythingNotPlayerGoingToCollideWithBB(BoundingBox objectBB);
+		game_entity* getWhatCollidesWithBB(BoundingBox objectBB, game_entity* e);
 };
 #endif

@@ -2,7 +2,7 @@
 	projectile class
 	projectile object shot from guns 
 
-	a. travis & kai 8th jan
+	a. travis 8th jan
 ----------*/
 #ifndef _PROJ_H
 #define _PROJ_H

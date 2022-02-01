@@ -12,6 +12,7 @@ player::player(Vector2 position)
 	setTexture("character.png");
 	m_xHairTex = new texture("xhair.png");
 	m_xHairTexRed = new texture("xhair_red.png");
+	type(EntityType::PLAYER);
 
 	m_tickVelocity = 0;
 
@@ -20,6 +21,8 @@ player::player(Vector2 position)
 	m_canBoost = true;
 	m_hasBoosted = false;
 	m_boostCooldownCount = 0;
+
+	physics::INSTANCE()->addEntity(this);
 }
 
 player::~player()
@@ -223,7 +226,7 @@ void player::handleQuarterSteps()
 		BoundingBox nextFrameBB = bb() + movementVec;
 
 		// if player is going to collide with another object
-		if (physics::INSTANCE()->isGoingToCollideWithBB(nextFrameBB))
+		if (physics::INSTANCE()->isAnythingNotPlayerGoingToCollideWithBB(nextFrameBB))
 		{
 			// cancel the player's boost
 			cancelBoost();
@@ -236,14 +239,14 @@ void player::handleQuarterSteps()
 			BoundingBox ybb = bb() + yVec;
 
 			// can move x
-			if (!physics::INSTANCE()->isGoingToCollideWithBB(xbb))
+			if (!physics::INSTANCE()->isAnythingNotPlayerGoingToCollideWithBB(xbb))
 			{
-				movePlayer(xVec * 2);
+				movePlayer(xVec);
 			}
 			// can move y
-			if (!physics::INSTANCE()->isGoingToCollideWithBB(ybb))
+			if (!physics::INSTANCE()->isAnythingNotPlayerGoingToCollideWithBB(ybb))
 			{
-				movePlayer(yVec * 2);
+				movePlayer(yVec);
 			}
 
 			// only a little bit of slide

@@ -5,6 +5,8 @@ wall::wall(Vector2 position)
 	pos(position);
 	setTexture("brickl.png");
 
+	type(EntityType::GEOMETRY);
+
 	physics::INSTANCE()->addEntity(this);
 }
 

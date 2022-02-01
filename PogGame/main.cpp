@@ -5,7 +5,7 @@
 	main c++ class for POGame
 	starts the main program
 
-	a. travis & kai - began work on the 6th Dec 2021
+	a. travis - began work on the 6th Dec 2021
 ----------*/
 game_engine *gameInstance = nullptr;
 

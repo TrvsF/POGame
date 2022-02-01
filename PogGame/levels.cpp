@@ -14,6 +14,8 @@ void levels::loadDefaultLevel()
 {
 	resetLevel();
 	loadLevel("./level3.pog");
+	m_currentLevelObjects.push_front(new enemy(Vector2(500, 500)));
+
 	if (m_currentLevelType != menu)
 	{
 		SDL_ShowCursor(SDL_DISABLE);
@@ -77,7 +79,7 @@ bool levels::loadLevel(std::string fileName)
 					{
 						int x = std::stoi(builder[wordCount]);
 						int y = std::stoi(currentWord);
-						m_currentLevelObjects.push_back(new wall(Vector2((float)x, (float)y)));
+						m_currentLevelObjects.push_front(new wall(Vector2((float)x, (float)y)));
 						currentType = idle;
 					}
 					break;

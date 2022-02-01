@@ -12,18 +12,28 @@
 
 class game_entity
 {
+	public:
+		enum EntityType {
+			PLAYER,
+			AI,
+			PROJECTILE,
+			GEOMETRY
+		};
+
 	private:
 		BoundingBox m_bb;
 		Vector2 m_pos;
 
 		texture* m_texture;
 
+		EntityType m_type;
+
+		int m_health;
+
 		float m_rotation;
 		float m_velocity;
 
 		bool m_active;
-
-		game_entity* m_parent;
 
 	public:
 		game_entity(Vector2 pos = VEC2_ZERO);
@@ -46,8 +56,12 @@ class game_entity
 		void velocity(float vel);
 		float velocity();
 
-		void parent(game_entity* parent);
-		game_entity* parent();
+		void health(int hp);
+		int health();
+		virtual void takeDamage(int hp);
+
+		void type(EntityType t);
+		EntityType type();
 
 		void setTexture(std::string path);
 		void renderTexture();

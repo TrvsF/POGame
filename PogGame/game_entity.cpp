@@ -9,13 +9,11 @@ game_entity::game_entity(Vector2 vector)
 	m_velocity = 0.0f;
 
 	m_active = true;
-
-	m_parent = NULL;
 }
 
 game_entity::~game_entity()
 {
-	m_parent = NULL;
+
 }
 
 void game_entity::pos(Vector2 pos)
@@ -86,16 +84,28 @@ float game_entity::velocity()
 	return m_velocity;
 }
 
-void game_entity::parent(game_entity* parent)
+void game_entity::health(int hp)
 {
-	m_pos = pos() - parent->pos();
-
-	m_parent = parent;
+	m_health = hp;
 }
 
-game_entity* game_entity::parent()
+int game_entity::health()
 {
-	return m_parent;
+	return m_health;
+}
+
+void game_entity::takeDamage(int hp)
+{
+}
+
+void game_entity::type(EntityType t)
+{
+	m_type = t;
+}
+
+game_entity::EntityType game_entity::type()
+{
+	return m_type;
 }
 
 void game_entity::setTexture(std::string path)
@@ -137,10 +147,8 @@ void game_entity::drawDebugBB()
 
 void game_entity::update()
 {
-
 }
 
 void game_entity::render()
 {
-	
 }
