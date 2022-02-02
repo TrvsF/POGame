@@ -30,7 +30,7 @@ void projectile::update()
 	game_entity* entity = physics::INSTANCE()->getWhatCollidesWithBB(bb(), this, m_parent);
 	if (entity != NULL)
 	{
-		entity->takeDamage(m_damage, rotation());
+		entity->takeDamage(m_damage, 5.0f, rotation());
 		m_damage = 0;
 	}
 }

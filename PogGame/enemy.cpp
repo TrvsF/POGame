@@ -96,9 +96,9 @@ enemy::~enemy()
 {
 }
 
-void enemy::takeDamage(int hp, float r)
+void enemy::takeDamage(int hp, float kb, float r)
 {
-	knockback(5.0f);
+	knockback(kb);
 	health(health() - hp);
 
 	rotation(r - 180.0f);

@@ -10,6 +10,16 @@ physics* physics::INSTANCE()
 	return s_instance;
 }
 
+void physics::addPickup(pickup* pickup)
+{
+	m_pickups.push_back(pickup);
+}
+
+void physics::removePickup(pickup* pickup)
+{
+	m_pickups.remove(pickup);
+}
+
 void physics::addEntity(game_entity* entity)
 {
 	m_gameEntities.push_back(entity);
@@ -32,6 +42,13 @@ void physics::translateEntitiesNotPlayer(Vector2 vector)
 
 		entity->translate(vector);
 	}
+	for (auto const& pickup : m_pickups)
+	{
+		if (pickup == nullptr)
+			continue;
+
+		pickup->translate(vector);
+	}
 }
 
 bool physics::isAnythingNotSelfGoingToCollideWithBB(BoundingBox objectBB, game_entity* self)
@@ -48,6 +65,21 @@ bool physics::isAnythingNotSelfGoingToCollideWithBB(BoundingBox objectBB, game_e
 	}
 
 	return false;
+}
+
+pickup * physics::getPickupsWithBB(BoundingBox objectBB)
+{
+	for (auto const& pickup : m_pickups)
+	{
+		if (pickup == nullptr)
+			continue;
+
+		if (objectBB.isColliding(pickup->bb()))
+		{
+			return pickup;
+		}
+	}
+	return NULL;
 }
 
 game_entity* physics::getWhatCollidesWithBB(BoundingBox objectBB, game_entity* self, game_entity* parent)

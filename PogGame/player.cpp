@@ -9,10 +9,11 @@ player::player(Vector2 position)
 
 	m_camera->bb((int)position.x, (int)position.y, 200, 200);
 
-	setTexture("character.png");
+	setTexture("player.png");
 	m_xHairTex = new texture("xhair.png");
 	m_xHairTexRed = new texture("xhair_red.png");
 	type(EntityType::PLAYER);
+	m_currentWeapon = NULL;
 
 	m_tickVelocity = 0;
 
@@ -178,7 +179,7 @@ void player::shoot()
 
 	float ang = getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
 
-	projectiles[m_projCount] = new projectile(ang, 7.0f, centerPos(), this);
+	m_projectiles[m_projCount] = new projectile(ang, 7.0f, centerPos(), this);
 
 	m_projCount++;
 }
@@ -204,6 +205,27 @@ bool player::canShoot()
 		return true;
 
 	return false;
+}
+
+void player::checkPickup()
+{
+	pickup* pickup = physics::INSTANCE()->getPickupsWithBB(bb());
+
+	if (pickup == NULL)
+		return;
+
+	pickup->onPickup(this);
+	m_currentWeapon = pickup;
+
+}
+
+void player::updatePickup()
+{
+	if (m_currentWeapon == NULL)
+		return;
+
+	m_currentWeapon->pos(Vector2( pos().x + 4, pos().y));
+	m_currentWeapon->rotation(rotation());
 }
 
 Vector2 player::getMovement()
@@ -253,9 +275,6 @@ void player::handleQuarterSteps()
 			{
 				movePlayer(yVec);
 			}
-
-			// only a little bit of slide
-			return;
 		}
 		// if not
 		else
@@ -277,6 +296,10 @@ void player::update()
 	// handle player movement
 	handleQuarterSteps();
 
+	// check if player can pickup
+	checkPickup();
+	updatePickup();
+
 	/*
 	printf("vel : %f | pos %.1f, %.1f | rot %.1f | mouse rot %.1f | rotdiff %.1f | boost : %d\n",
 		velocity(),
@@ -291,10 +314,10 @@ void player::update()
 	// handle projecitle updates
 	for (int i = 0; i < 50; i++)
 	{
-		if (projectiles[i] == nullptr)
+		if (m_projectiles[i] == nullptr)
 			continue;
 
-		projectiles[i]->update();
+		m_projectiles[i]->update();
 	}
 
 	// reset tick based vars
@@ -313,9 +336,9 @@ void player::render()
 	// handles projectile rendering
 	for (int i = 0; i < 50; i++)
 	{
-		if (projectiles[i] == nullptr)
+		if (m_projectiles[i] == nullptr)
 			continue;
 
-		projectiles[i]->render();
+		m_projectiles[i]->render();
 	}
 }

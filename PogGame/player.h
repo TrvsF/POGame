@@ -13,6 +13,7 @@
 #include "projectile.h"
 #include "physics.h"
 #include "camera.h"
+#include "pickup.h"
 #include <iostream>
 
 class player : public game_entity
@@ -24,7 +25,8 @@ class player : public game_entity
 		const float BOOST_MUL[3] = {2.1f, 2.2f, 1.2f}; // how fast you are boosted dependent of if you're turning
 		// ^ lower values mean that you have to spam space more for it to work
 
-		projectile* projectiles[100];
+		pickup* m_currentWeapon;
+		projectile* m_projectiles[100];
 
 		inputs* m_inputs;
 
@@ -67,6 +69,10 @@ class player : public game_entity
 		void shoot();
 		void renderXhair();
 		bool canShoot();
+
+		// pickup/weapon methods
+		void checkPickup();
+		void updatePickup();
 
 	public:
 		player(Vector2 pos);

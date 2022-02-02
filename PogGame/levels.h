@@ -18,6 +18,7 @@
 #include "player.h"
 #include "wall.h"
 #include "enemy.h"
+#include "pistol.h"
 #include <fstream>
 #include <string>
 

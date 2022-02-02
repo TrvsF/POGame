@@ -37,7 +37,7 @@ class enemy : public game_entity
 		enemy(Vector2 position);
 		virtual ~enemy();
 
-		void takeDamage(int hp, float r);
+		void takeDamage(int hp, float kb, float r);
 
 		void update();
 		void render();

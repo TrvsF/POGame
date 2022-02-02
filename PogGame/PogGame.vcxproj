@@ -143,6 +143,8 @@
     <ClCompile Include="inputs.cpp" />
     <ClCompile Include="levels.cpp" />
     <ClCompile Include="physics.cpp" />
+    <ClCompile Include="pickup.cpp" />
+    <ClCompile Include="pistol.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="projectile.cpp" />
@@ -162,6 +164,8 @@
     <ClInclude Include="levels.h" />
     <ClInclude Include="math_helper.h" />
     <ClInclude Include="physics.h" />
+    <ClInclude Include="pickup.h" />
+    <ClInclude Include="pistol.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="projectile.h" />
     <ClInclude Include="texture.h" />

@@ -13,13 +13,13 @@ int main(int argc, char *argv[])
 {
 	/*
 		TODO :
-		PROJ COLLISON
-		WEAPON/SHOOTING SYSTEM
-		MAKE UPDATES NOT FPS DEPENDENT <--- fix weird bugs [possbile sync issue?]
-		LEVEL SYSTEM
-		 - split map into 16x16 'chunks'
-		 - have maps read and write to file in a 2d array type thingy so you can make & share maps
-		 - items and such represented as chars
+			MORE ENEMY AI
+			WEAPON/SHOOTING SYSTEM
+				- WEAPON PICKUPS
+				- WEAPON TYPES
+				- WEAPON SPRITES
+			BETTER FEEDBACK WHEN SHOOTING
+			PICKUPS
 	*/
 	printf("STARTING POGame\n\n\n");
 
