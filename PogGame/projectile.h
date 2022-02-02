@@ -13,10 +13,14 @@
 class projectile : public game_entity
 {
 	private:
-		Vector2 movementVec;
+		game_entity* m_parent;
+
+		Vector2 m_movementVec;
+
+		int m_damage;
 
 	public:
-		projectile(float angle, float speed, Vector2 position);
+		projectile(float angle, float speed, Vector2 position, game_entity* parent);
 		virtual ~projectile();
 
 		void update();

@@ -174,7 +174,7 @@ void player::shoot()
 
 	float ang = getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
 
-	projectiles[m_projCount] = new projectile(ang, 7.0f, centerPos());
+	projectiles[m_projCount] = new projectile(ang, 7.0f, centerPos(), this);
 
 	m_projCount++;
 }

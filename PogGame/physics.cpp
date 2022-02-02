@@ -56,11 +56,11 @@ bool physics::isAnythingNotPlayerGoingToCollideWithBB(BoundingBox objectBB)
 	return false;
 }
 
-game_entity* physics::getWhatCollidesWithBB(BoundingBox objectBB, game_entity* e)
+game_entity* physics::getWhatCollidesWithBB(BoundingBox objectBB, game_entity* self, game_entity* parent)
 {
 	for (auto const& entity : m_gameEntities)
 	{
-		if (entity == nullptr || entity == e)
+		if (entity == nullptr || entity == self || entity == parent)
 			continue;
 
 		if (objectBB.isColliding(entity->bb()))

@@ -30,6 +30,6 @@ class physics
 
 		bool isAnythingGoingToCollideWithBB(BoundingBox objectBB);
 		bool isAnythingNotPlayerGoingToCollideWithBB(BoundingBox objectBB);
-		game_entity* getWhatCollidesWithBB(BoundingBox objectBB, game_entity* e);
+		game_entity* getWhatCollidesWithBB(BoundingBox objectBB, game_entity* self, game_entity* parent);
 };
 #endif

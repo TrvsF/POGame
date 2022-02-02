@@ -93,7 +93,8 @@ bool levels::loadLevel(std::string fileName)
 					{
 						int x = std::stoi(builder[wordCount]);
 						int y = std::stoi(currentWord);
-						m_currentLevelObjects.push_back(new player(Vector2((float)x, (float)y)));
+						m_playerChar = new player(Vector2((float)x, (float)y));
+						m_currentLevelObjects.push_back(m_playerChar);
 						currentType = idle;
 					}
 					break;

@@ -1,16 +1,20 @@
 #include "projectile.h"
 
-projectile::projectile(float angle, float speed, Vector2 position)
+projectile::projectile(float angle, float speed, Vector2 position, game_entity* parent)
 {
 	type(EntityType::PROJECTILE);
 
 	pos(position);
 	rotation(angle + randomFloat(-3.0f, 3.0f));
 	
-	movementVec = Vector2(0, -speed);
-	movementVec = RotateVector(movementVec, rotation());
+	m_movementVec = Vector2(0, -speed);
+	m_movementVec = RotateVector(m_movementVec, rotation());
+
+	m_parent = parent;
 
 	setTexture("proj.png");
+
+	m_damage = 25;
 
 	physics::INSTANCE()->addEntity(this);
 }
@@ -22,11 +26,12 @@ projectile::~projectile()
 
 void projectile::update()
 {
-	translate(movementVec);
-	game_entity* entity = physics::INSTANCE()->getWhatCollidesWithBB(bb(), this);
+	translate(m_movementVec);
+	game_entity* entity = physics::INSTANCE()->getWhatCollidesWithBB(bb(), this, m_parent);
 	if (entity != NULL)
 	{
-		entity->takeDamage(50);
+		entity->takeDamage(m_damage);
+		m_damage = 0;
 	}
 }
 
