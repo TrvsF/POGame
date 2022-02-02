@@ -20,6 +20,9 @@ int main(int argc, char *argv[])
 				- WEAPON SPRITES
 			BETTER FEEDBACK WHEN SHOOTING
 			PICKUPS
+
+		BUGS :
+			MOVEMENT STOPS WHEN FIRING 20 PROJECTILES
 	*/
 	printf("STARTING POGame\n\n\n");
 

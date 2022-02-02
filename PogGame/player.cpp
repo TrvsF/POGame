@@ -174,14 +174,9 @@ void player::shoot()
 	if (!canShoot())
 		return;
 
-	if (m_projCount > 50)
-		m_projCount = 0;
-
 	float ang = getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
 
-	m_projectiles[m_projCount] = new projectile(ang, 7.0f, centerPos(), this);
-
-	m_projCount++;
+	m_currentWeapon->shoot(ang);
 }
 
 void player::renderXhair()
@@ -198,6 +193,9 @@ void player::renderXhair()
 
 bool player::canShoot()
 {
+	if (m_currentWeapon == NULL)
+		return false;
+
 	float angDiff = rotation() - getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
 	float magDiff = abs(angDiff);
 
@@ -311,15 +309,6 @@ void player::update()
 		m_canBoost);
 	*/
 
-	// handle projecitle updates
-	for (int i = 0; i < 50; i++)
-	{
-		if (m_projectiles[i] == nullptr)
-			continue;
-
-		m_projectiles[i]->update();
-	}
-
 	// reset tick based vars
 	m_boostIndex = 0;
 	m_tickVelocity = 0;
@@ -332,13 +321,4 @@ void player::render()
 	m_camera->render();
 	renderTexture();
 	renderXhair();
-
-	// handles projectile rendering
-	for (int i = 0; i < 50; i++)
-	{
-		if (m_projectiles[i] == nullptr)
-			continue;
-
-		m_projectiles[i]->render();
-	}
 }

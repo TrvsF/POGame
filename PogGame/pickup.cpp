@@ -16,7 +16,7 @@ pickup::~pickup()
 {
 }
 
-void pickup::shoot()
+void pickup::shoot(float angle)
 {
 }
 

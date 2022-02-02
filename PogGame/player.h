@@ -26,7 +26,6 @@ class player : public game_entity
 		// ^ lower values mean that you have to spam space more for it to work
 
 		pickup* m_currentWeapon;
-		projectile* m_projectiles[100];
 
 		inputs* m_inputs;
 
