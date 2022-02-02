@@ -85,7 +85,7 @@ void game_engine::run()
 					break;
 			}
 		}
-		// 144 times a second refresh the renderer
+
 		if (m_gtickTimer->deltaTime() >= 1.0f / PHYS_RATE)
 		{
 			doUpdates();
@@ -93,6 +93,7 @@ void game_engine::run()
 
 		if (m_fpsTimer->deltaTime() >= 1.0f / FRAME_RATE)
 		{
+			// printf("frame time : %.4f\n", m_fpsTimer->deltaTime());
 			render();
 		}
 	

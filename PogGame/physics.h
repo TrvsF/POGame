@@ -28,8 +28,7 @@ class physics
 		void removeEntity(game_entity* entity);
 		void translateEntitiesNotPlayer(Vector2 vector);
 
-		bool isAnythingGoingToCollideWithBB(BoundingBox objectBB);
-		bool isAnythingNotPlayerGoingToCollideWithBB(BoundingBox objectBB);
+		bool isAnythingNotSelfGoingToCollideWithBB(BoundingBox objectBB, game_entity* self);
 		game_entity* getWhatCollidesWithBB(BoundingBox objectBB, game_entity* self, game_entity* parent);
 };
 #endif

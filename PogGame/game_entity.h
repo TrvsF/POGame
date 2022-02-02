@@ -58,7 +58,7 @@ class game_entity
 
 		void health(int hp);
 		int health();
-		virtual void takeDamage(int hp);
+		virtual void takeDamage(int hp, float r);
 
 		void type(EntityType t);
 		EntityType type();

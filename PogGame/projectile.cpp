@@ -14,7 +14,7 @@ projectile::projectile(float angle, float speed, Vector2 position, game_entity* 
 
 	setTexture("proj.png");
 
-	m_damage = 25;
+	m_damage = 5;
 
 	physics::INSTANCE()->addEntity(this);
 }
@@ -30,7 +30,7 @@ void projectile::update()
 	game_entity* entity = physics::INSTANCE()->getWhatCollidesWithBB(bb(), this, m_parent);
 	if (entity != NULL)
 	{
-		entity->takeDamage(m_damage);
+		entity->takeDamage(m_damage, rotation());
 		m_damage = 0;
 	}
 }

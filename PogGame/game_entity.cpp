@@ -94,7 +94,7 @@ int game_entity::health()
 	return m_health;
 }
 
-void game_entity::takeDamage(int hp)
+void game_entity::takeDamage(int hp, float r)
 {
 }
 

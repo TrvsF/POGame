@@ -76,11 +76,13 @@ float player::calcVelocity()
 	// get what the velocity would be
 	float vel = velocity() + m_tickVelocity;
 	float velMag = abs(vel);
+
 	// if is going too fast even for boost clamp vel
 	if (velMag > MAX_VEL_BOOST)
 	{
 		vel = vel > 0 ? MAX_VEL_BOOST : -MAX_VEL_BOOST;
 	}
+
 	// if no velocity is being added then either remain at rest
 	// or start to slow the character down
 	if (m_tickVelocity == 0)
@@ -93,11 +95,13 @@ float player::calcVelocity()
 		// else return the player's velocity but slowed down
 		return vel > 0 ? vel - 0.05f : vel + 0.05f;
 	}
+
 	// if calculated velocity is over the max then return max veloicty (- or +)
 	if (velMag > MAX_VEL && !m_hasBoosted)
 	{
 		return vel > 0 ? MAX_VEL : -MAX_VEL;
 	}
+
 	// else return the newly calculated velocity
 	return vel;
 }
@@ -204,8 +208,9 @@ bool player::canShoot()
 
 Vector2 player::getMovement()
 {
-	velocity(calcVelocity());
-	Vector2 movement = Vector2(0, calcVelocity());
+	float calcVel = calcVelocity();
+	velocity(calcVel);
+	Vector2 movement = Vector2(0, calcVel);
 	return RotateVector(movement, rotation());
 }
 
@@ -226,7 +231,7 @@ void player::handleQuarterSteps()
 		BoundingBox nextFrameBB = bb() + movementVec;
 
 		// if player is going to collide with another object
-		if (physics::INSTANCE()->isAnythingNotPlayerGoingToCollideWithBB(nextFrameBB))
+		if (physics::INSTANCE()->isAnythingNotSelfGoingToCollideWithBB(nextFrameBB, this))
 		{
 			// cancel the player's boost
 			cancelBoost();
@@ -239,12 +244,12 @@ void player::handleQuarterSteps()
 			BoundingBox ybb = bb() + yVec;
 
 			// can move x
-			if (!physics::INSTANCE()->isAnythingNotPlayerGoingToCollideWithBB(xbb))
+			if (!physics::INSTANCE()->isAnythingNotSelfGoingToCollideWithBB(xbb, this))
 			{
 				movePlayer(xVec);
 			}
 			// can move y
-			if (!physics::INSTANCE()->isAnythingNotPlayerGoingToCollideWithBB(ybb))
+			if (!physics::INSTANCE()->isAnythingNotSelfGoingToCollideWithBB(ybb, this))
 			{
 				movePlayer(yVec);
 			}

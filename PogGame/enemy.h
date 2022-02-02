@@ -15,22 +15,29 @@
 class enemy : public game_entity
 {
 	private:
+		const float MAX_VELOCITY = 2.5f;
+
 		enum e_aiStates { wandering, attacking, chasing, dead };
 
 		e_aiStates currentState;
 
 		bool m_isAlive;
 
-		int m_velocity;
+		float m_tickVelocity;
+		float m_kbRotation;
 
-		void calcVelocity();
-		void calcRotation();
+		Vector2 getMovementVec();
+		float calcVelocity();
+		void knockback(float kb);
+		void doMovement();
+
+		void doDeath();
 
 	public:
 		enemy(Vector2 position);
 		virtual ~enemy();
 
-		void takeDamage(int hp);
+		void takeDamage(int hp, float r);
 
 		void update();
 		void render();

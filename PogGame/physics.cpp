@@ -34,17 +34,11 @@ void physics::translateEntitiesNotPlayer(Vector2 vector)
 	}
 }
 
-bool physics::isAnythingGoingToCollideWithBB(BoundingBox objectBB)
-{		
-	// return getWhatCollidesWithBB(objectBB) == NULL;
-	return false;
-}
-
-bool physics::isAnythingNotPlayerGoingToCollideWithBB(BoundingBox objectBB)
+bool physics::isAnythingNotSelfGoingToCollideWithBB(BoundingBox objectBB, game_entity* self)
 {
 	for (auto const& entity : m_gameEntities)
 	{
-		if (entity == nullptr || entity->type() == game_entity::PLAYER)
+		if (entity == nullptr || entity == self)
 			continue;
 
 		if (objectBB.isColliding(entity->bb()))
