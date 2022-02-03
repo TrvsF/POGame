@@ -148,6 +148,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="projectile.cpp" />
+    <ClCompile Include="shotgun.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texture_helper.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="pistol.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="projectile.h" />
+    <ClInclude Include="shotgun.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texture_helper.h" />
     <ClInclude Include="timer.h" />

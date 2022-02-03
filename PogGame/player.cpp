@@ -148,7 +148,7 @@ void player::boost()
 bool player::shouldMoveObjects(Vector2 movementVec)
 {
 	BoundingBox checkBB = m_camera->bb() + movementVec;
-	if (checkBB.isOutOfBounds(1024, 786))
+	if (checkBB.isOutOfBounds(1920, 1080))
 	{
 		return true;
 	}
@@ -279,7 +279,6 @@ void player::handleQuarterSteps()
 			movePlayer(movementVec);
 		}
 	}
-
 }
 
 void player::update()
@@ -296,8 +295,8 @@ void player::update()
 	// check if player can pickup
 	checkPickup();
 	updatePickup();
-
 	
+	/*
 	printf("vel : %f | pos %.1f, %.1f | rot %.1f | mouse rot %.1f | rotdiff %.1f | boost : %d\n",
 		velocity(),
 		pos().x,
@@ -305,7 +304,8 @@ void player::update()
 		rotation(),
 		getAngleFromVecsNormal(centerPos(), m_inputs->mousePos()),
 		abs(rotation() - getAngleFromVecsNormal(centerPos(), m_inputs->mousePos())),
-		m_canBoost);
+		m_canBoost)
+	*/
 	
 
 	// reset tick based vars

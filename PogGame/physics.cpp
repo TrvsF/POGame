@@ -86,7 +86,7 @@ game_entity* physics::getWhatCollidesWithBB(BoundingBox objectBB, game_entity* s
 {
 	for (auto const& entity : m_gameEntities)
 	{
-		if (entity == nullptr || entity == self || entity == parent)
+		if (entity == nullptr || entity == self || entity == parent || entity->type() == game_entity::PROJECTILE)
 			continue;
 
 		if (objectBB.isColliding(entity->bb()))

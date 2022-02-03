@@ -111,6 +111,9 @@
     <ClCompile Include="pistol.cpp">
       <Filter>Source Files\entity\entities\pickup\pickups</Filter>
     </ClCompile>
+    <ClCompile Include="shotgun.cpp">
+      <Filter>Source Files\entity\entities\pickup\pickups</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game_entity.h">
@@ -165,6 +168,9 @@
       <Filter>Header Files\entity\entities\pickup</Filter>
     </ClInclude>
     <ClInclude Include="pistol.h">
+      <Filter>Header Files\entity\entities\pickup\pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="shotgun.h">
       <Filter>Header Files\entity\entities\pickup\pickups</Filter>
     </ClInclude>
   </ItemGroup>

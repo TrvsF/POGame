@@ -18,6 +18,7 @@
 #include "wall.h"
 #include "enemy.h"
 #include "pistol.h"
+#include "shotgun.h"
 #include "projectile.h"
 #include <iostream>
 #include <fstream>

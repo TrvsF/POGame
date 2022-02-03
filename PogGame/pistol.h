@@ -14,11 +14,15 @@
 class pistol : public pickup
 {
 	private:
-		const int SHOT_COOLDOWN_TICKS = 20;
+		const int SHOT_COOLDOWN_TICKS = 35;
 		const int RELOAD_TICKS = 15;
 		const int MAG_SIZE = 13;
 
-		int m_tickCounter;
+		const float SPEED = 19.0f;
+		const float INACCURACY = 1.75f;
+		const float DAMAGE = 20.0f;
+
+		long m_tickCounter;
 
 		game_entity* m_parent;
 

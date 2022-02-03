@@ -19,11 +19,13 @@ class projectile : public game_entity
 
 		Vector2 m_movementVec;
 
+		bool m_shouldRender;
+
 		int m_damage;
 		int m_counter;
 
 	public:
-		projectile(float angle, float speed, Vector2 position, game_entity* parent);
+		projectile(float angle, float speed, float spread, float damage, Vector2 position, game_entity* parent);
 		virtual ~projectile();
 
 		bool shouldDie();

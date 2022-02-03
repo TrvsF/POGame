@@ -45,5 +45,5 @@ void camera::update()
 
 void camera::render()
 {
-	// debugRenderBB();
+	debugRenderBB();
 }

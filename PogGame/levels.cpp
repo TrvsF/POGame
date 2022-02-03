@@ -16,6 +16,7 @@ void levels::loadDefaultLevel()
 	loadLevel("./level3.pog");
 	m_currentLevelObjects.push_front(new enemy(Vector2(500, 500)));
 	m_currentLevelObjects.push_front(new pistol(Vector2(500, 700)));
+	m_currentLevelObjects.push_front(new shotgun(Vector2(580, 700)));
 
 	if (m_currentLevelType != menu)
 	{

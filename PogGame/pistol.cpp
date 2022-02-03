@@ -26,7 +26,12 @@ pistol::~pistol()
 
 void pistol::shoot(float angle)
 {
-	levels::INSTANCE()->addProjectile(new projectile(angle, 7.0f, centerPos(), m_parent));
+	if (m_tickCounter < SHOT_COOLDOWN_TICKS)
+		return;
+
+	levels::INSTANCE()->addProjectile(new projectile(angle, SPEED, m_parent->velocity() * INACCURACY + 1.0f, DAMAGE, centerPos(), m_parent));
+
+	m_tickCounter = 0;
 }
 
 void pistol::update()
