@@ -106,6 +106,16 @@ bool levels::loadLevel(std::string fileName)
 	return true;
 }
 
+void levels::addProjectile(projectile* proj)
+{
+	m_projectiles.push_back(proj);
+}
+
+void levels::removeProjectile(projectile * proj)
+{
+	m_projectiles.remove(proj);
+}
+
 levels::levels()
 {
 	loadDefaultLevel();
@@ -126,14 +136,33 @@ void levels::resetLevel()
 
 void levels::update()
 {
+	projectile* deadProj = nullptr;
+	for (auto const& proj : m_projectiles)
+	{
+		if (proj->shouldDie())
+		{
+			deadProj = proj;
+			continue;
+		}
+		proj->update();
+	}
+	if (deadProj != nullptr)
+	{
+		m_projectiles.remove(deadProj);
+	}
+
 	for (auto const& entity : m_currentLevelObjects)
 	{
 		entity->update();
-	}
+	} 
 }
 
 void levels::render()
 {
+	for (auto const& proj : m_projectiles)
+	{
+		proj->render();
+	}
 	for (auto const& entity : m_currentLevelObjects)
 	{
 		entity->render();

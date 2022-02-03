@@ -9,6 +9,7 @@
 #include "pickup.h"
 #include "physics.h"
 #include "projectile.h"
+#include "levels.h"
 
 class pistol : public pickup
 {
@@ -18,9 +19,7 @@ class pistol : public pickup
 		const int MAG_SIZE = 13;
 
 		int m_tickCounter;
-		int m_projCounter;
 
-		projectile* m_projectiles[20];
 		game_entity* m_parent;
 
 	public:

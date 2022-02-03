@@ -10,7 +10,6 @@
 
 #include "game_entity.h"
 #include "inputs.h"
-#include "projectile.h"
 #include "physics.h"
 #include "camera.h"
 #include "pickup.h"
@@ -38,7 +37,6 @@ class player : public game_entity
 
 		int m_boostCooldownCount;
 		int m_boostIndex;
-		int m_projCount;
 
 		bool m_hasBoosted;
 		bool m_canBoost;
@@ -65,9 +63,10 @@ class player : public game_entity
 		void movePlayer(Vector2 movementVec);
 
 		// mouse/shooting methods
+		bool canShoot();
+		
 		void shoot();
 		void renderXhair();
-		bool canShoot();
 
 		// pickup/weapon methods
 		void checkPickup();
@@ -76,6 +75,8 @@ class player : public game_entity
 	public:
 		player(Vector2 pos);
 		virtual ~player();
+
+
 
 		void update();
 		void render();

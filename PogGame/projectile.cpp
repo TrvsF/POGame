@@ -15,6 +15,7 @@ projectile::projectile(float angle, float speed, Vector2 position, game_entity* 
 	setTexture("proj.png");
 
 	m_damage = 5;
+	m_counter = 0;
 
 	physics::INSTANCE()->addEntity(this);
 }
@@ -22,6 +23,11 @@ projectile::projectile(float angle, float speed, Vector2 position, game_entity* 
 projectile::~projectile()
 {
 
+}
+
+bool projectile::shouldDie()
+{
+	return m_counter >= ALIVE_TIME;
 }
 
 void projectile::update()
@@ -33,6 +39,7 @@ void projectile::update()
 		entity->takeDamage(m_damage, 5.0f, rotation());
 		m_damage = 0;
 	}
+	m_counter++;
 }
 
 void projectile::render()

@@ -14,11 +14,12 @@
 #ifndef _LEVELS_H
 #define _LEVELS_H
 
-#include <SDL.h>
 #include "player.h"
 #include "wall.h"
 #include "enemy.h"
 #include "pistol.h"
+#include "projectile.h"
+#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -38,6 +39,7 @@ class levels
 
 		e_levelType m_currentLevelType;
 
+		std::list<projectile*> m_projectiles;
 		std::list<game_entity*> m_currentLevelObjects;
 		std::list<texture*> m_currentLevelTextures;
 
@@ -57,6 +59,9 @@ class levels
 
 		void loadDefaultLevel();
 		bool loadLevel(std::string fileName);
+
+		void addProjectile(projectile* proj);
+		void removeProjectile(projectile* proj);
 
 		void update();
 		void render();

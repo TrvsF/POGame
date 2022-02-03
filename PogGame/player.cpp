@@ -17,11 +17,10 @@ player::player(Vector2 position)
 
 	m_tickVelocity = 0;
 
-	m_projCount = 0;
 	m_boostIndex = 0;
+	m_boostCooldownCount = 0;
 	m_canBoost = true;
 	m_hasBoosted = false;
-	m_boostCooldownCount = 0;
 
 	physics::INSTANCE()->addEntity(this);
 }
@@ -298,7 +297,7 @@ void player::update()
 	checkPickup();
 	updatePickup();
 
-	/*
+	
 	printf("vel : %f | pos %.1f, %.1f | rot %.1f | mouse rot %.1f | rotdiff %.1f | boost : %d\n",
 		velocity(),
 		pos().x,
@@ -307,7 +306,7 @@ void player::update()
 		getAngleFromVecsNormal(centerPos(), m_inputs->mousePos()),
 		abs(rotation() - getAngleFromVecsNormal(centerPos(), m_inputs->mousePos())),
 		m_canBoost);
-	*/
+	
 
 	// reset tick based vars
 	m_boostIndex = 0;
