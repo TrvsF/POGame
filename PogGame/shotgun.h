@@ -26,6 +26,8 @@ class shotgun : public pickup
 
 		game_entity* m_parent;
 
+		void onDrop();
+
 	public:
 		shotgun(Vector2 position);
 		virtual ~shotgun();

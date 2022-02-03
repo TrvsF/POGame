@@ -26,6 +26,8 @@ class pistol : public pickup
 
 		game_entity* m_parent;
 
+		void onDrop();
+
 	public:
 		pistol(Vector2 position);
 		virtual ~pistol();

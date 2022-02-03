@@ -5,20 +5,23 @@ player::player(Vector2 position)
 	pos(position);
 
 	m_inputs = inputs::INSTANCE();
-	m_camera = new camera();
-
-	m_camera->bb((int)position.x, (int)position.y, 200, 200);
 
 	setTexture("player.png");
 	m_xHairTex = new texture("xhair.png");
 	m_xHairTexRed = new texture("xhair_red.png");
+
 	type(EntityType::PLAYER);
+
 	m_currentWeapon = NULL;
 
-	m_tickVelocity = 0;
+	m_camera = new camera();
+	m_camera->bb(centerPos().x, centerPos().y, 400, 400);
 
+	m_tickVelocity = 0;
+	m_pickupDelayTimer = 0;
 	m_boostIndex = 0;
 	m_boostCooldownCount = 0;
+
 	m_canBoost = true;
 	m_hasBoosted = false;
 
@@ -173,7 +176,7 @@ void player::shoot()
 	if (!canShoot())
 		return;
 
-	float ang = getAngleFromVecsNormal(centerPos(), m_inputs->mousePos());
+	float ang = getAngleFromVecsNormal(Vector2(centerPos().x, centerPos().y), m_inputs->mousePos());
 
 	m_currentWeapon->shoot(ang);
 }
@@ -206,14 +209,20 @@ bool player::canShoot()
 
 void player::checkPickup()
 {
+	if (m_pickupDelayTimer < PICKUP_DELAY)
+		return;
+
+	m_pickupDelayTimer = 0;
 	pickup* pickup = physics::INSTANCE()->getPickupsWithBB(bb());
 
 	if (pickup == NULL)
 		return;
 
+	if (m_currentWeapon != NULL)
+		m_currentWeapon->onDrop();
+
 	pickup->onPickup(this);
 	m_currentWeapon = pickup;
-
 }
 
 void player::updatePickup()
@@ -312,6 +321,8 @@ void player::update()
 	m_boostIndex = 0;
 	m_tickVelocity = 0;
 	m_hasBoosted = false;
+
+	m_pickupDelayTimer++;
 }
 
 void player::render()

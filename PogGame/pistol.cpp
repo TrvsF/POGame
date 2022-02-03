@@ -10,6 +10,14 @@ void pistol::onPickup(game_entity* pickeruper)
 	physics::INSTANCE()->removePickup(this);
 }
 
+void pistol::onDrop()
+{
+	setTexture("pickup_pistol.png");
+	rotation(0);
+	m_parent = NULL;
+	physics::INSTANCE()->addPickup(this);
+}
+
 pistol::pistol(Vector2 position)
 {
 	pos(position);

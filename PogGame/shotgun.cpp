@@ -1,5 +1,13 @@
 #include "shotgun.h"
 
+void shotgun::onDrop()
+{
+	setTexture("pickup_shotgun.png");
+	rotation(0);
+	m_parent = NULL;
+	physics::INSTANCE()->addPickup(this);
+}
+
 shotgun::shotgun(Vector2 position)
 {
 	pos(position);
