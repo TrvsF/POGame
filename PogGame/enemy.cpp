@@ -87,7 +87,7 @@ enemy::enemy(Vector2 position)
 	setTexture("enemy.png");
 	type(EntityType::AI);
 
-	currentState = wandering;
+	m_currentState = wandering;
 
 	physics::INSTANCE()->addEntity(this);
 }
@@ -114,7 +114,7 @@ void enemy::update()
 	if (!m_isAlive)
 		return;
 
-	switch (currentState)
+	switch (m_currentState)
 	{
 		case wandering:
 			// 1 in 100 chance

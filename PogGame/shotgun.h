@@ -6,7 +6,6 @@
 #ifndef _SHOTGUN_H
 #define _SHOTGUN_H
 
-#include "pickup.h"
 #include "physics.h"
 #include "projectile.h"
 #include "levels.h"
@@ -19,7 +18,7 @@ class shotgun : public pickup
 		const int MAG_SIZE = 7;
 
 		const float SPEED = 15.0f;
-		const float INACCURACY = 5.5f;
+		const float INACCURACY = 10.5f;
 		const float DAMAGE = 15.0f;
 
 		long m_tickCounter;

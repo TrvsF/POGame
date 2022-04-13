@@ -12,8 +12,6 @@
 class timer
 {
 	private:
-		static timer* s_instance;
-
 		int m_startTicks;
 		int m_elapsedTicks;
 

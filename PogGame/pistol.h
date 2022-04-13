@@ -6,7 +6,6 @@
 #ifndef _PISTOL_H
 #define _PISTOL_H
 
-#include "pickup.h"
 #include "physics.h"
 #include "projectile.h"
 #include "levels.h"

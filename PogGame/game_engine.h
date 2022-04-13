@@ -7,9 +7,7 @@
 #ifndef _GAME_ENGINE_H
 #define _GAME_ENGINE_H
 
-#include "texture_helper.h"
 #include "timer.h"
-#include "game_entity.h"
 #include "graphics.h"
 #include "assets.h"
 #include "inputs.h"

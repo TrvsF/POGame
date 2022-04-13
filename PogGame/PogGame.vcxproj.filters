@@ -37,12 +37,6 @@
     <Filter Include="Source Files\entity\entities">
       <UniqueIdentifier>{a13eeb21-e5cf-4120-b547-27016ae9261f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\items">
-      <UniqueIdentifier>{5a077393-9fe1-4bb4-af89-57ae3eda845f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\items">
-      <UniqueIdentifier>{dafd39b2-75e8-49d1-975f-1f9d187f7997}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\entity\entities\pickup">
       <UniqueIdentifier>{83800151-2bdd-499d-a301-13b735a43ad9}</UniqueIdentifier>
     </Filter>

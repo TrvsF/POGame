@@ -13,7 +13,7 @@ levels* levels::INSTANCE()
 void levels::loadDefaultLevel()
 {
 	resetLevel();
-	loadLevel("./level3.pog");
+	loadLevel("./level.pog");
 	m_currentLevelObjects.push_front(new enemy(Vector2(500, 500)));
 	m_currentLevelObjects.push_front(new pistol(Vector2(500, 700)));
 	m_currentLevelObjects.push_front(new shotgun(Vector2(580, 700)));
@@ -95,8 +95,7 @@ bool levels::loadLevel(std::string fileName)
 					{
 						int x = std::stoi(builder[wordCount]);
 						int y = std::stoi(currentWord);
-						m_playerChar = new player(Vector2((float)x, (float)y));
-						m_currentLevelObjects.push_back(m_playerChar);
+						m_currentLevelObjects.push_back(new player(Vector2((float)x, (float)y)));
 						currentType = idle;
 					}
 					break;

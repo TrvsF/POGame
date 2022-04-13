@@ -8,8 +8,8 @@
 #define _TEXTURE_H
 
 #include "assets.h"
+#include "texture_helper.h"
 #include "math_helper.h"
-#include "camera.h"
 
 class texture
 {

@@ -1,0 +1,95 @@
+
+//www.plantuml.com/plantuml/png/JSt1QeGm483XUvx2OqlfE-Z1qakXM7leIO9Eqw7963AJ1LdstNSsMN6z-FraacbPR98Sl36pjyoDim4c88S4pTaqhsz3zz5FGpVs6f_lFr-xmmGd8E529pZ_ZnWWbVoDV8HBDk9SvtG3I2LIp7TwVSbNnh-Dzs7a8HCXEIsmoM_VSR42Jy_Q-Q1NF9miQmqkbO0MI3U-8A4KiAon86Mg_xf6VJ7wjNed1ty5
+
+	game_engine
+	#include "timer.h"
+	#include "graphics.h"
+	#include "assets.h"
+	#include "inputs.h"
+	#include "levels.h"
+	#include "physics.h"
+
+	managers
+		assets
+		#include "texture_helper.h"
+		
+		graphics
+		#include "texture_helper.h"
+
+		inputs
+		#include "math_helper.h"
+		
+		levels
+		#include "player.h"
+		#include "wall.h"
+		#include "enemy.h"
+		#include "pistol.h"
+		#include "shotgun.h"
+		#include "projectile.h"
+
+		physics
+		#include "math_helper.h"
+		#include "game_entity.h"
+		#include "pickup.h"
+
+		timer
+
+	helpers
+		math_helper
+
+		texture_helper
+		#include "graphics.h"
+
+	entity
+		camera
+		#include "math_helper.h"
+		#include "graphics.h"
+
+		game_entity
+		#include "math_helper.h"
+		#include "texture.h"
+
+		texture
+		#include "assets.h"
+		#include "texture_helper.h"
+		#include "math_helper.h"
+
+		entities
+			enemy
+			#include "game_entity.h"
+			#include "physics.h"
+
+			player
+			#include "game_entity.h"
+			#include "inputs.h"
+			#include "physics.h"
+			#include "camera.h"
+			#include "pickup.h"
+
+			projectile
+			#include "game_entity.h"
+			#include "physics.h"
+
+			wall
+			#include "game_entity.h"
+			#include "physics.h"
+			
+			pickup
+				pickup
+				#include "game_entity.h"
+			
+				pickups
+					pistol
+					#include "physics.h"
+					#include "projectile.h"
+					#include "levels.h"
+			
+					shotgun
+					#include "physics.h"
+					#include "projectile.h"
+					#include "levels.h"
+					
+
+
+
+		

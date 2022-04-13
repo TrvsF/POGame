@@ -17,9 +17,9 @@ class enemy : public game_entity
 	private:
 		const float MAX_VELOCITY = 2.5f;
 
-		enum e_aiStates { wandering, attacking, chasing, dead };
+		enum e_aiState { wandering, attacking, chasing, dead };
 
-		e_aiStates currentState;
+		e_aiState m_currentState;
 
 		bool m_isAlive;
 

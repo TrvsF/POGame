@@ -27,9 +27,6 @@
 class levels
 {
 	private:
-		levels();
-		~levels();
-
 		enum e_levelType { menu, story, custom };
 
 		enum e_currentReadType { name, type, brick, character, idle };
@@ -46,17 +43,11 @@ class levels
 
 		void resetLevel();
 
-		//------------------//
-		// DEBUG OBJECTS
-		std::list<wall*> m_walls;
-
-		player* m_playerChar;
-		physics* m_physics;
-		texture* m_title;
-		//------------------//
-
 	public:
 		static levels* INSTANCE();
+
+		levels();
+		~levels();
 
 		void loadDefaultLevel();
 		bool loadLevel(std::string fileName);

@@ -14,7 +14,6 @@ class pickup : public game_entity
 {
 	private: 
 		
-
 	public:
 		pickup(Vector2 pos = VEC2_ZERO);
 		virtual ~pickup();

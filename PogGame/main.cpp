@@ -12,6 +12,11 @@ game_engine *gameInstance = nullptr;
 int main(int argc, char *argv[])
 {
 	/*
+		IDEA :
+			CHAR BASED ZOMBO SURVIVAL WITH BUILDING AND WAVES
+			BUT WHEN DIE CHAR DIES AND YOU SPAWN FAR AWAY
+			SO CAN GET STUFF BACK BUT HARD
+			ALSO ONLINE COOP PLS XOXO
 		TODO :
 			SETTINGS MANAGER
 			SOUND MANAGER
@@ -20,6 +25,7 @@ int main(int argc, char *argv[])
 			MORE WEAPONS
 			MAKE ZOMBIE SPEED BASED ON HP
 				(IF HP IS VERY LOW CHANGE INTO CRAWLER)
+			MAKE TREES/ HOUSES
 		BUGS :
 			
 	*/

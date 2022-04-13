@@ -16,10 +16,10 @@
 class graphics
 {
 	private:
+		static graphics* s_instance;
+
 		SDL_Window* m_window;
 		SDL_Renderer* m_renderer;
-
-		static graphics* s_instance;
 
 		int m_width;
 		int m_height;
@@ -39,7 +39,6 @@ class graphics
 
 		bool init(const char* title, int w, int h, bool fullscreen);
 
-		void drawCircle(int centreX, int centreY, int radius);
 		void clearBuffer();
 		void render();
 		void clean();

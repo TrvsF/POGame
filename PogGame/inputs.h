@@ -19,21 +19,21 @@ class inputs
 		Uint8* m_prevKeyboardStates;
 		int m_keyLength;
 
-		Uint32 m_prevMouseState;
 		Uint32 m_mouseState;
+		Uint32 m_prevMouseState;
 
 		int m_mouseX;
 		int m_mouseY;
 
 		void copyToPrev();
 
-		inputs();
-		~inputs();
-
 	public:
 		enum e_mouseButton {
 			left, right, middle, back, forward
 		};
+
+		inputs();
+		~inputs();
 
 		static inputs* INSTANCE();
 

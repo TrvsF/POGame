@@ -20,11 +20,11 @@ class physics
 		std::list<game_entity*> m_gameEntities;
 		std::list<pickup*> m_pickups;
 
-		physics();
-		~physics();
-
 	public:
 		static physics* INSTANCE();
+
+		physics();
+		~physics();
 
 		void addPickup(pickup* pickup);
 		void removePickup(pickup* pickup);
