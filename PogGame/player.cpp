@@ -15,7 +15,7 @@ player::player(Vector2 position)
 	m_currentWeapon = NULL;
 
 	m_camera = new camera();
-	m_camera->bb(centerPos().x, centerPos().y, 400, 400);
+	m_camera->bb((int) centerPos().x, (int) centerPos().y, 400, 400);
 
 	m_tickVelocity = 0;
 	m_pickupDelayTimer = 0;

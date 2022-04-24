@@ -7,7 +7,7 @@
 #define _PISTOL_H
 
 #include "physics.h"
-#include "projectile.h"
+#include "pickup.h"
 #include "levels.h"
 
 class pistol : public pickup
